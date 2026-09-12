@@ -478,14 +478,211 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Helper: Toast Notification
+const showToast = (message) => {
+    const toast = document.getElementById("toast-notification");
+    const toastMsg = document.getElementById("toast-message");
+    if (!toast || !toastMsg) return;
+
+    toastMsg.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+};
+
+// Interactive Code Window Playground Copy
+const initCodePlayground = () => {
+    const copyBtn = document.getElementById("copy-code-btn");
+    if (!copyBtn) return;
+
+    copyBtn.addEventListener("click", () => {
+        const codeText = `const developer = {
+  name: "Jamshid Sediqi",
+  title: "Full Stack Web Developer",
+  focus: "impactful digital experiences",
+  frontend: ["HTML", "CSS", "JavaScript", "React"],
+  backend: ["Node.js", "Express", "REST APIs"],
+  database: ["MongoDB", "PostgreSQL"],
+  greet() {
+    return \`Hi! I'm \${this.name}. Let's build something great.\`;
+  }
+};`;
+        navigator.clipboard.writeText(codeText).then(() => {
+            copyBtn.innerHTML = "<span>✓</span> Copied!";
+            showToast("Skills code snippet copied to clipboard!");
+            setTimeout(() => {
+                copyBtn.innerHTML = "<span>📋</span> Copy";
+            }, 2000);
+        }).catch(() => {
+            showToast("Failed to copy snippet.");
+        });
+    });
+};
+
+// Project Category Filtering
+const initProjectFilter = () => {
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-showcase-card");
+
+    if (!filterBtns.length || !projectCards.length) return;
+
+    filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const filter = btn.dataset.filter;
+
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            projectCards.forEach((card) => {
+                const category = card.dataset.category || "all";
+                if (filter === "all" || category === filter) {
+                    card.style.display = "flex";
+                    setTimeout(() => {
+                        card.style.opacity = "1";
+                        card.style.transform = "scale(1)";
+                    }, 50);
+                } else {
+                    card.style.opacity = "0";
+                    card.style.transform = "scale(0.95)";
+                    setTimeout(() => {
+                        card.style.display = "none";
+                    }, 300);
+                }
+            });
+        });
+    });
+};
+
+// Project Quick-View Modal
+const initProjectModal = () => {
+    const modal = document.getElementById("project-detail-modal");
+    const modalClose = document.getElementById("project-modal-close");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalTags = document.getElementById("modal-tags");
+    const openBtns = document.querySelectorAll(".btn-open-modal");
+
+    if (!modal || !modalClose) return;
+
+    const projectDetails = {
+        "01": {
+            title: "Library Management System",
+            desc: "A full-featured digital library platform built with React, Node.js, and MongoDB. Features secure JWT authentication, book circulation tracking, catalog search, fine calculation, and comprehensive admin dashboard analytics.",
+            tags: ["React", "Node.js", "Express", "MongoDB", "REST API", "Tailwind CSS"],
+            link: "/projects/library"
+        },
+        "02": {
+            title: "Real-Time Messaging App",
+            desc: "A modern real-time messaging application powered by React and Firebase. Includes custom user profiles, direct messaging, group chat rooms, online status indicators, and message history persistence.",
+            tags: ["React", "Firebase", "WebSockets", "Tailwind CSS", "JavaScript"],
+            link: "/projects/portfolio"
+        },
+        "03": {
+            title: "Task Manager Productivity Suite",
+            desc: "Productivity & task management tool built with Vue.js, Express, and MongoDB. Features interactive drag-and-drop Kanban boards, task categorization, priority tags, and visual progress tracking.",
+            tags: ["Vue.js", "Express", "Node.js", "MongoDB", "Drag & Drop UI"],
+            link: "/projects/portfolio"
+        },
+        "04": {
+            title: "SEO Medicine Website",
+            desc: "A high-performance, search-engine optimized healthcare platform designed for high visibility, clean mobile UX, responsive layout architecture, and fast load times.",
+            tags: ["HTML5", "CSS3", "JavaScript", "SEO", "Responsive Design"],
+            link: "/projects/portfolio"
+        },
+        "05": {
+            title: "Modern Restaurant Landing Web App",
+            desc: "Contemporary restaurant web application featuring interactive digital menus, online table reservation, vibrant food showcase galleries, and mobile-friendly navigation.",
+            tags: ["HTML5", "CSS Grid", "Figma", "UI/UX", "JavaScript"],
+            link: "/projects/portfolio"
+        },
+        "06": {
+            title: "Design For Agriculture Platform",
+            desc: "Clean digital concept for agricultural services and farm management. Designed with accessibility standards, dark mode theme support, natural color palette, and bold component design.",
+            tags: ["Figma", "UI Design", "UX Research", "Accessibility", "Design System"],
+            link: "/projects/portfolio"
+        }
+    };
+
+    openBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const projId = btn.dataset.project || "01";
+            const data = projectDetails[projId] || projectDetails["01"];
+
+            if (modalTitle) modalTitle.textContent = data.title;
+            if (modalDesc) modalDesc.textContent = data.desc;
+            if (modalTags) {
+                modalTags.innerHTML = data.tags
+                    .map((t) => `<span class="tag tag-green">${t}</span>`)
+                    .join("");
+            }
+
+            modal.classList.add("active");
+            modal.setAttribute("aria-hidden", "false");
+        });
+    });
+
+    modalClose.addEventListener("click", () => {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+    });
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
+        }
+    });
+};
+
+// Back to Top Button
+const initBackToTop = () => {
+    const backBtn = document.getElementById("back-to-top");
+    if (!backBtn) return;
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            backBtn.classList.add("visible");
+        } else {
+            backBtn.classList.remove("visible");
+        }
+    });
+
+    backBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+};
+
+// Initialize interactive functions
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.porto-navbar') || document.getElementById('about')) {
+        initScrollReveal();
+        initSmoothScroll();
+        initTabbedComponent();
+        initSlider();
+        initModals();
+        updateCopyrightYear();
+        initResumeDownload();
+        initContactForm();
+        initExploreMoreProjects();
+        initCodePlayground();
+        initProjectFilter();
+        initProjectModal();
+        initBackToTop();
+    }
+});
+
 const resumeToggleBtn = document.getElementById('download-btn');
 const resumeContainer = document.getElementById('resume-container');
-const body = document.querySelector('body');
-resumeToggleBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    const isHidden = resumeContainer.classList.toggle('hidden');
-    resumeToggleBtn.textContent = isHidden ? 'View-Full' : 'Hide';
-
-   
-})
+if (resumeToggleBtn && resumeContainer) {
+    resumeToggleBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isHidden = resumeContainer.classList.toggle('hidden');
+        resumeToggleBtn.textContent = isHidden ? 'View-Full' : 'Hide';
+    });
+}

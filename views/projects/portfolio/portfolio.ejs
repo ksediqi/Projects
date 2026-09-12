@@ -31,6 +31,10 @@
     <section class="porto-hero" id="porto-home" aria-label="Portfolio hero section">
         <div class="porto-hero-content" data-aos="fade-up">
             <div class="hero-copy">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>Available for Full-Time & Freelance Roles</span>
+                </div>
 
                 <h1 class="porto-title">
                     Jamshid
@@ -58,10 +62,15 @@
             <div class="code-window" aria-label="Code preview showing developer skills">
                 <div class="code-glow"></div>
                 <div class="code-titlebar">
-                    <div class="dot dot-r"></div>
-                    <div class="dot dot-y"></div>
-                    <div class="dot dot-g"></div>
-                    <span class="code-filename">skills.js</span>
+                    <div class="code-titlebar-left">
+                        <div class="dot dot-r"></div>
+                        <div class="dot dot-y"></div>
+                        <div class="dot dot-g"></div>
+                        <span class="code-filename" style="margin-left: 0.5rem;">skills.js</span>
+                    </div>
+                    <button class="code-copy-btn" id="copy-code-btn" aria-label="Copy code snippet">
+                        <span>📋</span> Copy
+                    </button>
                 </div>
                 <pre class="code-body"><code><span class="ln">01</span><span class="cmt">// Full-Stack Developer - core toolkit</span>
 <span class="ln">02</span>
@@ -139,13 +148,23 @@
         <p class="section-intro " data-aos="fade-up" data-aos-delay="100">
             Here are some of my recent projects that showcase my skills and experience.
         </p>
+
+        <!-- Project Category Filter Pills -->
+        <div class="project-filters" data-aos="fade-up" data-aos-delay="150">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="backend">Node & Backend</button>
+        </div>
     </div>
     <div class="container">
 
         <div class="grid-container projects-grid">
             <!-- Project 1 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" class="project-card-action" aria-label="View Library Management System project">
+            <article class="grid-item project-showcase-card" data-category="fullstack" data-aos="fade-up"
+                     data-aos-delay="200">
+                <a href="#" class="project-card-action btn-open-modal" data-project="01"
+                   aria-label="View Library Management System details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -167,8 +186,10 @@
             </article>
 
             <!-- Project 2 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="300">
-                <a href="#" class="project-card-action" aria-label="View Messaging App project">
+            <article class="grid-item project-showcase-card" data-category="fullstack" data-aos="fade-up"
+                     data-aos-delay="300">
+                <a href="#" class="project-card-action btn-open-modal" data-project="02"
+                   aria-label="View Messaging App details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -190,8 +211,10 @@
             </article>
 
             <!-- Project 3 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="project-card-action" aria-label="View Task Manager project">
+            <article class="grid-item project-showcase-card" data-category="fullstack" data-aos="fade-up"
+                     data-aos-delay="400">
+                <a href="#" class="project-card-action btn-open-modal" data-project="03"
+                   aria-label="View Task Manager details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -213,8 +236,10 @@
             </article>
 
             <!-- Project 4 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" class="project-card-action" aria-label="View SEO Medicine Website project">
+            <article class="grid-item project-showcase-card" data-category="frontend" data-aos="fade-up"
+                     data-aos-delay="200">
+                <a href="#" class="project-card-action btn-open-modal" data-project="04"
+                   aria-label="View SEO Medicine Website details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -237,8 +262,10 @@
             </article>
 
             <!-- Project 5 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="300">
-                <a href="#" class="project-card-action" aria-label="View Restaurant Website project">
+            <article class="grid-item project-showcase-card" data-category="frontend" data-aos="fade-up"
+                     data-aos-delay="300">
+                <a href="#" class="project-card-action btn-open-modal" data-project="05"
+                   aria-label="View Restaurant Website details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -261,8 +288,10 @@
             </article>
 
             <!-- Project 6 -->
-            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="project-card-action" aria-label="View Agriculture Design project">
+            <article class="grid-item project-showcase-card" data-category="frontend" data-aos="fade-up"
+                     data-aos-delay="400">
+                <a href="#" class="project-card-action btn-open-modal" data-project="06"
+                   aria-label="View Agriculture Design details">
                     <span aria-hidden="true">↗</span>
                 </a>
                 <div class="grid-item-img project-card-image">
@@ -1280,6 +1309,39 @@
         </div><!-- /.contact-layout -->
     </div><!-- /.container -->
 </section>
+
+<!-- Back to Top Floating Button -->
+<button id="back-to-top" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6"/>
+    </svg>
+</button>
+
+<!-- Project Detail Modal -->
+<div class="project-modal-overlay" id="project-detail-modal" aria-hidden="true" role="dialog">
+    <div class="project-modal-card">
+        <button class="modal-close-btn" id="project-modal-close" aria-label="Close project modal">&times;</button>
+        <div class="modal-body" id="project-modal-body">
+            <h3 id="modal-title" style="font-size: 1.75rem; margin-bottom: 0.5rem; color: #ffffff;">Project Title</h3>
+            <p id="modal-desc" style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.6;">Project detailed
+                overview...</p>
+            <div id="modal-tags" style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;"></div>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/projects/library" id="modal-live-link" target="_blank" class="btn-project-action btn-demo">Explore
+                    Project ↗</a>
+                <a href="https://github.com/ksediqi/PracticeProjects" target="_blank"
+                   class="btn-project-action btn-details">GitHub Code ⚡</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dynamic Toast Notification -->
+<div class="toast-notification" id="toast-notification" role="status" aria-live="polite">
+    <span id="toast-message">Notification message</span>
+</div>
+
 
 </body>
 

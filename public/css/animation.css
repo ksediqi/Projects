@@ -1,3 +1,4 @@
+/* Scroll Progress Bar */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -8,35 +9,44 @@
     z-index: 9999;
     transform-origin: 0 50%;
     animation: growProgress 2s linear;
-    animation-timeline: scroll();
+}
+
+@supports (animation-timeline: scroll()) {
+    #progress-bar {
+        animation-timeline: scroll();
+    }
 }
 
 @keyframes growProgress {
     from {
         transform: scaleX(0);
-
     }
     to {
         transform: scaleX(1);
     }
-
 }
 
+/* Base Headings & Elements Reveal */
 .heading-primary {
-    animation: headingMask linear both;
-    /*animation-duration: auto; !* critical for view() timelines *!*/
-    animation-timeline: view();
-    animation-range: entry 0% cover 60%;
+    opacity: 1;
+}
+
+@supports (animation-timeline: view()) {
+    .heading-primary {
+        animation: headingMask linear both;
+        animation-duration: auto;
+        animation-timeline: view();
+        animation-range: entry 0% cover 60%;
+    }
 }
 
 @keyframes headingMask {
     0% {
         opacity: 0;
-        transform: translateY(90px) scale(.75);
+        transform: translateY(90px) scale(0.75);
         letter-spacing: 18px;
         filter: blur(5px);
     }
-
     65% {
         transform: translateY(-8px) scale(1.03);
     }
@@ -44,102 +54,74 @@
         opacity: 1;
         transform: translateY(0) scale(1);
         letter-spacing: 0;
-    }
-}
-
-.grid-item, .skill-category, .sidebar-card, .resume-block, .image-frame, .resume-card, .about-content, .contact-layout {
-    --cover: 40%;
-    animation: projectReveal linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover var(--cover);
-}
-
-.grid-item, .skill-category:nth-child(2) {
-    --cover: 30%;
-}
-
-.grid-item, .skill-category:nth-child(3) {
-    --cover: 35%;
-}
-
-.grid-item, .skill-category:nth-child(4) {
-    --cover: 40%;
-}
-
-.grid-item, .skill-category:nth-child(5) {
-    --cover: 45%;
-}
-
-.grid-item, .skill-category:nth-child(6) {
-    --cover: 50%;
-}
-
-@keyframes projectReveal {
-    from {
-        opacity: 0;
-        transform: perspective(1600px);
-    rotateY(35 deg) rotateX(25 deg);
-    translateY(150 px) scale(.55);
-        filter: blur(10px);
-    }
-    60% {
-        transform: perspective(1600px);
-    rotateY(- 5 deg) scale(1.05);
-    }
-    to {
-        opacity: 1;
-        transform: perspective(1600px);
-    rotateY(0 deg) rotateX(0) translateY(0) scale(1);
         filter: blur(0);
     }
 }
 
-/* .heading-primary {*/
-/*    animation: headingMask linear both;*/
-/*    animation-duration: auto; !* critical for view() timelines *!*/
-/*    animation-timeline: view();*/
-/*    animation-range: entry 0% cover 60%;*/
-/*}*/
+/* Grid & Section Items 3D Scroll Animation */
+.grid-item, .skill-category, .sidebar-card, .resume-block, .image-frame, .resume-card, .about-content, .contact-layout {
+    --cover: 40%;
+    will-change: transform, opacity, filter;
+}
 
-/*.heading-primary {*/
-/*    opacity: 1; !* sane default *!*/
-/*}*/
+.grid-item:nth-child(1), .skill-category:nth-child(1) { --cover: 25%; }
+.grid-item:nth-child(2), .skill-category:nth-child(2) { --cover: 30%; }
+.grid-item:nth-child(3), .skill-category:nth-child(3) { --cover: 35%; }
+.grid-item:nth-child(4), .skill-category:nth-child(4) { --cover: 40%; }
+.grid-item:nth-child(5), .skill-category:nth-child(5) { --cover: 45%; }
+.grid-item:nth-child(6), .skill-category:nth-child(6) { --cover: 50%; }
 
-/*@supports (animation-timeline: view()) {*/
-/*  .heading-primary {*/
-/*        animation: headingMask linear both;*/
-/*        animation-duration: auto;*/
-/*        animation-timeline: view();*/
-/*         animation-range: entry 0% cover 60%;*/
-/*    }*/
-/*}*/
+@supports (animation-timeline: view()) {
+    .grid-item, .skill-category, .sidebar-card, .resume-block, .image-frame, .resume-card, .about-content, .contact-layout {
+        animation: projectReveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover var(--cover);
+    }
+}
 
-/*@media (prefers-reduced-motion: reduce) {*/
-/*    .heading-primary {*/
-/*        animation: none;*/
-/*        opacity: 1;*/
-/*        transform: none;*/
-/*        letter-spacing: normal;*/
-/*        filter: none;*/
-/*    }*/
-/*}*/
+/* Fallback animation when scrolled into view */
+.grid-item.is-visible,
+.skill-category.is-visible,
+.sidebar-card.is-visible,
+.resume-block.is-visible,
+.image-frame.is-visible,
+.resume-card.is-visible,
+.about-content.is-visible,
+.contact-layout.is-visible {
+    animation: projectReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
 
-/*@keyframes headingMask {*/
-/*    0% {*/
-/*        opacity: 0;*/
-/*        transform: translateY(90px) scale(.75);*/
-/*        letter-spacing: 18px;*/
-/*        filter: blur(5px);*/
-/*    }*/
+@keyframes projectReveal {
+    0% {
+        opacity: 0;
+        transform: perspective(1600px) rotateY(35deg) rotateX(25deg) translateY(120px) scale(0.65);
+        filter: blur(8px);
+    }
+    60% {
+        opacity: 0.95;
+        transform: perspective(1600px) rotateY(-5deg) rotateX(5deg) translateY(-8px) scale(1.03);
+        filter: blur(1px);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(1600px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
 
-/*    65% {*/
-/*        transform: translateY(-8px) scale(1.03);*/
-/*    }*/
-
-/*    100% {*/
-/*        opacity: 1;*/
-/*        transform: translateY(0) scale(1);*/
-/*        letter-spacing: 0;*/
-/*        filter: blur(0);*/
-/*    }*/
-/*}*/
+@media (prefers-reduced-motion: reduce) {
+    .heading-primary,
+    .grid-item,
+    .skill-category,
+    .sidebar-card,
+    .resume-block,
+    .image-frame,
+    .resume-card,
+    .about-content,
+    .contact-layout {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
