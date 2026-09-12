@@ -1,0 +1,576 @@
+<%- include('partials/head') %>
+<!--  <html lang="en" data-theme="light">-->
+<%- include('partials/header') %>
+
+<!--login and main display content-->
+<div id="displayContent" class="main">
+    <div class="pc-bg" aria-hidden="true">
+        <!-- Left margin column -->
+        <i class="fa-brands fa-js" style="--px:3%;  --py:8%;  --ps:4rem;  --pd:0s;   --pt:16s"></i>
+        <i class="fa-brands fa-node-js" style="--px:6%;  --py:26%; --ps:3.2rem;--pd:4s;   --pt:20s"></i>
+        <span class="pc-bg-sym" style="--px:2%;  --py:46%; --ps:2rem;  --pd:1.5s; --pt:18s">{}</span>
+        <i class="fa-brands fa-python" style="--px:5%;  --py:65%; --ps:3.5rem;--pd:6s;   --pt:14s"></i>
+        <span class="pc-bg-sym" style="--px:1%;  --py:84%; --ps:1.8rem;--pd:3s;   --pt:22s">=&gt;</span>
+        <!-- Right margin column -->
+        <i class="fa-brands fa-react" style="--px:91%; --py:12%; --ps:4rem;  --pd:0.5s; --pt:18s"></i>
+        <i class="fa-brands fa-html5" style="--px:88%; --py:30%; --ps:3rem;  --pd:5s;   --pt:16s"></i>
+        <span class="pc-bg-sym" style="--px:94%; --py:50%; --ps:2rem;  --pd:2s;   --pt:20s">[ ]</span>
+        <i class="fa-brands fa-git-alt" style="--px:89%; --py:68%; --ps:3.5rem;--pd:7s;   --pt:15s"></i>
+        <i class="fa-brands fa-css3-alt" style="--px:93%; --py:87%; --ps:2.5rem;--pd:1s;   --pt:19s"></i>
+        <!-- Top area (above carousel) -->
+        <i class="fa-brands fa-npm" style="--px:25%; --py:2%;  --ps:3rem;  --pd:3.5s; --pt:17s"></i>
+        <span class="pc-bg-sym" style="--px:72%; --py:3%;  --ps:2.2rem;--pd:0s;   --pt:21s">&lt;/&gt;</span>
+        <i class="fa-brands fa-github" style="--px:48%; --py:1%;  --ps:2.5rem;--pd:2.5s; --pt:16s"></i>
+        <!-- Bottom area (below cards) -->
+        <i class="fa-brands fa-react" style="--px:33%; --py:93%; --ps:2.8rem;--pd:4.5s; --pt:18s"></i>
+        <span class="pc-bg-sym" style="--px:58%; --py:95%; --ps:1.8rem;--pd:1.5s; --pt:23s">const</span>
+        <i class="fa-brands fa-js" style="--px:18%; --py:95%; --ps:2rem;  --pd:6.5s; --pt:15s"></i>
+    </div>
+
+    <!-- The Banner -->
+    <div id="zombie-cookie-banner">
+        <div class="cookie-text">
+            <strong>We value your privacy.</strong><br>
+            We use cookies to enhance your experience. By clicking "Accept", you agree to our use of cookies.
+        </div>
+        <div class="cookie-buttons">
+            <button class="btn btn-manage banner-btn">Manage</button>
+            <button class="btn btn-reject banner-btn">Reject All</button>
+            <button class="btn btn-accept banner-btn">Accept All</button>
+        </div>
+
+    </div>
+    <div class="hero-overview">
+        <div class='main-subtitle'>
+            <p>please log in or create an account to display the content</p>
+            <h4 class="submain-title">Thanks for visiting my project website.</h4>
+
+        </div>
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+
+        <div class="main-hero-content">
+            <div class="hero-left">
+                <div class="accordion" id="accordion">
+
+                    <!-- Item 1 -->
+                    <div class="info-badge">
+                        <button class="info-button">
+                            <span class="status-dot"></span>
+                            Important Info
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <hr>
+                        <div class="import-info">
+                            <p>This showcases my Full-Stack growth journey and continuous improvement mindset.
+                                The primary purpose of this implementation and associated projects is solely to
+                                demonstrate my coding abilities.
+                                Please note that these works are intended only to showcase my skills and are not
+                                guaranteed to be free from bugs, errors, or other issues.
+                                <span>Thank you!</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <span class="hero-eyebrow">Available for work</span>
+                <h1 class="hero-title">Full-Stack<br>Developer</h1>
+
+                <p class="hero-subtitle">
+                    Building exceptional digital experiences with modern technologies.
+                    Specialized in React, Node.js, and cloud architecture with a passion
+                    for creating scalable, user-centric applications.
+                </p>
+
+                <div class="hero-meta-grid">
+                    <div class="meta-card">
+                        <div class="meta-label">Focus</div>
+                        <span class="meta-value">Front-End-APIs</span>
+                        <div class="meta-caption">React-style patterns & UX</div>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-label">Projects</div>
+                        <span class="meta-value">
+                                    <%= projects.length %>+
+                                </span>
+                        <div class="meta-caption">UI, API & full-stack experiments</div>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-label">Background</div>
+                        <span class="meta-value">Data & System</span>
+                        <div class="meta-caption">Bringing analytics into web apps</div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="hero-right">
+                <div class="feature-card">
+                    <div class="card-header">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">what I'm building here</h3>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li>Movie & book libraries with real catalog UX</li>
+                        <li>Dashboard-style layouts with filters and popovers</li>
+                        <li>API-driven apps (maps, Books, and movie data)</li>
+                        <li>Experimenting with authentication & theming</li>
+                    </ul>
+
+                    <div class="tech-stack">
+                        <div class="stack-label">Tech Stack</div>
+                        <div class="stack-pills">
+                            <span class="pill">HTML</span>
+                            <span class="pill">CSS</span>
+                            <span class="pill">JavaScript</span>
+                            <span class="pill">Node.js</span>
+                            <span class="pill">Express</span>
+                            <span class="pill">EJS</span>
+                            <span class="pill">REST APIs</span>
+                            <span class="pill">React</span>
+                            <span class="pill">TypeScript</span>
+                            <span class="pill">PostgresSQL</span>
+                            <span class="pill">Machine Learning</span>
+                            <span class="pill">AI Prompt Engineering</span>
+                            <span class="pill">Coding With AI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">🚀 Fast Delivery</div>
+                <div class="stat-text">
+                    Average project completion time reduced by 40% through agile
+                    methodologies and efficient workflows.
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">💡 Innovation First</div>
+                <div class="stat-text">
+                    Constantly exploring emerging technologies and implementing
+                    best practices to deliver cutting-edge solutions.
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🎯 Result Driven</div>
+                <div class="stat-text">
+                    98% client satisfaction rate with focus on measurable outcomes
+                    and business impact.
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🤝 Collaborative</div>
+                <div class="stat-text">
+                    Strong communication skills with experience leading cross-functional
+                    teams and mentoring developers.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--login and main display content sections ends here -->
+
+<main id="hiddenContent" class="main hidden">
+
+    <div class="pc-bg" aria-hidden="true">
+        <!-- Left margin column -->
+        <i class="fa-brands fa-js" style="--px:3%;  --py:8%;  --ps:4rem;  --pd:0s;   --pt:16s"></i>
+        <i class="fa-brands fa-node-js" style="--px:6%;  --py:26%; --ps:3.2rem;--pd:4s;   --pt:20s"></i>
+        <span class="pc-bg-sym" style="--px:2%;  --py:46%; --ps:2rem;  --pd:1.5s; --pt:18s">{}</span>
+        <i class="fa-brands fa-python" style="--px:5%;  --py:65%; --ps:3.5rem;--pd:6s;   --pt:14s"></i>
+        <span class="pc-bg-sym" style="--px:1%;  --py:84%; --ps:1.8rem;--pd:3s;   --pt:22s">=&gt;</span>
+        <!-- Right margin column -->
+        <i class="fa-brands fa-react" style="--px:91%; --py:12%; --ps:4rem;  --pd:0.5s; --pt:18s"></i>
+        <i class="fa-brands fa-html5" style="--px:88%; --py:30%; --ps:3rem;  --pd:5s;   --pt:16s"></i>
+        <span class="pc-bg-sym" style="--px:94%; --py:50%; --ps:2rem;  --pd:2s;   --pt:20s">[ ]</span>
+        <i class="fa-brands fa-git-alt" style="--px:89%; --py:68%; --ps:3.5rem;--pd:7s;   --pt:15s"></i>
+        <i class="fa-brands fa-css3-alt" style="--px:93%; --py:87%; --ps:2.5rem;--pd:1s;   --pt:19s"></i>
+        <!-- Top area (above carousel) -->
+        <i class="fa-brands fa-npm" style="--px:25%; --py:2%;  --ps:3rem;  --pd:3.5s; --pt:17s"></i>
+        <span class="pc-bg-sym" style="--px:72%; --py:3%;  --ps:2.2rem;--pd:0s;   --pt:21s">&lt;/&gt;</span>
+        <i class="fa-brands fa-github" style="--px:48%; --py:1%;  --ps:2.5rem;--pd:2.5s; --pt:16s"></i>
+        <!-- Bottom area (below cards) -->
+        <i class="fa-brands fa-react" style="--px:33%; --py:93%; --ps:2.8rem;--pd:4.5s; --pt:18s"></i>
+        <span class="pc-bg-sym" style="--px:58%; --py:95%; --ps:1.8rem;--pd:1.5s; --pt:23s">const</span>
+        <i class="fa-brands fa-js" style="--px:18%; --py:95%; --ps:2rem;  --pd:6.5s; --pt:15s"></i>
+    </div>
+
+    <div class="main-title-container">
+        <header class="page-header">
+            <div>
+                <p class="page-header-eyebrow">Work &amp; Projects</p>
+                <h1 class="page-header-title">Selected<br><em>Work</em></h1>
+
+                <p class="page-header-subtitle">
+                    <span>My Journey in Developing My Own Thoughts</span>
+                </p>
+            </div>
+
+        </header>
+
+        <!--        Carousel section starts here-->
+        <div class="carousel-track">
+
+            <div class="carousel">
+
+                <!-- ── Group 1 (real content) ── -->
+                <div class="group">
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Portfolio</h2>
+                            <span class="project-card-subtitle">Personal Project</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Personal site built with vanilla HTML, CSS &amp; JS. Clean
+                                layout, fast
+                                load.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">HTML</span>
+                                <span class="card-tag">CSS</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/projects/portfolio" class="card-cta">View →</a>
+                            <span class="card-type">Frontend</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Movie-Lib</h2>
+                            <span class="project-card-subtitle">Movie App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Browse, search and save films. Vanilla JS DOM with local state
+                                management.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">HTML</span>
+                                <span class="card-tag">CSS</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/projects/movie" class="card-cta">View →</a>
+                            <span class="card-type">Frontend</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Book-Lib</h2>
+                            <span class="project-card-subtitle">Library App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Digital reading list tracker. Demonstrates responsive layout
+                                &amp; DOM
+                                patterns.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">HTML</span>
+                                <span class="card-tag">CSS</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/projects/library" class="card-cta">View →</a>
+                            <span class="card-type">Frontend</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Space Tourism</h2>
+                            <span class="project-card-subtitle">Node.js App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Full-stack SSR site with Node.js, Express and EJS template
+                                engine.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Node.js</span>
+                                <span class="card-tag">Express</span>
+                                <span class="card-tag">EJS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/projects/space" class="card-cta">View →</a>
+                            <span class="card-type">Full-Stack</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">React Movie</h2>
+                            <span class="project-card-subtitle">React Project</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">React rebuild of Movie-Lib with hooks, components and polished
+                                UX.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">React</span>
+                                <span class="card-tag">CSS</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-cta">View →</a>
+                            <span class="card-type">Frontend</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Mapty App</h2>
+                            <span class="project-card-subtitle">Map API</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Geolocation workout tracker — runs &amp; cycles pinned on an
+                                interactive map.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Leaflet.js</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-cta">View →</a>
+                            <span class="card-type">API</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Jamming</h2>
+                            <span class="project-card-subtitle">Spotify API</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Build and save Spotify playlists directly from a React
+                                interface.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">React</span>
+                                <span class="card-tag">Spotify API</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-cta">View →</a>
+                            <span class="card-type">API</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Bankist</h2>
+                            <span class="project-card-subtitle">Banking App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Simulated banking UI — login, transfers, loans and transaction
+                                history.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">HTML</span>
+                                <span class="card-tag">CSS</span>
+                                <span class="card-tag">JS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-cta">View →</a>
+                            <span class="card-type">Frontend</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Blog Web App</h2>
+                            <span class="project-card-subtitle">Capstone</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Full-stack CRUD blog platform demonstrating end-to-end
+                                architecture.</p>
+                            <div class="card-tags">
+                                <span class="card-tag">Node.js</span>
+                                <span class="card-tag">Express</span>
+                                <span class="card-tag">EJS</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="card-cta">View →</a>
+                            <span class="card-type">Full-Stack</span>
+                        </div>
+                    </div>
+
+                </div><!-- /group 1 -->
+
+                <!-- ── Group 2 — aria-hidden duplicate for seamless loop ── -->
+                <div class="group" aria-hidden="true">
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Portfolio</h2>
+                            <span class="project-card-subtitle">Personal Project</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Personal site built with vanilla HTML, CSS &amp; JS. Clean
+                                layout, fast
+                                load.</p>
+                            <div class="card-tags"><span class="card-tag">HTML</span><span
+                                        class="card-tag">CSS</span><span class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View </a>
+
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Movie-Lib</h2>
+                            <span class="project-card-subtitle">Movie App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Browse, search and save films. Vanilla JS DOM with local state
+                                management.</p>
+                            <div class="card-tags"><span class="card-tag">HTML</span><span
+                                        class="card-tag">CSS</span><span class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Frontend</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Book-Lib</h2>
+                            <span class="project-card-subtitle">Library App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Digital reading list tracker. Demonstrates responsive layout
+                                &amp; DOM
+                                patterns.</p>
+                            <div class="card-tags"><span class="card-tag">HTML</span><span
+                                        class="card-tag">CSS</span><span class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Frontend</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Space Tourism</h2>
+                            <span class="project-card-subtitle">Node.js App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Full-stack SSR site with Node.js, Express and EJS template
+                                engine.</p>
+                            <div class="card-tags"><span class="card-tag">Node.js</span><span
+                                        class="card-tag">Express</span><span class="card-tag">EJS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Full-Stack</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">React Movie</h2>
+                            <span class="project-card-subtitle">React Project</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">React rebuild of Movie-Lib with hooks, components and polished
+                                UX.</p>
+                            <div class="card-tags"><span class="card-tag">React</span><span
+                                        class="card-tag">CSS</span><span class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Frontend</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Mapty App</h2>
+                            <span class="project-card-subtitle">Map API</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Geolocation workout tracker — runs &amp; cycles pinned on an
+                                interactive map.</p>
+                            <div class="card-tags"><span class="card-tag">Leaflet.js</span><span
+                                        class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">API</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Jamming</h2>
+                            <span class="project-card-subtitle">Spotify API</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Build and save Spotify playlists directly from a React
+                                interface.</p>
+                            <div class="card-tags"><span class="card-tag">React</span><span
+                                        class="card-tag">Spotify API</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">API</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Bankist</h2>
+                            <span class="project-card-subtitle">Banking App</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Simulated banking UI — login, transfers, loans and transaction
+                                history.</p>
+                            <div class="card-tags"><span class="card-tag">HTML</span><span
+                                        class="card-tag">CSS</span><span class="card-tag">JS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Frontend</span></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="project-card-header">
+                            <h2 class="project-card-title">Blog Web App</h2>
+                            <span class="project-card-subtitle">Capstone</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-desc">Full-stack CRUD blog platform demonstrating end-to-end
+                                architecture.</p>
+                            <div class="card-tags"><span class="card-tag">Node.js</span><span
+                                        class="card-tag">Express</span><span class="card-tag">EJS</span></div>
+                        </div>
+                        <div class="card-footer"><a href="#" class="card-cta">View →</a><span
+                                    class="card-type">Full-Stack</span>
+                        </div>
+                    </div>
+
+                </div><!-- /group 2 -->
+
+            </div><!-- /carousel -->
+        </div><!-- /carousel-track -->
+
+
+        <div>
+            <!--Carousel section ends here-->
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <% projects.forEach(project => { %>
+            <%- include('projects/project-card', { project }) %>
+        <% }) %>
+
+    </div>
+</main>
+
+
+<%- include('partials/footer') %>

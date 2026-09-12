@@ -1,0 +1,435 @@
+/*!* =============================================================================*/
+/*   tokens.css — THE SINGLE SOURCE OF TRUTH*/
+/*   -----------------------------------------------------------------------------*/
+/*   The only file in this project that declares custom properties.*/
+/*   Load it FIRST, before every other stylesheet:*/
+
+/*       <link rel="stylesheet" href="css/tokens.css">*/
+/*       <link rel="stylesheet" href="css/navbar.css">*/
+/*       <link rel="stylesheet" href="css/book-lib.css">*/
+/*       <link rel="stylesheet" href="css/portfolio.css">*/
+/*       <link rel="stylesheet" href="css/movie.css">*/
+
+/*   movie.css, navigation.css and portfolio.css have been migrated to reference*/
+/*   the semantic tier directly (--color-text, --color-border, --color-accent,*/
+/*   --size-header, --shadow-card, etc.) — no aliases, no indirection.*/
+
+/*   book-lib.css was not part of this pass and has NOT been migrated. It still*/
+/*   expects a handful of legacy names, which is why a short compatibility*/
+/*   block for it remains at the bottom of this file. Once book-lib.css is*/
+/*   updated to the semantic names, delete that block too and this file will*/
+/*   contain no dead variables at all.*/
+
+/*   -----------------------------------------------------------------------------*/
+/*   ORGANISATION — three tiers, one namespace per surface*/
+
+/*     TIER 1  PRIMITIVES   Raw values. A hex code appears exactly once, here.*/
+/*                          Component CSS must never reference these.*/
+/*     TIER 2  SEMANTIC     Role-based, theme-aware. The only tier components use.*/
+/*     TIER 3  SURFACE      Namespaced palettes for the three sub-apps that carry*/
+/*                          their own brand: library (lib), portfolio (porto),*/
+/*                          streaming (cinema).*/
+
+/*   NAMING  --<category>-<role>-<variant>*/
+/*           category = color | space | size | radius | shadow | font | text*/
+/*                    | dur | ease | z*/
+/*   ============================================================================= *!*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   TIER 1 — PRIMITIVES*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   TIER 2 — SEMANTIC · LIGHT (default)*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+/*:root {*/
+/*    !* ── Surfaces ─────────────────────────────────────────────────────────── *!*/
+/*    --color-bg: var(--grey-025); !* page canvas                   *!*/
+/*    --color-bg-subtle: var(--grey-050); !* wells, recessed areas         *!*/
+/*    --color-surface: var(--grey-000); !* cards, panels, popovers       *!*/
+/*    --color-surface-raised: var(--cream-050); !* a card sitting on a card      *!*/
+/*    --color-nav-bg: var(--mint-050);*/
+/*    --color-sticky-nav-bg: var(--grey-000);*/
+
+/*    !* ── Text ─────────────────────────────────────────────────────────────── *!*/
+/*    --color-text: var(--ink-900);*/
+/*    --color-text-muted: var(--grey-500);*/
+/*    --color-text-heading: var(--grey-900);*/
+/*    --color-nav-text: var(--grey-700);*/
+
+/*    !* ── Lines ────────────────────────────────────────────────────────────── *!*/
+/*    --color-border: var(--grey-100);*/
+/*    --color-border-subtle: rgb(13 13 15 / 0.1);*/
+
+/*    !* ── Accent ───────────────────────────────────────────────────────────── *!*/
+/*    --color-accent: var(--blue-500);*/
+/*    --color-on-accent: var(--grey-000); !* text ON an accent-filled box  *!*/
+/*    --color-accent-soft: rgb(59 130 246 / 0.12);*/
+/*    --color-focus-ring: var(--color-accent);*/
+
+/*    !* ── Nav pill ─────────────────────────────────────────────────────────────*/
+/*       RENAMED. `--rich-black` was a translucent teal and `--dark-teal` was a*/
+/*       hover state, not a colour. Both names actively misled.*/
+/*       ------------------------------------------------------------------------ *!*/
+/*    --color-nav-pill: var(--teal-nav);*/
+/*    --color-nav-pill-hover: var(--teal-nav-hover);*/
+
+/*    !* ── Feedback ─────────────────────────────────────────────────────────── *!*/
+/*    --color-success: var(--success-500);*/
+/*    --color-warning: var(--warning-500);*/
+/*    --color-danger: var(--danger-500);*/
+/*    --color-danger-strong: var(--danger-700);*/
+/*    --color-danger-bg: var(--danger-100);*/
+/*    --color-danger-border: var(--danger-200);*/
+/*    --color-info: var(--blue-500);*/
+/*    --color-info-soft: var(--blue-400);*/
+
+/*    !* ── Categorical palette ──────────────────────────────────────────────────*/
+/*       Deliberately NOT named by hue. These cycle across cards, chips and tags;*/
+/*       the only contract is "five values that read as distinct".*/
+/*       ------------------------------------------------------------------------ *!*/
+/*    --color-cat-1: var(--red-500);*/
+/*    --color-cat-2: var(--navy-500);*/
+/*    --color-cat-3: var(--green-500);*/
+/*    --color-cat-4: var(--purple-500);*/
+/*    --color-cat-5: var(--gold-500);*/
+
+/*    !* ── Overlay ──────────────────────────────────────────────────────────── *!*/
+/*    --color-scrim: rgb(2 6 23 / 0.65);*/
+/*    --nav-blur: blur(18px) saturate(160%);*/
+/*}*/
+
+/*:root {*/
+/*    !* ── Neutrals: light ramp ─────────────────────────────────────────────── *!*/
+/*    --grey-000: #ffffff;*/
+/*    --grey-025: #f9fafb;*/
+/*    --grey-050: #f1f3f5;*/
+/*    --grey-100: #dddddd;*/
+/*    --grey-500: #555555;*/
+/*    --grey-700: #333333;*/
+/*    --grey-900: #0a0a0a;*/
+/*    --ink-900: #06202b;*/
+
+/*    !* ── Neutrals: dark ramp ──────────────────────────────────────────────── *!*/
+/*    --dark-000: #0b0b0d;*/
+/*    --dark-050: #0f0e0e;*/
+/*    --dark-100: #161616;*/
+/*    --dark-200: #202940;*/
+/*    --dark-nav: rgb(10 12 14 / 0.88);*/
+/*    --dark-sticky: #273f4f;*/
+/*    --dark-text: #d4dbe4;*/
+/*    --dark-text-dim: #7d8fa3;*/
+/*    --dark-heading: #f0f4f8;*/
+
+/*    !* ── Blues ────────────────────────────────────────────────────────────── *!*/
+/*    --blue-400: #60a5fa;*/
+/*    --blue-500: #3b82f6;*/
+/*    --blue-600: #5a8ff0;*/
+
+/*    !* ── Categorical hues (light / dark pairs) ────────────────────────────── *!*/
+/*    --red-500: #f7374f;*/
+/*    --red-600: #d14a5a;*/
+/*    --navy-500: #1a4a8a;*/
+/*    --navy-600: #3a5f9c;*/
+/*    --green-500: #2e7d5e;*/
+/*    --green-600: #4a8f73;*/
+/*    --purple-500: #7c3b8a;*/
+/*    --purple-600: #9a57a8;*/
+/*    --gold-500: #c8920a;*/
+/*    --gold-600: #b38a2c;*/
+
+/*    !* ── Nav pill teals ───────────────────────────────────────────────────── *!*/
+/*    --teal-nav: rgb(59 193 168 / 0.73);*/
+/*    --teal-nav-dark: #005461;*/
+/*    --teal-nav-hover: #18776f;*/
+/*    --teal-nav-hover-dark: #174143;*/
+
+/*    --mint-050: #e5eee4;*/
+/*    --cream-050: --cream-050;*/
+
+/*    !* ── Feedback ─────────────────────────────────────────────────────────────*/
+/*       DEDUPLICATED. Four files carried their own success green:*/
+/*           --status-live: #22c55e   (style.css)*/
+/*           --valid:       #22c55e   (navbar.css)  ← identical hex, different name*/
+/*           --success:     #10b981   (navbar.css)  ← a THIRD name, a fourth hue*/
+/*       One `.form-control.valid` and one `.pc-status.is-live` therefore rendered*/
+/*       in visibly different greens for the same "this is fine" meaning.*/
+/*       Now one primitive, surfaced as --color-success.*/
+/*       ------------------------------------------------------------------------ *!*/
+/*    --success-500: #22c55e;*/
+/*    --warning-500: #f59e0b;*/
+/*    --danger-500: #ef4444;*/
+/*    --danger-700: #b91c1c;*/
+/*    --danger-100: #fef2f2;*/
+/*    --danger-200: #fecaca;*/
+/*    --danger-300: #fca5a5;*/
+
+/*    !* ── Alpha stops used by shadows and rules ────────────────────────────── *!*/
+/*    --black-a05: rgb(0 0 0 / 0.05);*/
+/*    --black-a10: rgb(0 0 0 / 0.1);*/
+/*    --white-a09: rgb(255 255 255 / 0.09);*/
+/*    --white-a10: rgb(255 255 255 / 0.1);*/
+/*}*/
+
+
+/*[data-theme="dark"] {*/
+/*    --color-bg: var(--dark-000);*/
+/*    --color-bg-subtle: var(--dark-100);*/
+/*    --color-surface: var(--dark-050);*/
+/*    --color-surface-raised: var(--dark-200);*/
+/*    --color-nav-bg: var(--dark-nav);*/
+/*    --color-sticky-nav-bg: var(--dark-sticky);*/
+
+/*    --color-text: var(--dark-text);*/
+/*    --color-text-muted: var(--dark-text-dim);*/
+/*    --color-text-heading: var(--dark-heading);*/
+/*    --color-nav-text: var(--dark-text);*/
+
+/*    --color-border: var(--white-a09);*/
+/*    --color-border-subtle: var(--white-a10);*/
+
+/*    --color-accent: var(--blue-600);*/
+/*    --color-on-accent: #0b1220;*/
+/*    --color-accent-soft: rgb(90 143 240 / 0.16);*/
+
+/*    --color-nav-pill: var(--teal-nav-dark);*/
+/*    --color-nav-pill-hover: var(--teal-nav-hover-dark);*/
+
+/*    --color-danger-strong: var(--danger-300);*/
+/*    --color-danger-bg: rgb(239 68 68 / 0.1);*/
+/*    --color-danger-border: rgb(239 68 68 / 0.3);*/
+
+/*    --color-cat-1: var(--red-600);*/
+/*    --color-cat-2: var(--navy-600);*/
+/*    --color-cat-3: var(--green-600);*/
+/*    --color-cat-4: var(--purple-600);*/
+/*    --color-cat-5: var(--gold-600);*/
+
+/*    --shadow-card: 0 8px 40px rgb(0 0 0 / 0.35);*/
+/*    --shadow-card-hover: 0 12px 48px rgb(0 0 0 / 0.5);*/
+/*}*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   DIMENSIONS · TYPE · MOTION · DEPTH*/
+/*   Theme-independent, so declared once outside the theme blocks.*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+/*!*:root {*!*/
+/*!*    !* ── Space — 4px base ─────────────────────────────────────────────────── *!*!*/
+/*!*    --space-1: 0.25rem;*!*/
+/*!*    --space-2: 0.5rem;*!*/
+/*!*    --space-3: 0.75rem;*!*/
+/*!*    --space-4: 1rem;*!*/
+/*!*    --space-5: 1.5rem;*!*/
+/*!*    --space-6: 2rem;*!*/
+/*!*    --space-7: 2.5rem;*!*/
+/*!*    --space-8: 3rem;*!*/
+/*!*    --space-10: 4rem;*!*/
+/*!*    --space-12: 6rem;*!*/
+
+/*!*    !* ── Sizes ────────────────────────────────────────────────────────────────*!*/
+/*!*       ⚠ THE BIGGEST DEDUPLICATION IN THIS FILE.*!*/
+/*!*       The header height was declared FIVE times, in four files, with five*!*/
+/*!*       different values:*!*/
+/*!*           -nav-height:         5.5rem   style.css   ← one dash: defined nothing*!*/
+/*!*           --sticky-nav-height: 75px     style.css*!*/
+/*!*           --header-height:     70px     style.css   (drives scroll-padding-top)*!*/
+/*!*           --nav-height:        68px     navbar.css  (what .main-nav renders at)*!*/
+/*!*           --lib-nav-height:    1rem     book-lib.css*!*/
+/*!*       Sticky-offset compensation, anchor scroll-padding and the nav's own*!*/
+/*!*       height each computed against a different number — which is most of why*!*/
+/*!*       the sticky nav kept overlapping content.*!*/
+
+/*!*       All of the above collapse to one value, --size-header, now used*!*/
+/*!*       directly by navigation.css. --size-header-lib is kept only because*!*/
+/*!*       book-lib.css (out of scope for this pass) still renders its bar at a*!*/
+/*!*       different height; fold it into --size-header once that file no longer*!*/
+/*!*       needs the distinction.*!*/
+/*!*       ------------------------------------------------------------------------ *!*!*/
+/*!*    --size-header: 4.25rem; !* 68px — the real rendered nav height *!*!*/
+/*!*    --size-header-lib: 5rem; !* 80px — library bar, if it differs   *!*!*/
+/*!*    --size-content-max: 75rem; !* 1200px *!*!*/
+/*!*    --size-tap-target: 2.75rem; !* 44px — WCAG 2.5.5 minimum *!*!*/
+/*!*    --size-header-sticky: 1.5rem; !* 68px — the real rendered nav height *!*!*/
+
+/*!*    !* ── Radii ────────────────────────────────────────────────────────────── *!*!*/
+/*!*    --radius-sm: 0.25rem;*!*/
+/*!*    --radius-md: 0.5rem;*!*/
+/*!*    --radius-lg: 1rem;*!*/
+/*!*    --radius-xl: 1.5rem;*!*/
+/*!*    --radius-pill: 999px;*!*/
+/*!*    --radius-circle: 50%;*!*/
+
+/*!*    !* ── Elevation ────────────────────────────────────────────────────────────*!*/
+/*!*       Numbered by height off the page, so "which is bigger" needs no lookup.*!*/
+/*!*       --shadow-card / --shadow-card-hover are the semantic pair components use.*!*/
+/*!*       ------------------------------------------------------------------------ *!*!*/
+/*!*    --shadow-1: 0 1px 2px var(--black-a05);*!*/
+/*!*    --shadow-2: 0 4px 6px var(--black-a10);*!*/
+/*!*    --shadow-3: 0 10px 15px var(--black-a10);*!*/
+/*!*    --shadow-card: 0 2px 4px rgb(13 13 15 / 0.05), 0 12px 40px rgb(13 13 15 / 0.08);*!*/
+/*!*    --shadow-card-hover: 0 4px 8px rgb(13 13 15 / 0.06), 0 24px 60px rgb(13 13 15 / 0.14);*!*/
+
+/*!*    !* ── Typography ───────────────────────────────────────────────────────────*!*/
+/*!*       CONSOLIDATED. 'Syne' was hardcoded in navbar.css and declared as*!*/
+/*!*       --font-lib-display in book-lib.css; 'Fira Code' likewise. One stack each.*!*/
+/*!*       book-lib.css hasn't been migrated to --font-brand / --font-code yet —*!*/
+/*!*       see the compatibility block at the bottom of this file.*!*/
+/*!*       ------------------------------------------------------------------------ *!*!*/
+/*!*    --font-display: 'Staatliches', 'Playfair Display', Georgia, serif;*!*/
+/*!*    --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*!*/
+/*!*    --font-mono: 'DM Mono', 'JetBrains Mono', ui-monospace, monospace;*!*/
+/*!*    --font-brand: 'Syne', var(--font-body); !* logos, lib + porto headings *!*!*/
+/*!*    --font-code: 'Fira Code', var(--font-mono); !* lib eyebrows, meta labels   *!*!*/
+/*!*    --font-serif: 'Instrument Serif', Georgia, serif; !* portfolio hero              *!*!*/
+
+/*!*    --text-xs: 0.75rem;*!*/
+/*!*    --text-sm: 0.875rem;*!*/
+/*!*    --text-base: 1rem;*!*/
+/*!*    --text-lg: 1.125rem;*!*/
+/*!*    --text-xl: 1.375rem;*!*/
+/*!*    --text-2xl: 1.75rem;*!*/
+/*!*    --text-3xl: 2.25rem;*!*/
+
+/*!*    --leading-tight: 1.2;*!*/
+/*!*    --leading-normal: 1.5;*!*/
+/*!*    --leading-loose: 1.75;*!*/
+
+/*!*    !* ── Motion ───────────────────────────────────────────────────────────── *!*!*/
+/*!*    --dur-fast: 0.2s;*!*/
+/*!*    --dur-base: 0.3s;*!*/
+/*!*    --dur-slow: 0.5s;*!*/
+/*!*    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);*!*/
+/*!*    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);*!*/
+
+/*!*    !* ── Depth ────────────────────────────────────────────────────────────────*!*/
+/*!*       DEDUPLICATED. There were THREE competing scales:*!*/
+/*!*           navbar.css     --z-nav 100  --z-dropdown 200  --z-drawer 300*!*/
+/*!*                          --z-overlay 400  --z-modal 500  --z-toast 600*!*/
+/*!*           book-lib.css   --z-lib-nav 300  --z-lib-dropdown 310  --z-lib-panel 500*!*/
+/*!*           movie.css      --z-row 20  --z-card-hover 30  --z-dropdown 200*!*/
+/*!*                          --z-modal 2000*!*/
+/*!*       Note the collisions: the library nav sat at 300, the same layer as the*!*/
+/*!*       mobile drawer; --z-modal meant 500 in one file and 2000 in another.*!*/
+/*!*       One scale now. movie.css, navigation.css and portfolio.css reference it*!*/
+/*!*       directly (--z-sticky, --z-dropdown, --z-modal, --z-raised, …). The*!*/
+/*!*       three --z-lib-* aliases remain only for book-lib.css, which hasn't been*!*/
+/*!*       migrated in this pass.*!*/
+
+/*!*       Unused steps are FINE. A scale is meant to have gaps you grow into;*!*/
+/*!*       don't prune them the way you would a dead colour.*!*/
+/*!*       ------------------------------------------------------------------------ *!*!*/
+/*!*    --z-below: -1;*!*/
+/*!*    --z-base: 1;*!*/
+/*!*    --z-raised: 10; !* slider arrows, in-flow controls        *!*!*/
+/*!*    --z-card-hover: 30; !* a movie card scaled up over its row    *!*!*/
+/*!*    --z-sticky: 100; !* sticky header                          *!*!*/
+/*!*    --z-dropdown: 200; !* menus anchored to the header           *!*!*/
+/*!*    --z-drawer: 300; !* mobile nav drawer                      *!*!*/
+/*!*    --z-overlay: 400; !* full-screen scrims                     *!*!*/
+/*!*    --z-modal: 500; !* dialogs, the library login panel       *!*!*/
+/*!*    --z-popover: 600; !* floating chat widget, tooltips         *!*!*/
+/*!*    --z-toast: 700; !* transient notices, cookie banner       *!*!*/
+/*!*}*!*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   TIER 3 — SURFACE PALETTES*/
+/*   Three sub-apps carry their own brand. Namespaced so they cannot collide with*/
+/*   the semantic layer or with each other. Each stays fixed across themes unless*/
+/*   noted — these are brand colours, not roles.*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+/*:root {*/
+
+/*    !* ── LIBRARY ──────────────────────────────────────────────────────────── *!*/
+/*    --lib-violet: #9b59f0;*/
+/*    --lib-purple: #6c3fc5;*/
+/*    --lib-blue: #3b6cf7;*/
+/*    --lib-cyan: #44d4ff;*/
+
+/*    --lib-grad: linear-gradient(135deg, var(--lib-purple) 0%, var(--lib-blue) 60%, var(--lib-cyan) 100%);*/
+/*    --lib-grad-text: linear-gradient(90deg, var(--lib-violet), #5b8aff, var(--lib-cyan));*/
+
+/*    --lib-violet-a10: rgb(155 89 240 / 0.10);*/
+/*    --lib-violet-a15: rgb(155 89 240 / 0.15);*/
+/*    --lib-violet-a30: rgb(155 89 240 / 0.30);*/
+/*    --lib-violet-a40: rgb(155 89 240 / 0.40);*/
+
+/*    !* ── PORTFOLIO ────────────────────────────────────────────────────────── *!*/
+/*    --porto-green: #37e557;*/
+/*    --porto-green-light: #b8ff8b;*/
+/*    --porto-teal: #20c997;*/
+/*    --porto-ink: #07100a;*/
+
+/*    --porto-grad: linear-gradient(135deg, var(--porto-green-light), var(--porto-green));*/
+/*    --porto-grad-brand: linear-gradient(135deg, #0f172a 0%, var(--porto-green) 25%, var(--porto-teal) 50%);*/
+
+/*    --porto-green-a08: rgb(55 229 87 / 0.08);*/
+/*    --porto-green-a13: rgb(55 229 87 / 0.13);*/
+/*    --porto-green-a22: rgb(55 229 87 / 0.22);*/
+/*    --porto-green-a32: rgb(55 229 87 / 0.32);*/
+/*    --porto-green-a45: rgb(55 229 87 / 0.45);*/
+
+/*    --porto-glow-sm: 0 10px 28px rgb(55 229 87 / 0.25);*/
+/*    --porto-glow-lg: 0 16px 38px rgb(55 229 87 / 0.36);*/
+
+/*    !* ── STREAMING ────────────────────────────────────────────────────────────*/
+/*       These are intentionally fixed across both themes: the hero vignette,*/
+/*       the gradient overlays and the text shadows only work on a dark plate.*/
+/*       ------------------------------------------------------------------------ *!*/
+/*    --netflix-red: #e50914;*/
+/*    --match-green: #6bcf7f;*/
+/*    --kids-amber: #ffaa00;*/
+
+/*    --cinema-bg: #0a0a0f;*/
+/*    --cinema-surface: #181818;*/
+/*    --cinema-text: #ffffff;*/
+/*    --cinema-text-dim: rgb(255 255 255 / 0.7);*/
+/*    --cinema-text-faint: rgb(255 255 255 / 0.55);*/
+/*    --cinema-line: rgb(255 255 255 / 0.2);*/
+
+/*    --movie-desc-color: rgb(20 20 20 / 0.9);*/
+/*    --img-filter: grayscale(100%) brightness(90%);*/
+
+/*    !* ── SHARED BRAND ─────────────────────────────────────────────────────── *!*/
+/*    --brand-green: #00e5a0; !* the { dev.portfolio } wordmark *!*/
+/*}*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   book-lib.css COMPATIBILITY — TEMPORARY*/
+/*   -----------------------------------------------------------------------------*/
+/*   movie.css, navigation.css and portfolio.css have all been migrated to the*/
+/*   semantic tokens above and need nothing from this block. book-lib.css was*/
+/*   out of scope for this cleanup and is the only remaining consumer of these*/
+/*   six names. Once it's migrated to --size-header(-lib), --font-brand,*/
+/*   --font-code and --z-sticky/--z-dropdown/--z-modal directly, delete this*/
+/*   block — there will be nothing left aliasing to anything.*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+/*:root {*/
+/*    --lib-nav-height: var(--size-header-lib);*/
+/*    --font-lib-display: var(--font-brand);*/
+/*    --font-lib-mono: var(--font-code);*/
+/*    --z-lib-nav: var(--z-sticky);*/
+/*    --z-lib-dropdown: var(--z-dropdown);*/
+/*    --z-lib-panel: var(--z-modal);*/
+/*}*/
+
+
+/*!* ═════════════════════════════════════════════════════════════════════════════*/
+/*   COMPONENT TOKENS (reference only — do not give these global values)*/
+/*   -----------------------------------------------------------------------------*/
+/*     --card-accent   Per-card categorical colour. Set by the nth-child cycles*/
+/*                     in this file's §6.4 and §6.6; read by titles, chips, tags.*/
+/*     --px --py       Position of one floating glyph in the .pc-bg layer.*/
+/*     --ps --pt --pd  Its size, duration and delay. Set inline, per element.*/
+/*     --delay         Stagger offset for .skill-fill bars (portfolio.css).*/
+/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+
+

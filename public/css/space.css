@@ -1,0 +1,404 @@
+/* Extracted shared styles for body backgrounds */
+body.space-body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+body.space-body.home-bg {
+  background-image: url('../assets/home/background-home-desktop.jpg');
+}
+
+body.space-body.destination-bg {
+  background-image: url('../assets/destination/background-destination-desktop.jpg');
+}
+
+body.space-body.crew-bg {
+  background-image: url('../assets/crew/background-crew-desktop.jpg');
+}
+
+body.space-body.technology-bg {
+  background-image: url('../assets/technology/background-technology-desktop.jpg');
+}
+
+/* Common text styles */
+
+/*p{*/
+/*  color: var(--text-color);*/
+/*  padding: 2rem;*/
+/*  font-size: 1.2rem;*/
+/*    text-align: center;*/
+/*}*/
+.space-navbar {
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.space-nav-links {
+  background: linear-gradient(
+          to right,
+          rgba(11, 13, 23, 0.2),
+          rgba(36, 50, 79, 0.6),
+          rgba(11, 13, 23, 0.78)
+  );
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 25px;
+  width: 50%;
+  height: 80px;
+}
+
+.space-nav-links a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-decoration: none;
+
+}
+
+.space-nav-links a:hover {
+  color: #ff9900;
+}
+
+.divider {
+  opacity: 0.7;
+  width: 30%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.72);
+  margin: 2rem 0;
+}
+
+.explore-button {
+  position: absolute;
+  left: 70%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 2rem;
+  font-family: "Arial Narrow", sans-serif;
+  text-align: center;
+  line-height: 200px;
+  word-spacing: 10px;
+}
+
+.space {
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  font-size: 6rem;
+  letter-spacing: 0.1em;
+  color: white;
+  text-transform: uppercase;
+}
+
+.space-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+.left-section {
+  width: 60%;
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.left-section h1 {
+  font-size: 9rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.left-section p {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 40rem;
+  color: #d0d6f9;
+}
+
+/* Tablet View (Portrait and Smaller) */
+@media (max-width: 1024px) {
+  .space-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .left-section {
+    width: 90%;
+    padding: 3rem 2rem;
+    align-items: center;
+  }
+
+  .left-section h1 {
+    font-size: 6rem;
+  }
+
+  .explore-button {
+    position: static;
+    transform: none;
+    margin-top: 3rem;
+    width: 180px;
+    height: 180px;
+    line-height: 180px;
+    font-size: 1.5rem;
+  }
+
+  .space-nav-links {
+    width: 100%;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .divider {
+    display: none;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+  .left-section h3 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .left-section h1 {
+    font-size: 4rem;
+  }
+
+  .left-section p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .explore-button {
+    width: 140px;
+    height: 140px;
+    line-height: 140px;
+    font-size: 1rem;
+    margin: 2rem auto;
+  }
+
+  .space-navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/*Destination*/
+
+.destination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.right-section{
+  position: relative;
+  left: 20%;
+bottom: 70%;
+  width: 40%;
+  padding: 5rem;
+
+}
+
+.destination-list{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 10rem;
+  color: white;
+
+
+}
+li{
+  cursor: pointer;
+}
+.planet{
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+.destination-list a.active {
+  color: #fff;
+
+  border-radius: 4px;
+  padding: 0.3em 0.8em;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+
+
+   /* Basic styles to make it runnable, you can replace with your own */
+
+ :root {
+   --color-dark-blue: #0B0D17;
+   --color-light-blue: #D0D6F9;
+   --color-white: #FFFFFF;
+
+   --font-bellefair: 'Bellefair', serif;
+   --font-barlow-condensed: 'Barlow Condensed', sans-serif;
+   --font-barlow: 'Barlow', sans-serif;
+ }
+.destination-bg {
+  /* Replace with your actual background image */
+  background-image: url('https://www.frontendmentor.io/static/images/solutions/space-tourism-website-solution-design-desktop-preview.jpg');
+}
+
+/* --- Navigation (Simplified for this example) --- */
+.space-navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+.logo { width: 48px; height: 48px; margin: 0 2rem; }
+.divider { flex-grow: 1; height: 1px; background: rgba(255,255,255,0.25); transform: translateX(2rem); z-index: 1; }
+.space-nav-links {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  margin: 0;
+  padding: 0 5rem 0 3rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(40.7742px);
+}
+.space-nav-links a { color: var(--color-white); text-decoration: none; font-family: var(--font-barlow-condensed); letter-spacing: 2.7px; }
+
+
+/* --- Page-Specific Layout & Styles --- */
+.space-main {
+  padding: 2rem 5rem;
+}
+
+.page-title {
+  font-family: var(--font-barlow-condensed);
+  font-size: 28px;
+  letter-spacing: 4.72px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+
+.page-title span {
+  font-weight: 700;
+  opacity: 0.25;
+  margin-right: 1rem;
+}
+
+.destination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5rem;
+  text-align: left;
+}
+
+.left-section, .right-section {
+  flex: 1;
+}
+
+.planet-image {
+  width: 100%;
+  max-width: 445px;
+  height: auto;
+}
+
+/* Right Section - Tabs and Info */
+.destination-list {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.destination-list a {
+  font-family: var(--font-barlow-condensed);
+  text-decoration: none;
+  color: var(--color-light-blue);
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.destination-list a:hover {
+  border-bottom-color: rgba(255,255,255,0.5);
+}
+.destination-list a.active {
+  color: var(--color-white);
+  border-bottom-color: var(--color-white);
+}
+
+#planet-name {
+  font-family: var(--font-bellefair);
+  font-size: 100px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin: 1rem 0;
+}
+
+#planet-desc {
+  font-family: var(--font-barlow);
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--color-light-blue);
+  max-width: 444px; /* Prevents text from being too wide */
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #383B4B;
+}
+
+.stats {
+  display: flex;
+  gap: 80px;
+  margin-top: 28px;
+}
+
+.stats strong { /* The label e.g., "AVG. DISTANCE" */
+  display: block;
+  font-family: var(--font-barlow-condensed);
+  font-size: 14px;
+  letter-spacing: 2.36px;
+  text-transform: uppercase;
+  color: var(--color-light-blue);
+  margin-bottom: 12px;
+}
+
+.stats span { /* The value e.g., "384,400 KM" */
+  font-family: var(--font-bellefair);
+  font-size: 28px;
+  text-transform: uppercase;
+  color: var(--color-white);
+}

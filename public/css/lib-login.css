@@ -1,0 +1,590 @@
+/* ============================================================
+    DESIGN TOKENS — edit these variables to retheme the page
+ ============================================================ */
+:root {
+    --clr-bg: #f5f0e8; /* warm parchment page background   */
+    --clr-panel-dark: #1b2a3b; /* deep navy left panel             */
+    --clr-panel-text: #d6cfc2; /* muted text on dark panel         */
+    --clr-accent: #b5883a; /* gold accent — buttons, links     */
+    --clr-accent-dark: #8f6824; /* gold hover state                 */
+    --clr-surface: #ffffff; /* white form card                  */
+    --clr-border: #161615; /* input border                     */
+    --clr-text: #2a2318; /* primary dark text                */
+    --clr-muted: #7a6e60; /* placeholder / secondary text     */
+    --clr-error: #c0392b; /* error message color              */
+    --clr-success: #27673a; /* success message color            */
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Lora', 'Georgia', serif;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+/**, *::before, *::after {*/
+/*    box-sizing: border-box;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+
+/*html, body {*/
+/*    height: 100%;*/
+/*    font-family: var(--font-body);*/
+/*    background: var(--clr-bg);*/
+/*    color: var(--clr-text);*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*}*/
+
+/* ============================================================
+   LAYOUT — two-column split
+============================================================ */
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* change to e.g. 2fr 3fr to resize panels */
+    min-height: 100vh;
+}
+
+/* ============================================================
+   LEFT PANEL — branding / atmosphere
+============================================================ */
+.panel-left {
+    background: var(--clr-panel-dark);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 3.5rem;
+    overflow: hidden;
+}
+
+/* Decorative book-shelf lines (pure CSS, no images needed) */
+.panel-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+            to right,
+            transparent 0px,
+            transparent 38px,
+            rgba(255, 255, 255, 0.03) 38px,
+            rgba(255, 255, 255, 0.03) 40px
+    );
+    pointer-events: none;
+}
+
+/* Warm glow from bottom-left */
+.panel-left::after {
+    content: '';
+    position: absolute;
+    bottom: -120px;
+    left: -80px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181, 136, 58, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.panel-left-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* SVG book icon embedded inline — replace src or swap for an <img> */
+.panel-left-logo svg {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.logo-name {
+
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.logo-name span {
+    display: block;
+
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-accent);
+    margin-top: 2px;
+}
+
+.panel-left-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.panel-left-copy blockquote {
+
+    font-style: italic;
+    font-size: 1.65rem;
+    line-height: 1.5;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.panel-left-copy blockquote::before {
+    content: '\201C'; /* opening curly quote */
+    display: block;
+    font-size: 4rem;
+    line-height: 0.8;
+    color: var(--clr-accent);
+    margin-bottom: 0.5rem;
+}
+
+.panel-left-copy cite {
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-panel-text);
+}
+
+.panel-left-footer {
+    position: relative;
+    z-index: 1;
+    font-size: 0.75rem;
+    color: var(--clr-panel-text);
+    line-height: 1.8;
+}
+
+.panel-left-footer a {
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.panel-left-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   RIGHT PANEL — login form
+============================================================ */
+.panel-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: var(--clr-bg);
+}
+
+/* ---- Form header ---- */
+.form-header {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.form-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+}
+
+.form-header p {
+    font-size: 0.88rem;
+    color: var(--clr-muted);
+    line-height: 1.6;
+}
+
+/* ---- Field groups ---- */
+.field-group {
+    margin-bottom: 1.25rem;
+}
+
+.field-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--clr-muted);
+    margin-bottom: 0.45rem;
+}
+
+/* Wrapper for input + optional icon */
+.input-wrap {
+    position: relative;
+}
+
+.input-wrap svg {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    stroke: var(--clr-muted);
+    pointer-events: none;
+}
+
+.input-wrap input {
+    width: 100%;
+    padding: 0.72rem 1rem 0.72rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.93rem;
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.input-wrap input::placeholder {
+    color: var(--clr-muted);
+    opacity: 0.8;
+}
+
+.input-wrap input:focus {
+    border-color: var(--clr-accent);
+    background: var(--clr-surface);
+}
+
+/* Error state on input */
+.input-wrap input.is-error {
+    border-color: var(--clr-error);
+}
+
+/* Toggle password visibility button */
+.btn-toggle-pw {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: var(--clr-muted);
+    display: flex;
+    align-items: center;
+}
+
+.btn-toggle-pw svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+}
+
+/* ---- Inline field error text ---- */
+.field-error {
+    display: none; /* shown via JS */
+    font-size: 0.78rem;
+    color: var(--clr-error);
+    margin-top: 0.3rem;
+}
+
+/* ---- Remember me + forgot password row ---- */
+.form-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.75rem;
+    font-size: 0.83rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    color: var(--clr-muted);
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: var(--clr-accent);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.link-forgot {
+    color: var(--clr-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-forgot:hover {
+    text-decoration: underline;
+}
+
+/* ---- Primary submit button ---- */
+.btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: #ffffff;
+    background: var(--clr-accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.btn-primary:hover {
+    background: var(--clr-accent-dark);
+}
+
+.btn-primary:active {
+    transform: scale(0.99);
+}
+
+/* Loading spinner inside button (shown via JS) */
+.btn-primary .spinner {
+    display: none;
+    width: 17px;
+    height: 17px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- Alert banner (success / error) ---- */
+.alert {
+    display: none; /* shown via JS */
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.alert.alert-error {
+    background: #fdecea;
+    color: var(--clr-error);
+    border: 1px solid #f5c6c2;
+}
+
+.alert.alert-success {
+    background: #eaf4ed;
+    color: var(--clr-success);
+    border: 1px solid #b8ddc2;
+}
+
+/* ---- Divider ---- */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    color: var(--clr-border);
+    font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--clr-border);
+}
+
+/* ---- Sign-up link at bottom ---- */
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.83rem;
+    color: var(--clr-muted);
+}
+
+.form-footer a {
+    color: var(--clr-accent);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   CARD ENTRANCE ANIMATION
+============================================================ */
+.form-card {
+    animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVE — stack panels on small screens
+============================================================ */
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-left {
+        display: none;
+    }
+
+    /* hide decorative panel on mobile */
+    .panel-right {
+        padding: 2rem 1.25rem;
+    }
+}
+
+/* ============================================================
+   LIBRARY LOGIN MODAL — popover shell
+   The .page/.panel-left/.panel-right/.form-card rules above were
+   authored for a full standalone page; here they're reused inside
+   a native <popover> so the login/sign-up card can live directly
+   on the library page instead of a separate route.
+============================================================ */
+#libLoginModal {
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: min(94vw, 920px);
+    max-height: 88vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+#libLoginModal::backdrop {
+    background: rgba(20, 15, 8, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+#libLoginModal .page {
+    min-height: unset;
+    max-height: 88vh;
+}
+
+#libLoginModal .panel-right {
+    max-height: 88vh;
+    overflow-y: auto;
+}
+
+#libLoginModal .form-card {
+    box-shadow: none;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    #libLoginModal .page {
+        grid-template-columns: 1fr;
+    }
+
+    #libLoginModal .panel-left {
+        display: none;
+    }
+
+    #libLoginModal .panel-right {
+        max-height: 88vh;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--clr-bg);
+    color: var(--clr-muted);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.modal-close:hover {
+    background: var(--clr-border);
+    color: var(--clr-text);
+}
+
+/* ---- Neutral "sign in required" prompt ---- */
+.alert.alert-info {
+    background: #fbf3e3;
+    color: var(--clr-accent-dark);
+    border: 1px solid rgba(181, 136, 58, 0.35);
+}
+
+/* ---- Buttons styled as inline text links ---- */
+.link-forgot.as-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* ============================================================
+   TOAST — brief confirmations (subscribe / sign-out)
+============================================================ */
+.lib-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 900;
+    max-width: min(90vw, 420px);
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    background: var(--clr-panel-dark, #1b2a3b);
+    color: #fff;
+    font-family: var(--font-body, inherit);
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.lib-toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}

@@ -1,0 +1,35 @@
+<article class="project-card">
+    <span class="pc-num"><%= String(project.id).padStart(2, '0') %></span>
+
+    <div class="pc-body">
+        <div class="pc-top">
+            <h2 class="pc-title"><%= project.title %></h2>
+            <span class="pc-chip"><%= project.subtitle %></span>
+        </div>
+        <p class="pc-desc"><%= project.description %></p>
+        <div class="pc-tags">
+            <% project.tags.forEach(tag => { %>
+                <span class="pc-tag"><%= tag %></span>
+            <% }) %>
+        </div>
+    </div>
+
+    <div class="pc-aside">
+        <div class="pc-meta">
+            <span class="pc-type"><%= project.type || project.subtitle %></span>
+            <% if (project.status) { %>
+                <span class="pc-status is-<%= project.status %>">
+                    <%= project.status === 'live' ? 'Live' : project.status === 'wip' ? 'In Progress' : 'Complete' %>
+                </span>
+            <% } %>
+        </div>
+        <div class="pc-links">
+            <a href="<%= project.url %>" class="pc-link-primary">
+                View <span class="pc-arrow">↗</span>
+            </a>
+            <% if (project.github) { %>
+                <a href="<%= project.github %>" class="pc-link-secondary" target="_blank" rel="noopener">GitHub</a>
+            <% } %>
+        </div>
+    </div>
+</article>

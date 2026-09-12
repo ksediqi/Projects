@@ -1,0 +1,277 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/head") %>
+<%- include("../../partials/lib-auth-modal") %>
+
+<!-- ── Library navbar ─────────────────────────────────────────── -->
+<header class="header" id="lib-header">
+    <nav class=" navbar lib-nav  sticky-nav">
+
+
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-logo" onclick="smoothScroll(event,'hero')">
+                    <div class="nav-logo-icon">📚</div>
+                    Libraex
+                </a></li>
+            <li><a class="nav-link" href="#trending" onclick="smoothScroll(event,'trending')">Trending</a></li>
+            <li><a class="nav-link" href="#classics" onclick="smoothScroll(event,'classics')">Classics</a></li>
+            <li><a class="nav-link" href="#tech" onclick="smoothScroll(event,'tech')">Tech</a></li>
+            <li><a class="nav-link" href="#pricing" onclick="smoothScroll(event,'pricing')">Pricing</a></li>
+            <li><a class="nav-link" href="#lib-footer" onclick="smoothScroll(event,'lib-footer')">About</a></li>
+
+
+            <li id="libUserMenu">
+                <button class="btn-primary" id="libLoginBtn" type="button">Login</button>
+                <div class="hidden" id="libUserMenuDropdown">
+                    <div id="libPlanBadge"></div>
+                    <hr class="dropdown-divider"/>
+                    <a class="dropdown-item" href="#trending" onclick="smoothScroll(event,'trending')">My Reading</a>
+                    <a class="dropdown-item" href="#pricing" onclick="smoothScroll(event,'pricing')">Manage
+                        Subscription</a>
+                    <hr class="dropdown-divider"/>
+                    <button class="dropdown-item dropdown-logout" type="button" id="libLogoutBtn">Log out</button>
+                </div>
+            </li>
+
+            <li>
+                <button class="lib-hamburger" id="libHamburger" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </li>
+        </ul>
+
+
+    </nav>
+
+
+    <!-- ── Hero ───────────────────────────────────────────────────── -->
+    <section class="lib-hero-section" id="hero">
+
+
+        <div class="lib-container">
+            <div class="hero-inner">
+
+                <!-- Left: copy -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <div class="hero-badge-dot"></div>
+                        <span>Now in Public Beta — 50,000+ books</span>
+                    </div>
+
+                    <h1 class="hero-h1">
+                        Your Digital<br/>
+                        <em class="gradient-text">Library,</em><br/>
+                        Reimagined.
+                    </h1>
+
+                    <p class="hero-sub">
+                        Discover, read, and annotate over 50,000 titles — from classic literature to cutting-edge tech.
+                        Built for developers, researchers, and knowledge-hungry minds.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="#trending" onclick="smoothScroll(event,'trending')">
+                            Start Reading Free <span>→</span>
+                        </a>
+                        <a class="btn-ghost" href="#features" onclick="smoothScroll(event,'features')">
+                            See Features
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div>
+                            <div class="stat-num gradient-text">50K+</div>
+                            <div class="stat-label">books</div>
+                        </div>
+                        <div>
+                            <div class="stat-num gradient-text">128K</div>
+                            <div class="stat-label">readers</div>
+                        </div>
+                        <div>
+                            <div class="stat-num gradient-text">4.9★</div>
+                            <div class="stat-label">rating</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: device mockup -->
+                <div class="hero-visual">
+                    <div class="shelf-wrap">
+                        <div class="device-frame">
+                            <div class="device-titlebar">
+                                <div class="dot-row">
+                                    <div class="dot dot-red"></div>
+                                    <div class="dot dot-yellow"></div>
+                                    <div class="dot dot-green"></div>
+                                </div>
+                                <div class="device-url">app.libraex.io/library</div>
+                            </div>
+                            <div class="device-content">
+                                <div class="app-topbar">
+                                    <div class="app-brand">Libraex</div>
+                                    <div class="app-search">⌘&nbsp;Search...</div>
+                                </div>
+                                <div class="app-cats">
+                                    <div class="cat-pill active">All</div>
+                                    <div class="cat-pill">Fiction</div>
+                                    <div class="cat-pill">Tech</div>
+                                    <div class="cat-pill">Science</div>
+                                    <div class="cat-pill">Design</div>
+                                </div>
+                                <div class="book-grid">
+                                    <% if (trendingBooks && trendingBooks.length > 0) { %>
+                                        <% for(let i = 0; i < Math.min(trendingBooks.length, 8); i++) { %>
+                                            <% const book = trendingBooks[i]; %>
+                                            <!-- Added a fallback for book.authors to prevent runtime crashes -->
+                                            <div class="book-card"
+                                                 title="<%= book.title %> by <%= book.authors ? book.authors.join(', ') : 'Unknown' %>">
+                                                <div class="book-cover b<%= (i % 8) + 1 %>"
+                                                     style="background-image: url('<%= book.thumbnail || "/img/placeholder-book.svg" %>'); background-size: cover; background-position: center;">
+                                                    <div class="book-title-wrap">
+                                                        <div class="book-title"><%= book.title.substring(0, 20) %><%= book.title.length > 20 ? '...' : '' %></div>
+                                                        <div class="book-author"><%= (book.authors && book.authors[0]) ? book.authors[0] : 'Unknown' %></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                    <% } else { %>
+                                        <p style="color: white; font-size: 12px; padding: 10px;">Loading books...</p>
+                                    <% } %>
+                                </div>
+                                <div class="app-progress">
+                                    <div class="progress-book"
+                                         style="background-image: url('<%= trendingBooks && trendingBooks[0] ? trendingBooks[0].thumbnail : '' %>'); background-size: cover; background-position: center;"></div>
+                                    <div class="progress-info">
+                                        <div class="progress-title">Currently
+                                            Reading: <%= trendingBooks && trendingBooks[0] ? trendingBooks[0].title : 'Loading...' %></div>
+                                        <div class="progress-bar-wrap">
+                                            <div class="progress-bar-fill"></div>
+                                        </div>
+                                        <div class="progress-pct">65%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+<main>
+
+    <div class="section-divider"></div>
+
+    <!-- ════════════════════════════════ TRENDING BOOKS ════════════════════ -->
+    <section id="trending" class="book-section">
+        <div class="lib-container">
+            <div class="section-header reveal">
+                <div class="section-tag lib-tag">Trending</div>
+                <h2 class="section-h2">
+                    Trending <span class="gradient-text">Now</span>
+                </h2>
+                <p class="section-sub">Discover the most popular books right now.</p>
+            </div>
+
+            <div class="book-grid-main">
+                <% if (trendingBooks && trendingBooks.length > 0) { %>
+                    <% trendingBooks.forEach(book => { %>
+                        <div class="book-card-main" data-book-title="<%= book.title %>"
+                             data-book-url="<%= book.id && book.id.startsWith('/') ? 'https://openlibrary.org' + book.id : '' %>">
+                            <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
+                            <div class="book-info">
+                                <h3><%= book.title %></h3>
+                                <p><%= book.authors.join(', ') %></p>
+                                <span>Published: <%= book.published %></span>
+                                <button type="button" class="book-read-btn" data-action="read-book">Read</button>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p style="color: var(--teal-nav);">No trending books found.</p>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ════════════════════════════════ CLASSIC LITERATURE ════════════════════ -->
+    <section id="classics" class="book-section">
+        <div class="lib-container">
+            <div class="section-header reveal">
+                <div class="section-tag lib-tag">Classics</div>
+                <h2 class="section-h2">
+                    Classic <span class="gradient-text">Literature</span>
+                </h2>
+                <p class="section-sub">Explore timeless stories from legendary authors.</p>
+            </div>
+
+            <div class="book-grid-main">
+                <% if (classicBooks && classicBooks.length > 0) { %>
+                    <% classicBooks.forEach(book => { %>
+                        <div class="book-card-main" data-book-title="<%= book.title %>"
+                             data-book-url="<%= book.id && book.id.startsWith('/') ? 'https://openlibrary.org' + book.id : '' %>">
+                            <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
+                            <div class="book-info">
+                                <h3><%= book.title %></h3>
+                                <p><%= book.authors.join(', ') %></p>
+                                <span>Published: <%= book.published %></span>
+                                <button type="button" class="book-read-btn" data-action="read-book">Read</button>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p style="color: var(--lib-grad-text);">No classic books found.</p>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ════════════════════════════════ TECH & PROGRAMMING ════════════════════ -->
+    <section id="tech" class="book-section">
+        <div class="lib-container">
+            <div class="section-header reveal">
+                <div class="section-tag lib-tag">Tech</div>
+                <h2 class="section-h2">
+                    Tech & <span class="gradient-text">Programming</span>
+                </h2>
+                <p class="section-sub">Stay sharp with essential reads for developers.</p>
+            </div>
+
+            <div class="book-grid-main">
+                <% if (techBooks && techBooks.length > 0) { %>
+                    <% techBooks.forEach(book => { %>
+                        <div class="book-card-main" data-book-title="<%= book.title %>"
+                             data-book-url="<%= book.id && book.id.startsWith('/') ? 'https://openlibrary.org' + book.id : '' %>">
+                            <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
+                            <div class="book-info">
+                                <h3><%= book.title %></h3>
+                                <p><%= book.authors.join(', ') %></p>
+                                <span>Published: <%= book.published %></span>
+                                <button type="button" class="book-read-btn" data-action="read-book">Read</button>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p style="color: var(--teal-nav);">No tech books found.</p>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- (Pricing and other sections remain the same) -->
+    <%- include('../../partials/pricing') %>
+
+    <!-- ── Footer ─────────────────────────────────────────────── -->
+    <footer class="lib-footer" id="lib-footer">
+        <!-- ... footer content ... -->
+    </footer>
+
+</main>
+
+<script src="/js/library.js"></script>
+
+<%- include("../../partials/footer") %>

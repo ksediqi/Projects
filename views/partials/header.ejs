@@ -1,0 +1,586 @@
+<header class="main-header">
+
+    <nav class="main-nav">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <!-- Logo lives directly in nav, not inside the ul -->
+        <a href="/" class="main-nav-logo">
+            <span class="logo-bracket">{</span> dev.portfolio <span class="logo-bracket">}</span>
+        </a>
+
+        <!-- Only action buttons remain in the ul -->
+        <ul id="navLinks" class="main-nav-link">
+            <li>
+                <button class=" btn-login user-menu-toggle" id="userMenuToggle">
+                    <span>Login</span>
+
+
+                </button>
+
+            </li>
+            <li>
+                <button>
+                    <span>Free</span>
+                </button>
+
+            </li>
+            <li>
+                <button type="button" class="btn createAccountBtn " popovertarget="signUpPopover">
+                    <span>Create Account</span>
+                </button>
+
+            </li>
+            <li>
+                <button>
+                    <span>Price</span>
+                </button>
+            </li>
+
+            <li>
+                <button id="theme-toggle" class="main-btn   theme-toggle"
+                        title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-adjust"></i>
+                </button>
+            </li>
+            <li>
+                <button class="main-btn btn-help " popovertarget="mypopover"
+                        aria-label="Show frequently asked questions">
+                    <i class="fa-solid fa-question"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <div class="user-menu">
+        <!-- This is your existing login button -->
+
+
+        <!-- Dropdown menu -->
+        <div class="user-menu-dropdown hidden" id="userMenuDropdown">
+            <button class="dropdown-item" type="button" id="profileBtn">
+                Profile
+            </button>
+            <button class="dropdown-item" type="button" id="settingsBtn">
+                Settings
+            </button>
+            <hr class="dropdown-divider"/>
+            <button class="dropdown-item dropdown-logout" type="button" id="logoutBtn">
+                Log out
+            </button>
+        </div>
+    </div>
+    <div popover="auto" id="mypopover" class="faq-popover" aria-labelledby="faq-title">
+        <div class="faq-header">
+            <h4 id="faq-title">Frequently Asked Questions</h4>
+            <button class="faq-close" popovertarget="mypopover" popovertargetaction="hide" aria-label="Close FAQ">
+                X
+            </button>
+        </div>
+        <div class="faq-body">
+            <details class="faq-item">
+                <summary>What is this site about?</summary>
+                <div class="faq-answer">
+                    MovieTheater lets you browse, search, and manage movies and TV shows in a simple, clean
+                    dashboard.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>How do I create an account?</summary>
+                <div class="faq-answer">
+                    Click "Sign up" or "Login" and follow the steps. You'll be ready to build your watchlist in
+                    under a
+                    minute.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-summar">Can I switch between dark and light mode?</summary>
+                <div class="faq-answer">
+                    Yes. Use the theme toggle in the main header (when enabled). Your choice is saved for your next
+                    visit.
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary>Who do I contact for support?</summary>
+                <div class="faq-answer">
+                    Email support@example.com or use the in-app chat. We usually respond within one business day.
+                </div>
+            </details>
+            <!--Report bugs or any-->
+            <details class="faq-item">
+                <summary>Report</summary>
+                <div class="faq-answer">
+                    Please report any bugs or any issues
+                </div>
+                <div id="toast" class="toast">
+                    <span style="font-weight:500; color:var(--color-text);">Submitted:</span>
+                    <pre id="toast-body"></pre>
+                </div>
+
+                <div class="report-card">
+                    <div class="card-header">
+                        <p class="card-title">Bug Report</p>
+                        <p class="card-desc">Help us improve by reporting bugs you encounter.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="field">
+                            <label for="bug-title">Bug title</label>
+                            <input type="text" id="bug-title" placeholder="Login button not working on mobile"
+                                   autocomplete="off"/>
+                            <span class="field-error" id="err-title"></span>
+                        </div>
+                        <div class="field">
+                            <label for="bug-desc">Description</label>
+                            <div class="input-group">
+                        <textarea id="bug-desc" rows="6"
+                                  placeholder="I'm having an issue with the login button on mobile."></textarea>
+                                <span class="char-count" id="char-count">0/100</span>
+                            </div>
+                            <span class="field-desc">Include steps to reproduce, expected behavior, and what actually happened.</span>
+                            <span class="field-error" id="err-desc"></span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn-primary" id="btn-reset">Reset</button>
+                        <button type="button" class="btn" id="btn-submit">Submit</button>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <!-- implement this to the Frequently questions -->
+    <!-- https://www.youtube.com/shorts/9mUhkhs_os8 -->
+
+</header>
+
+<!-- User Menu -->
+<div id="progress-bar"></div>
+<!--AI chat Section-->
+<section>
+    <!-- AI Chat Widget -->
+    <aside class="ai-widget" aria-label="AI Assistant">
+        <!-- Floating toggle button -->
+        <button class="ai-fab" id="aiFab" type="button" aria-label="Open AI chat">
+            <svg class="ai-fab__icon ai-fab__icon--chat" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+                      stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                      fill="currentColor" fill-opacity="0.15"/>
+            </svg>
+            <svg class="ai-fab__icon ai-fab__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 aria-hidden="true">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <!-- Chat panel -->
+        <div class="ai-chat" id="aiChat" role="region" aria-label="AI chat panel" aria-hidden="true">
+            <!-- Header -->
+            <div class="ai-chat__header">
+                <div class="ai-chat__header-left">
+                    <div class="ai-chat__avatar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1h1.27c.34.6.73 1 .73 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V14a5 5 0 00-5-5h-1v1.27c.6.34 1 .99 1 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V9h-1a5 5 0 00-5 5v1h1.27c.34.6.73 1 .73 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V14a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"
+                                  fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="ai-chat__title">AI Assistant</h3>
+                        <span class="ai-chat__status">
+                            <span class="ai-chat__status-dot"></span>
+                            Online
+                        </span>
+                    </div>
+                </div>
+                <button class="ai-chat__close" id="aiClose" type="button" aria-label="Close chat">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Welcome card -->
+            <div class="ai-chat__body">
+                <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-relevant="additions">
+                    <div class="ai-welcome">
+                        <div class="ai-welcome__icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1h1.27c.34.6.73 1 .73 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V14a5 5 0 00-5-5h-1v1.27c.6.34 1 .99 1 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V9h-1a5 5 0 00-5 5v1h1.27c.34.6.73 1 .73 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V14a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"
+                                      fill="currentColor" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <h4 class="ai-welcome__title">Hi there!</h4>
+                        <p class="ai-welcome__text">Ask me anything about the site. I'm here to help.</p>
+                    </div>
+                </div>
+
+                <!-- Typing indicator (hidden by default) -->
+                <div class="ai-typing" id="aiTyping" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Composer -->
+            <div class="ai-chat__footer">
+                <form class="ai-composer" id="aiComposer" autocomplete="off">
+                    <label for="aiInput" class="sr-only">Type your message</label>
+                    <input class="ai-input" id="aiInput" type="text" placeholder="Type a message..." required/>
+                    <button class="ai-send" type="submit" aria-label="Send message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                            <path d="M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+                <p class="ai-disclaimer">AI can make mistakes. Verify important info.</p>
+            </div>
+        </div>
+    </aside>
+
+
+</section>
+
+<section>
+    <!-- Sign in form section -->
+    <!-- Login Popover -->
+    <form id="loginPopover" class="form-signin form-popover" popover="auto" aria-labelledby="loginTitle">
+
+        <div id="loginError" class="hidden alert alert-error" role="alert" aria-live="assertive">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">
+                Invalid email or password. Please try again.
+            </span>
+        </div>
+
+        <h1 id="loginTitle" class="h3 mb-3 font-weight-normal">
+            Please Sign In
+        </h1>
+
+        <div class="form-group">
+            <label for="userInput">Email or Username</label>
+            <input type="text" id="userInput" class="form-control" required autofocus/>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" class="form-control" required/>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"/>
+                Remember me
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn" type="submit">Sign In</button>
+            <button class="btn" type="button" popovertarget="loginPopover" popovertargetaction="hide">
+                Cancel
+            </button>
+        </div>
+
+        <div class="signup-redirect">
+            <p>Don't have an account?</p>
+            <button type="button" class="btn" id="openSignUpBtn">
+                Create Account
+            </button>
+        </div>
+
+    </form>
+</section>
+
+<!--Sign-up section-->
+<!--Sign-up section-->
+<section>
+    <!-- Sign Up Popover -->
+    <div id="signUpPopover" class="auth-panel sign-up-section form-popover" popover="auto"
+         aria-labelledby="signupTitle">
+
+        <form class="needs-validation" novalidate>
+
+            <div class="auth-heading">
+                <h2 id="signupTitle">Create Account</h2>
+            </div>
+
+            <div class="auth-field">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" placeholder="John" autocomplete="given-name"
+                       required/>
+            </div>
+
+            <div class="auth-field">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Doe" autocomplete="family-name"
+                       required/>
+            </div>
+
+            <div class="auth-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="john_doe" autocomplete="username"
+                       required/>
+            </div>
+
+            <div class="auth-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="john@email.com"
+                       autocomplete="email"
+                       required/>
+            </div>
+
+            <div class="auth-field">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" class="form-control" placeholder="8+ characters"
+                       autocomplete="new-password" required/>
+            </div>
+
+            <div class="auth-field">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password"
+                       autocomplete="new-password" required/>
+            </div>
+
+            <div class="form-actions auth-actions">
+                <button class="auth-primary-btn btn" type="submit">Sign Up</button>
+            </div>
+
+            <div class="auth-divider">
+                <span></span>
+                <p>Or Sign Up With</p>
+                <span></span>
+            </div>
+
+            <div class="auth-social-grid">
+                <button class="auth-social-btn btn" type="button">
+                    <span class="auth-social-icon">
+                        <i class="fa-brands fa-google"></i>
+                    </span>
+                    Google
+                </button>
+
+                <button class="auth-social-btn btn" type="button">
+                    <span class="auth-social-icon">
+                        <i class="fa-brands fa-github"></i>
+                    </span>
+                    Github
+                </button>
+            </div>
+
+            <div class="login-redirect auth-switch">
+                <p>Already have an account?</p>
+                <button type="button" class="backToLoginBtn auth-link-btn btn" id="backToLoginBtn">
+                    Sign In
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</section>
+
+<!--log-out section -->
+
+<section>
+    <!-- Log out Modal -->
+    <div id="logoutContainer" class="logout-container" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+
+        <div class="logout-card">
+
+            <button class="close-button" id="closeLogoutBtn" aria-label="Close logout dialog">
+                ×
+            </button>
+
+            <header class="logout-header">
+                <div class="logout-logo" aria-hidden="true">
+                    <svg width="40" height="40" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+
+                <h1 id="logoutTitle">You've Been Logged Out</h1>
+
+                <p class="logout-message">
+                    Thank you for using our service.
+                    Your session has been securely ended.
+                </p>
+            </header>
+
+            <div class="logout-actions">
+                <button id="signInAgainBtn" class="btn">
+                    Sign In Again
+                </button>
+
+                <button class="btn" onclick="window.location.href='/'">
+                    Return to Home
+                </button>
+            </div>
+
+            <div class="security-notice">
+                <p>
+                    For security reasons, please close your browser
+                    if you're on a public or shared computer.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="background-animation" aria-hidden="true">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqPopover = document.getElementById('mypopover');
+        const faqAccordionItems = document.querySelectorAll('.faq-item');
+
+        if (!faqPopover) return; // Exit if the popover doesn't exist on this page
+
+        // --- Problem 1 & 2: Reset accordion when popover closes ---
+        // The browser fires a "toggle" event on the popover element itself.
+        faqPopover.addEventListener('toggle', function (event) {
+            // The event.newState will be "closed" when the popover is hidden.
+            if (event.newState === 'closed') {
+
+                // Loop through all <details> elements and remove the 'open' attribute.
+                faqAccordionItems.forEach(item => {
+                    item.removeAttribute('open');
+
+
+                });
+
+            }
+        });
+
+        // --- Problem 3: Make the accordion exclusive (only one open at a time) ---
+        faqAccordionItems.forEach(itemToOpen => {
+            // Listen for the 'toggle' event on each <details> element.
+            itemToOpen.addEventListener('toggle', () => {
+                // If the item we just interacted with is now open...
+                if (itemToOpen.open) {
+
+                    // ...then loop through all the other items...
+                    faqAccordionItems.forEach(itemToClose => {
+                        // ...and if it's not the one we just opened, close it.
+                        if (itemToClose !== itemToOpen) {
+
+                            itemToClose.removeAttribute('open');
+
+                        }
+
+                    });
+
+                }
+            });
+        });
+
+    });
+
+
+    /* ── Hamburger menu ── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger?.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!expanded));
+        navLinks.classList.toggle('active');
+    });
+
+
+    // Bug-report card lives inside the FAQ popover (#mypopover), which is
+    // only rendered when the main site header is shown (see hideMainNav in
+    // partials/header.ejs). Guard the whole block so pages that hide it
+    // (e.g., the library page, which has its own nav) don't crash here.
+    const titleInput = document.getElementById('bug-title');
+    const descInput = document.getElementById('bug-desc');
+
+    if (titleInput && descInput) {
+        const charCount = document.getElementById('char-count');
+        const errTitle = document.getElementById('err-title');
+        const errDesc = document.getElementById('err-desc');
+        const toast = document.getElementById('toast');
+        const toastBody = document.getElementById('toast-body');
+        const reportCard = document.querySelector('.report-card');
+
+        descInput.addEventListener('input', () => {
+            charCount.textContent = descInput.value.length + '/100';
+        });
+
+        const validateTitle = (val) => {
+            if (val.length < 5) return 'Bug title must be at least 5 characters.';
+            if (val.length > 32) return 'Bug title must be at most 32 characters.';
+            return '';
+        };
+
+        const validateDesc = (val) => {
+            if (val.length < 20) return 'Description must be at least 20 characters.';
+            if (val.length > 100) return 'Description must be at most 100 characters.';
+            return '';
+        };
+
+        const showError = (input, errEl, msg) => {
+            if (msg) {
+                input.classList.add('invalid');
+                errEl.textContent = msg;
+                errEl.classList.add('visible');
+            } else {
+                input.classList.remove('invalid');
+                errEl.textContent = '';
+                errEl.classList.remove('visible');
+            }
+        };
+
+        const resetForm = () => {
+            titleInput.value = '';
+            descInput.value = '';
+            charCount.textContent = '0/100';
+            showError(titleInput, errTitle, '');
+            showError(descInput, errDesc, '');
+            toast.classList.remove('show');
+        };
+
+        titleInput.addEventListener('blur', () => showError(titleInput, errTitle, validateTitle(titleInput.value)));
+        descInput.addEventListener('blur', () => showError(descInput, errDesc, validateDesc(descInput.value)));
+
+        document.getElementById('btn-submit')?.addEventListener('click', () => {
+            const te = validateTitle(titleInput.value);
+            const de = validateDesc(descInput.value);
+            showError(titleInput, errTitle, te);
+            showError(descInput, errDesc, de);
+            if (te || de) return;
+
+            const data = {title: titleInput.value, description: descInput.value};
+            toastBody.textContent = JSON.stringify(data, null, 2);
+            toast.classList.add('show');
+            reportCard.classList.add('hidden');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                reportCard.classList.remove('hidden');
+                // Calling reset form function here
+                resetForm();
+            }, 5000);
+
+        });
+
+        document.getElementById('btn-reset')?.addEventListener('click', () => {
+            resetForm();
+        });
+    }
+
+
+</script>

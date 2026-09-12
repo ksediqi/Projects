@@ -1,0 +1,79 @@
+<!--<section id="pricing" class="book-section">-->
+<!--    <div class="lib-container">-->
+<!--        <div class="section-header reveal">-->
+<!--            <div class="section-tag lib-tag">Pricing</div>-->
+<!--            <h2 class="section-h2">-->
+<!--                Simple <span class="gradient-text">Pricing</span>-->
+<!--            </h2>-->
+<!--            <p class="section-sub">Start reading for free. Upgrade when you need more.</p>-->
+<!--        </div>-->
+
+<!--        <div class="pricing-toggle">-->
+<!--            <button class="toggle-btn active" data-plan="monthly">Monthly</button>-->
+<!--            <button class="toggle-btn" data-plan="yearly">Yearly</button>-->
+<!--        </div>-->
+
+<!--        <div class="pricing-grid">-->
+<!--            <div class="price-card">-->
+<!--                <div class="price-tier">Free</div>-->
+<!--                <div class="price-amount" data-monthly="0" data-yearly="0">-->
+<!--                    <sup>$</sup><span class="price-value">0</span><span class="per">/mo</span>-->
+<!--                </div>-->
+<!--                <p class="price-desc">Perfect for casual readers exploring the library.</p>-->
+<!--                <div class="price-divider"></div>-->
+<!--                <ul class="price-features">-->
+<!--                    <li><span class="check">&#10003;</span> Access to 5,000+ free titles</li>-->
+<!--                    <li><span class="check">&#10003;</span> Basic search &amp; filters</li>-->
+<!--                    <li><span class="check">&#10003;</span> Reading progress tracking</li>-->
+<!--                    <li><span class="cross">&#10005;</span> Offline downloads</li>-->
+<!--                    <li><span class="cross">&#10005;</span> Priority support</li>-->
+<!--                </ul>-->
+<!--                <button type="button" class="price-cta free" data-plan="free" data-default-label="Get Started">Get-->
+<!--                    Started-->
+<!--                </button>-->
+<!--            </div>-->
+
+<!--            <div class="price-card pro">-->
+<!--                <span class="price-badge">Popular</span>-->
+<!--                <div class="price-tier">Pro</div>-->
+<!--                <div class="price-amount" data-monthly="9" data-yearly="89">-->
+<!--                    <sup>$</sup><span class="price-value">9</span><span class="per">/mo</span>-->
+<!--                </div>-->
+<!--                <p class="price-desc">For avid readers who want the full experience.</p>-->
+<!--                <div class="price-divider"></div>-->
+<!--                <ul class="price-features">-->
+<!--                    <li><span class="check">&#10003;</span> Access to 50,000+ titles</li>-->
+<!--                    <li><span class="check">&#10003;</span> Advanced search &amp; filters</li>-->
+<!--                    <li><span class="check">&#10003;</span> Reading progress tracking</li>-->
+<!--                    <li><span class="check">&#10003;</span> Offline downloads</li>-->
+<!--                    <li><span class="check">&#10003;</span> Priority support</li>-->
+<!--                </ul>-->
+<!--                <button type="button" class="price-cta pro-btn" data-plan="pro" data-default-label="Upgrade to Pro">-->
+<!--                    Upgrade to Pro-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!--<script>-->
+<!--    (function () {-->
+<!--        const toggleBtns = document.querySelectorAll('.pricing-toggle .toggle-btn');-->
+<!--        const amounts = document.querySelectorAll('.price-amount[data-monthly]');-->
+
+<!--        toggleBtns.forEach(btn => {-->
+<!--            btn.addEventListener('click', () => {-->
+<!--                toggleBtns.forEach(b => b.classList.remove('active'));-->
+<!--                btn.classList.add('active');-->
+
+<!--                const plan = btn.dataset.plan;-->
+<!--                const suffix = plan === 'yearly' ? '/yr' : '/mo';-->
+
+<!--                amounts.forEach(el => {-->
+<!--                    el.querySelector('.price-value').textContent = el.dataset[plan];-->
+<!--                    el.querySelector('.per').textContent = suffix;-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--    })();-->
+<!--</script>-->

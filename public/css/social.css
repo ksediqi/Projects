@@ -1,0 +1,71 @@
+:root {
+    /* ── Neutrals: light ramp ─────────────────────────────────────────────── */
+    --grey-000: #ffffff;
+    --grey-025: #f9fafb;
+    --grey-050: #f1f3f5;
+    --grey-100: #dddddd;
+    --grey-500: #555555;
+    --grey-700: #333333;
+    --grey-900: #0a0a0a;
+    --ink-900: #06202b;
+
+    /* ── Neutrals: dark ramp ──────────────────────────────────────────────── */
+    --dark-000: #0b0b0d;
+    --dark-050: #0f0e0e;
+    --dark-100: #161616;
+    --dark-200: #202940;
+    --dark-nav: rgb(10 12 14 / 0.88);
+    --dark-sticky: #273f4f;
+    --dark-text: #d4dbe4;
+    --dark-text-dim: #7d8fa3;
+    --dark-heading: #f0f4f8;
+
+    /* ── Blues ────────────────────────────────────────────────────────────── */
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #5a8ff0;
+
+    /* ── Categorical hues (light / dark pairs) ────────────────────────────── */
+    --red-500: #f7374f;
+    --red-600: #d14a5a;
+    --navy-500: #1a4a8a;
+    --navy-600: #3a5f9c;
+    --green-500: #2e7d5e;
+    --green-600: #4a8f73;
+    --purple-500: #7c3b8a;
+    --purple-600: #9a57a8;
+    --gold-500: #c8920a;
+    --gold-600: #b38a2c;
+
+    /* ── Nav pill teals ───────────────────────────────────────────────────── */
+    --teal-nav: rgb(59 193 168 / 0.73);
+    --teal-nav-dark: #005461;
+    --teal-nav-hover: #18776f;
+    --teal-nav-hover-dark: #174143;
+
+    --mint-050: #e5eee4;
+    --cream-050: --cream-050;
+
+    /* ── Feedback ─────────────────────────────────────────────────────────────
+       DEDUPLICATED. Four files carried their own success green:
+           --status-live: #22c55e   (style.css)
+           --valid:       #22c55e   (navbar.css)  ← identical hex, different name
+           --success:     #10b981   (navbar.css)  ← a THIRD name, a fourth hue
+       One `.form-control.valid` and one `.pc-status.is-live` therefore rendered
+       in visibly different greens for the same "this is fine" meaning.
+       Now one primitive, surfaced as --color-success.
+       ------------------------------------------------------------------------ */
+    --success-500: #22c55e;
+    --warning-500: #f59e0b;
+    --danger-500: #ef4444;
+    --danger-700: #b91c1c;
+    --danger-100: #fef2f2;
+    --danger-200: #fecaca;
+    --danger-300: #fca5a5;
+
+    /* ── Alpha stops used by shadows and rules ────────────────────────────── */
+    --black-a05: rgb(0 0 0 / 0.05);
+    --black-a10: rgb(0 0 0 / 0.1);
+    --white-a09: rgb(255 255 255 / 0.09);
+    --white-a10: rgb(255 255 255 / 0.1);
+}

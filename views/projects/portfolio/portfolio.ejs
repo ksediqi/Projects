@@ -1,0 +1,1286 @@
+<%- include("./../../partials/head.ejs") %>
+<%- include("./../../partials/header.ejs") %>
+<!-- Put this tiny script in <head> BEFORE your CSS to avoid FOUC -->
+
+
+<!--    <button id="open-sidebar" class="sidebar-toggle" aria-label="Open navigation menu">-->
+<!--        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" aria-hidden="true">-->
+<!--            <path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/>-->
+<!--        </svg>-->
+<!--    </button>-->
+
+<body>
+<header class=" header portfolio-header" id="porto-header">
+    <nav id="portfolio-nav" class="  porto-navbar sticky-nav navbar-sidebar" aria-label="Portfolio navigation">
+
+        <ul class="nav-links">
+
+            <li class="home-li"><a class=" active active-link nav-link" href="#porto-home">
+
+                    Jamshid
+
+                </a></li>
+            <li><a class="nav-link" href="#project-section">Projects</a></li>
+            <li><a class="nav-link" href="#skills">Skills</a></li>
+            <li><a class="nav-link" href="#resume">Resume</a></li>
+            <li><a class="nav-link" href="#about">Meet-Me</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="porto-hero" id="porto-home" aria-label="Portfolio hero section">
+        <div class="porto-hero-content" data-aos="fade-up">
+            <div class="hero-copy">
+
+                <h1 class="porto-title">
+                    Jamshid
+                    <span class="hero-name hero-name-accent">Sediqi</span>
+                </h1>
+                <h2 class="porto-title">Full Stack Web <span>Developer</span></h2>
+                <p class="container-text">
+                    I build exceptional digital experiences with modern web technologies.
+                    Passionate about creating solutions that make an impact.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#project-section" aria-label="View my project work">
+                        <button class="btn-interface">
+                            <span aria-hidden="true">▦</span> View My Work
+                        </button>
+                    </a>
+                    <a href="#contact" aria-label="Contact me">
+                        <button class="btn-interface">
+                            <span aria-hidden="true">▱</span> Contact Me
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="code-window" aria-label="Code preview showing developer skills">
+                <div class="code-glow"></div>
+                <div class="code-titlebar">
+                    <div class="dot dot-r"></div>
+                    <div class="dot dot-y"></div>
+                    <div class="dot dot-g"></div>
+                    <span class="code-filename">skills.js</span>
+                </div>
+                <pre class="code-body"><code><span class="ln">01</span><span class="cmt">// Full-Stack Developer - core toolkit</span>
+<span class="ln">02</span>
+<span class="ln">03</span><span class="kw">const</span> <span class="var">developer</span> <span
+                                class="op">=</span> <span class="op">{</span>
+<span class="ln">04</span>  <span class="var">name</span><span class="op">:</span>  <span
+                                class="str">"Jamshid Sediqi"</span><span class="op">,</span>
+<span class="ln">05</span>  <span class="var">title</span><span class="op">:</span> <span class="str">"Full Stack Web Developer"</span><span
+                                class="op">,</span>
+<span class="ln">06</span>  <span class="var">focus</span><span class="op">:</span> <span class="str">"impactful digital experiences"</span><span
+                                class="op">,</span>
+<span class="ln">07</span>
+<span class="ln">08</span>  <span class="var">frontend</span><span class="op">:</span> <span class="op">[</span><span
+                                class="str">"HTML"</span><span class="op">,</span> <span
+                                class="str">"CSS"</span><span
+                                class="op">,</span> <span class="str">"JavaScript"</span><span
+                                class="op">,</span> <span
+                                class="str">"React"</span><span class="op">],</span>
+<span class="ln">09</span>  <span class="var">backend</span><span class="op">:</span>  <span class="op">[</span><span
+                                class="str">"Node.js"</span><span class="op">,</span> <span
+                                class="str">"Express"</span><span
+                                class="op">,</span> <span class="str">"REST APIs"</span><span class="op">],</span>
+<span class="ln">10</span>  <span class="var">database</span><span class="op">:</span> <span class="op">[</span><span
+                                class="str">"MongoDB"</span><span class="op">,</span> <span
+                                class="str">"PostgreSQL"</span><span class="op">],</span>
+<span class="ln">11</span>
+<span class="ln">12</span>  <span class="fn">greet</span><span class="op">() {</span>
+<span class="ln">13</span>    <span class="kw">return</span> <span class="str">`Hi! I'm ${this.name}.`</span>
+<span class="ln">14</span>         <span class="op">+</span> <span
+                                class="str">` Let's build something great.`</span><span class="op">;</span>
+<span class="ln">15</span>  <span class="op">}</span>
+<span class="ln">16</span><span class="op">};</span>
+<span class="ln">17</span>
+<span class="ln">18</span><span class="var">console</span><span class="op">.</span><span class="fn">log</span><span
+                                class="op">(</span><span class="var">developer</span><span class="op">.</span><span
+                                class="fn">greet</span><span class="op">());</span></code></pre>
+            </div>
+
+            <div class="scroll-indicator-container">
+
+                <a href="#project-section" class="scroll-indicator" aria-label="Scroll to projects">
+                    <span></span>
+                    <small>Scroll</small>
+                </a>
+
+            </div>
+        </div>
+
+
+    </section>
+</header>
+
+
+<!-- Hero Section -->
+
+<hr class="scroll-hr">
+<!-- Projects Section -->
+
+
+<!-- =========================================================
+     PROJECTS SECTION
+     - #title-animation restored on the heading so your
+       view()-timeline CSS keeps working (see earlier fix:
+       animation-duration: auto + no overflow/transform on
+       #project-section or .container).
+     - data-aos removed from that heading since it now has its
+       own scroll-timeline animation; keeping both would fight.
+========================================================= -->
+<section id="project-section" class="section">
+    <h2 id="title-animation" class="heading-primary section-title projects-title">
+        Explore My <span>Projects</span>
+    </h2>
+
+    <div class="projects-intro">
+        <p class="section-intro " data-aos="fade-up" data-aos-delay="100">
+            Here are some of my recent projects that showcase my skills and experience.
+        </p>
+    </div>
+    <div class="container">
+
+        <div class="grid-container projects-grid">
+            <!-- Project 1 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="200">
+                <a href="#" class="project-card-action" aria-label="View Library Management System project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="Library Management System"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">01</span>
+                    <h3>Library Management System</h3>
+                    <p class="text-gray-600 mb-4">
+                        A digital library platform with user authentication, book management, and admin dashboard.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">React</span>
+                        <span class="tag tag-green">Node.js</span>
+                        <span class="tag tag-purple">MongoDB</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="project-card-action" aria-label="View Messaging App project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="Messaging App"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">02</span>
+                    <h3>Messaging App</h3>
+                    <p class="text-gray-600 mb-4">
+                        Real-time chat application with user profiles, group chats, and message history.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">React</span>
+                        <span class="tag tag-green">Firebase</span>
+                        <span class="tag tag-yellow">Tailwind CSS</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="project-card-action" aria-label="View Task Manager project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="Task Manager" class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">03</span>
+                    <h3>Task Manager</h3>
+                    <p class="text-gray-600 mb-4">
+                        Productivity application with drag-and-drop functionality, categories, and progress
+                        tracking.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">Vue.js</span>
+                        <span class="tag tag-green">Express</span>
+                        <span class="tag tag-purple">MongoDB</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="200">
+                <a href="#" class="project-card-action" aria-label="View SEO Medicine Website project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="SEO Medicine Website"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">04</span>
+                    <h3>SEO Medicine Website</h3>
+                    <p class="text-gray-600 mb-4">
+                        Professional websites focused on search visibility, clean layout, and responsive content
+                        structure.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag tag-green">CSS</span>
+                        <span class="tag tag-yellow">JavaScript</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="project-card-action" aria-label="View Restaurant Website project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" data-src="/img/card.jpg" alt="Restaurant Website"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">05</span>
+                    <h3>Restaurant Website</h3>
+                    <p class="text-gray-600 mb-4">
+                        Modern restaurant landing page with strong visuals, menu sections, and mobile-friendly
+                        navigation.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag tag-green">CSS</span>
+                        <span class="tag tag-purple">Figma</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 6 -->
+            <article class="grid-item project-showcase-card" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="project-card-action" aria-label="View Agriculture Design project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" data-src="/img/card.jpg" alt="Design For Agriculture"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">06</span>
+                    <h3>Design For Agriculture</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clean digital concept for agriculture services with bold sections, natural colors, and
+                        accessible UI.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag tag-green">UI Design</span>
+                        <span class="tag tag-yellow">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 7 (hidden by default, shown by "More" button) -->
+            <article class="grid-item project-showcase-card project-hidden" data-aos="fade-up" data-aos-delay="300">
+                <a href="#" class="project-card-action" aria-label="View Agriculture Design project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" data-src="/img/card.jpg" alt="Design For Agriculture"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">06</span>
+                    <h3>Design For Agriculture</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clean digital concept for agriculture services with bold sections, natural colors, and
+                        accessible UI.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag tag-green">UI Design</span>
+                        <span class="tag tag-yellow">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 8 (hidden by default) -->
+            <article class="grid-item project-showcase-card project-hidden" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="project-card-action" aria-label="View Agriculture Design project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="Design For Agriculture"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">06</span>
+                    <h3>Design For Agriculture</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clean digital concept for agriculture services with bold sections, natural colors, and
+                        accessible UI.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag tag-green">UI Design</span>
+                        <span class="tag tag-yellow">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 9 (hidden by default) -->
+            <article class="grid-item project-showcase-card project-hidden" data-aos="fade-up" data-aos-delay="400">
+                <a href="#" class="project-card-action" aria-label="View Agriculture Design project">
+                    <span aria-hidden="true">↗</span>
+                </a>
+                <div class="grid-item-img project-card-image">
+                    <img src="/img/card-lazy.jpg" loading="lazy" alt="Design For Agriculture"
+                         class="features__img lazy-img"/>
+                </div>
+                <div class="project-card-content">
+                    <span class="project-card-number">06</span>
+                    <h3>Design For Agriculture</h3>
+                    <p class="text-gray-600 mb-4">
+                        Clean digital concept for agriculture services with bold sections, natural colors, and
+                        accessible UI.
+                    </p>
+                    <div class="project-card-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag tag-green">UI Design</span>
+                        <span class="tag tag-yellow">Prototype</span>
+                    </div>
+                </div>
+            </article>
+
+
+        </div><!-- /.projects-grid -->
+
+
+    </div><!-- /.container -->
+    <div class=" btn-parent">
+
+        <button class=" btn-interface " type="button" id="explore-more-projects"
+                aria-expanded="false">
+              <span>
+                    More
+              </span>
+        </button>
+
+    </div>
+    <p class="projects-note">Note: Add more projects</p>
+
+    <div class="scroll-indicator-container">
+
+        <a href="#skills" class="scroll-indicator" aria-label="Scroll to projects">
+            <span></span>
+            <small>Scroll</small>
+        </a>
+
+    </div>
+</section>
+
+<hr class="scroll-hr"/>
+
+<!-- =========================================================
+     SKILLS SECTION
+========================================================= -->
+<section id="skills" class="section">
+    <div class="container">
+
+        <h2 class="heading-primary section-title skills-title">
+            My <span>Skills</span>
+        </h2>
+
+        <p class="section-intro skills-intro">
+            My skills are those I've learned and developed over the years. By studying,
+            focusing, and being consistent in what I love most.
+        </p>
+
+        <div class="skills-showcase">
+
+            <!-- Frontend -->
+            <article class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i data-feather="layout" aria-hidden="true"></i>
+                    </div>
+                    <h3>Frontend</h3>
+                </div>
+                <ul class="skill-list" aria-label="Frontend skills">
+                    <li><span class="skill-badge-icon html">5</span><span>HTML</span></li>
+                    <li><span class="skill-badge-icon css">3</span><span>CSS</span></li>
+                    <li><span class="skill-badge-icon js">JS</span><span>JavaScript</span></li>
+                    <li><span class="skill-badge-icon react"></span><span>jQuery</span></li>
+                    <li><span class="skill-badge-icon react">⚛</span><span>React</span></li>
+                    <li><span class="skill-badge-icon sass">S</span><span>Sass</span></li>
+                    <li><span class="skill-badge-icon git">◇</span><span>Git</span></li>
+                    <li><span class="skill-badge-icon github">●</span><span>GitHub</span></li>
+                </ul>
+            </article>
+
+            <!-- Backend -->
+            <article class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                <div class="skill-header">
+                    <div class="skill-icon green">
+                        <i data-feather="server" aria-hidden="true"></i>
+                    </div>
+                    <h3>Backend</h3>
+                </div>
+                <ul class="skill-list" aria-label="Backend skills">
+                    <li><span class="skill-badge-icon node">⬢</span><span>Node.js</span></li>
+                    <li><span class="skill-badge-icon express">Ex</span><span>Express</span></li>
+                    <li><span class="skill-badge-icon api">API</span><span>REST APIs</span></li>
+                    <li><span class="skill-badge-icon python">Py</span><span>Python</span></li>
+                </ul>
+            </article>
+
+            <!-- Database -->
+            <article class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                <div class="skill-header">
+                    <div class="skill-icon purple">
+                        <i data-feather="database" aria-hidden="true"></i>
+                    </div>
+                    <h3>Database</h3>
+                </div>
+                <ul class="skill-list" aria-label="Database skills">
+                    <li><span class="skill-badge-icon mongo">M</span><span>MongoDB</span></li>
+                    <li><span class="skill-badge-icon postgres">Pg</span><span>PostgreSQL</span></li>
+                    <li><span class="skill-badge-icon firebase">🔥</span><span>Firebase</span></li>
+                    <li><span class="skill-badge-icon mysql">SQL</span><span>MySQL</span></li>
+                </ul>
+            </article>
+
+            <!-- Tools -->
+            <article class="skill-category" data-aos="fade-up" data-aos-delay="500">
+                <div class="skill-header">
+                    <div class="skill-icon yellow">
+                        <i data-feather="tool" aria-hidden="true"></i>
+                    </div>
+                    <h3>Tools</h3>
+                </div>
+                <ul class="skill-list" aria-label="Developer tools">
+                    <li><span class="skill-badge-icon github">●</span><span>GitHub</span></li>
+                    <li><span class="skill-badge-icon docker">◈</span><span>Basic Docker</span></li>
+                    <li><span class="skill-badge-icon vscode">VS</span><span>Code</span></li>
+                    <li><span class="skill-badge-icon postman">P</span><span>Postman</span></li>
+                </ul>
+            </article>
+
+            <!-- AI & Other -->
+            <article class="skill-category" data-aos="fade-up" data-aos-delay="600">
+                <div class="skill-header">
+                    <div class="skill-icon red">
+                        <i data-feather="code" aria-hidden="true"></i>
+                    </div>
+                    <h3>AI &amp; Other</h3>
+                </div>
+                <ul class="skill-list" aria-label="AI and other skills">
+                    <li><span class="skill-badge-icon ai">AI</span><span>Machine Learning</span></li>
+                    <li><span class="skill-badge-icon data">DA</span><span>Data Analysis</span></li>
+                    <li><span class="skill-badge-icon cicd">CI</span><span>CI/CD</span></li>
+                    <li><span class="skill-badge-icon prompt">✦</span><span>Prompt Engineering</span></li>
+                    <li><span class="skill-badge-icon ai">AI</span><span>Coding With AI</span></li>
+                </ul>
+            </article>
+
+        </div><!-- /.skills-showcase -->
+    </div><!-- /.container -->
+
+    <div class="scroll-indicator-container">
+
+        <a href="#contact" class="scroll-indicator" aria-label="Scroll to projects">
+            <span></span>
+            <small>Scroll</small>
+        </a>
+
+    </div>
+</section>
+
+<hr class="scroll-hr"/>
+
+<!-- =========================================================
+     RESUME SECTION
+========================================================= -->
+<section id="resume" class="section">
+    <div class="container">
+
+        <div class="section-heading-wrap">
+            <h2 class="heading-primary section-title resume-title">My <span>Résumé</span></h2>
+            <p class="section-sub">Professional journey and education background.</p>
+        </div>
+
+        <div class="resume-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="resume-sidebar">
+
+                <div class="resume-card sidebar-identity">
+                    <div class="avatar-ring">JS</div>
+                    <div class="identity-name">Jamshid Sediqi</div>
+                    <div class="identity-title">Full Stack Web Developer</div>
+                    <div class="identity-divider"></div>
+                    <ul class="contact-list">
+                        <li>
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0l-9.75 6.75L2.25 6.75"/>
+                            </svg>
+                            hello@jamshid.dev
+                        </li>
+                        <li>
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                            </svg>
+                            Rochester, NY
+                        </li>
+                        <li>
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253"/>
+                            </svg>
+                            jamshid.dev
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <div class="sidebar-card-label">At a glance</div>
+                    <div class="stat-row">
+                        <div class="stat-box"><span class="stat-number">5+</span><span
+                                    class="stat-label">Years exp.</span></div>
+                        <div class="stat-box"><span class="stat-number">20+</span><span
+                                    class="stat-label">Projects</span></div>
+                        <div class="stat-box"><span class="stat-number">4.9</span><span
+                                    class="stat-label">Avg rating</span></div>
+                        <div class="stat-box"><span class="stat-number">3</span><span
+                                    class="stat-label">Roles held</span></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <div class="sidebar-card-label">Tech stack</div>
+                    <div class="skill-grid">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">jQuery</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">Tailwind</span>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- MAIN -->
+            <main class="resume-main">
+
+                <!-- Experience -->
+                <div class="resume-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M20.25 14.15v4.073a2.25 2.25 0 01-2.25 2.25h-12a2.25 2.25 0 01-2.25-2.25v-4.072M7.5 8.25h9m-9 3h9M5.25 6h13.5a2.25 2.25 0 012.25 2.25v.75M5.25 6A2.25 2.25 0 003 8.25V9m2.25-3V4.5A.75.75 0 016 3.75h12a.75.75 0 01.75.75V6"/>
+                            </svg>
+                        </div>
+                        <span class="block-title">Work Experience</span>
+                        <span class="block-count">2 roles</span>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-header">
+                                <span class="tl-role">Manufacturing Technician</span>
+                                <span class="tl-badge">Jun 2020 – Mar 2022</span>
+                            </div>
+                            <div class="tl-company">Tesla</div>
+                            <p class="tl-desc">
+                                Operated with an inspected, diagnose, and repair mindset to ensure quality
+                                standards. Visually detected defects and performed repairs in a fast-paced
+                                production environment.
+                            </p>
+                        </div>
+
+                        <div class="tl-divider"></div>
+
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-header">
+                                <span class="tl-role">Rideshare Driver</span>
+                                <span class="tl-badge">May 2017 – Mar 2020</span>
+                            </div>
+                            <div class="tl-company">Uber / Lyft · Self-employed</div>
+                            <p class="tl-desc">
+                                Provided exceptional customer service with a 4.9 driver rating.
+                                Managed logistics, navigation, and customer interactions while
+                                maintaining vehicle safety standards.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="resume-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+                            </svg>
+                        </div>
+                        <span class="block-title">Education</span>
+                        <span class="block-count">1 degree</span>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot"></div>
+                            <div class="tl-header">
+                                <span class="tl-role">A.S. in Information Technology</span>
+                                <span class="tl-badge">Graduated May 2015</span>
+                            </div>
+                            <div class="tl-company">Monroe Community College</div>
+                            <p class="tl-desc">
+                                Focused on computer systems, networking, and programming fundamentals.
+                                Built a solid foundation in IT infrastructure and software development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+
+
+        </div><!-- /.resume-layout -->
+    </div><!-- /.container -->
+    <!--          Docs Resume section  -->
+
+
+    <!--            Docs Resume section Ends Here-->
+    <div class="scroll-indicator-container">
+
+        <a href="#about" class="scroll-indicator" aria-label="Scroll to projects">
+            <span></span>
+            <small>Scroll</small>
+        </a>
+
+    </div>
+
+
+</section>
+<div>
+    <div class="resume-wrapper">
+        <div class="resume-container  hidden" id="resume-container">
+            <div class="resume-modal__backdrop"></div>
+            <header class="top-section  ">
+                <div class="header-content">
+                    <p class="greeting">Hello I'm</p>
+                    <h1 class="resume-title-docs">Jamshid Sediqi</h1>
+                    <p class="job-title">Manufacturing Technician, Tesla</p>
+
+                    <div class="resume-section-title">Profile</div>
+                    <p class="profile-text">
+                        Manufacturing technician with experience in production quality, technical troubleshooting,
+                        customer support, and emerging AI/data tools. Recognized for reliability, process awareness,
+                        and maintaining quality standards in fast-paced manufacturing and technical support
+                        environments.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <!-- Replace src with your actual image path -->
+                    <img class="profile-img" src="/img/jamshid.jpg" loading="lazy"
+                         alt="Jamshid Sediqi — Full Stack Developer"/>
+                    <!--                <img src=/img/jamshid.jpg" loading="lazy" alt="Jon jon" class="profile-img">-->
+                </div>
+            </header>
+
+            <div class="resume-main-content">
+                <div class="left-column">
+                    <div class="resume-section-title">Skills</div>
+
+                    <div class="resume-skill-category ">
+                        <h4>Quality & Process</h4>
+                        <p>Quality inspection, defect identification, production documentation, process improvement,
+                            corrective action support</p>
+                    </div>
+
+                    <div class="resume-skill-category ">
+                        <h4>Technical Support</h4>
+                        <p>Help desk support, troubleshooting, password resets, system access, printer support, user
+                            guidance</p>
+                    </div>
+
+                    <div class="resume-skill-category ">
+                        <h4>Data & AI</h4>
+                        <p>Data science foundations, data analytics, machine learning foundations, data ethics, AI
+                            solutions, prompt engineering</p>
+                    </div>
+
+                    <div class="resume-skill-category ">
+                        <h4>Web Development</h4>
+                        <div class="tech-tags">
+                            <span>🌐 HTML</span>
+                            <span>🎨 CSS</span>
+                            <span>💛 JavaScript</span>
+                            <span>⚛️ React</span>
+                            <span>🟩 Vue.js</span>
+                            <span>▲ Next.js</span>
+                            <span>🟢 Node.js</span>
+                            <span>⚡ Express.js</span>  <!-- Changed from 🚂 -->
+                            <span>📘 TypeScript</span>
+                            <span>🔗 RESTful APIs</span>
+                            <span>🔐 JWT</span>
+                            <span>🗄️ SQL</span>
+                            <span>🐘 PostgreSQL</span>
+                            <span>🐙 Git</span>
+                        </div>
+                    </div>
+
+                    <div class="resume-skill-category ">
+                        <h4>IT & Systems</h4>
+                        <p>Windows, Windows Server, macOS, Linux, MS Office Suite, Access, Networking
+                            fundamentals</p>
+                    </div>
+
+                    <div class="resume-section-title" style="margin-top: 20px;">Languages</div>
+                    <ul class="languages">
+                        <li>Farsi (Dari) — Native</li>
+                        <li>English — Fluent</li>
+                    </ul>
+                </div>
+
+                <div class="right-column">
+                    <div class="resume-section-title">Experience</div>
+
+                    <div class="experience-item">
+                        <div class="exp-meta">
+                            2020 – Present
+                            <span>Jun 2020 – Oct 2022 (Assoc.)<br>Oct 2022 – Pres. (Tech)</span>
+                        </div>
+                        <div class="exp-details">
+                            <h3>Manufacturing Technician</h3>
+                            <h4>Tesla</h4>
+                            <ul>
+                                <li>Inspect, diagnose, and repair paint defects on end-of-line vehicles while
+                                    maintaining production pace and quality standards.
+                                </li>
+                                <li>Identify root causes of recurring paint defects and communicate findings to
+                                    support process improvement and defect prevention.
+                                </li>
+                                <li>Document paint quality observations and escalate trends to leadership for review
+                                    and corrective action.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-meta">
+                            2018 – 2020
+                        </div>
+                        <div class="exp-details">
+                            <h3>Driver</h3>
+                            <h4>Uber/Lyft</h4>
+                            <ul>
+                                <li>Delivered professional rideshare service while maintaining a 4.9 customer rating
+                                    through safe driving, reliability, and strong customer service.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-meta">
+                            2015 – 2017
+                        </div>
+                        <div class="exp-details">
+                            <h3>Consultant</h3>
+                            <h4>Sutherland Global Services</h4>
+                            <ul>
+                                <li>Troubleshot customer internet and television service issues using a structured
+                                    diagnostic process.
+                                </li>
+                                <li>Escalated unresolved technical issues to Tier 2 support with accurate case
+                                    details to enable faster resolution.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-meta">
+                            2015
+                        </div>
+                        <div class="exp-details">
+                            <h3>Help Desk Support Specialist</h3>
+                            <h4>Ellucian Company</h4>
+                            <ul>
+                                <li>Assisted students, faculty, and staff with password resets, system access,
+                                    Microsoft Office, printing, and basic technical troubleshooting.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="exp-meta">
+                            2010 – 2015
+                        </div>
+                        <div class="exp-details">
+                            <h3>Student Aide</h3>
+                            <h4>Monroe Community College, Rochester, NY</h4>
+                            <ul>
+                                <li>Resolved computer and printer issues by identifying errors, testing solutions,
+                                    and providing clear guidance to users.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resume-section-title">Education</div>
+
+                    <div class="education-item">
+                        <div class="year">Jan 2026</div>
+                        <div class="degree"><strong>AI Prompt Engineering Certificate</strong><br>Chegg Online
+                            Bootcamp
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="year">Aug 2025</div>
+                        <div class="degree"><strong>Machine Learning Certificate</strong><br>University of Maryland
+                            Global Campus
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="year">May 2015</div>
+                        <div class="degree"><strong>Associate of Science in Information Technology</strong><br>Monroe
+                            Community College, Rochester, NY
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div>📍 3051 Quantum Dr, Fremont, CA 94538</div>
+                <div>📞 (209) 289-000</div>
+                <div>✉️ jamshid.seddiqi@gmail.com</div>
+                <div>✉️ jsediqi@tesla.com</div>
+            </footer>
+        </div>
+    </div>
+    <div class="resume-footer">
+                    <span class="download-btn" id="download-btn">
+                        View-Full
+                    </span>
+    </div>
+</div>
+<!-- Download -->
+
+<hr class="scroll-hr"/>
+
+<!-- =========================================================
+     ABOUT SECTION
+========================================================= -->
+<section id="about" class="section">
+    <div class="section-heading-wrap">
+        <div class="section-eyebrow">Who I am</div>
+        <h2 class="heading-primary section-title about-title">About <span>Me</span></h2>
+    </div>
+    <div class="container">
+
+
+        <div class="about-grid">
+
+            <!-- LEFT: IMAGE + MINI STATS -->
+            <div class="about-visual">
+                <div class="image-frame">
+                    <img src="/img/jamshid.jpg" loading="lazy" alt="Jamshid Sediqi — Full Stack Developer"/>
+                    <div class="image-badge">
+                        <div class="badge-dot"></div>
+                        <span class="badge-text">Available for work</span>
+                    </div>
+                </div>
+
+                <div class="mini-stats">
+                    <div class="mini-stat"><span class="mini-stat-num">3+</span><span class="mini-stat-label">Years coding</span>
+                    </div>
+                    <div class="mini-stat"><span class="mini-stat-num">20+</span><span class="mini-stat-label">Projects built</span>
+                    </div>
+                    <div class="mini-stat"><span class="mini-stat-num">∞</span><span
+                                class="mini-stat-label">Coffee cups</span></div>
+                </div>
+            </div>
+
+            <!-- RIGHT: CONTENT -->
+            <div class="about-content">
+
+                <div class="about-bio">
+                    <p class="bio-text">
+                        I'm a <strong>passionate full-stack developer</strong> with over 3 years of experience
+                        building web applications. My journey in tech started with a curiosity for how
+                        websites work — which led me to teach myself programming through online resources
+                        and side projects.
+                    </p>
+                    <p class="bio-text">
+                        What excites me most is <strong>solving real problems with code</strong>. I enjoy the
+                        entire process from concept to deployment, and I'm always picking up new
+                        technologies to sharpen my skills.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info-text">
+                            <span class="contact-label">Location</span>
+                            <span class="contact-value">Fremont, CA</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0l-9.75 6.75L2.25 6.75"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info-text">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">jamshid@example.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item ">
+                        <div class="contact-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info-text">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">(209) 000-0000</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item ">
+                        <div class="contact-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info-text">
+                            <span class="contact-label">GitHub</span>
+                            <span class="contact-value">github.com/jamshid</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill bars: width/delay exposed as data-* so JS can trigger the
+                     fill animation on scroll-into-view instead of relying on inline
+                     style alone (keeps animation logic out of markup). -->
+                <div class="skills-card">
+                    <div class="skills-header">Core skills</div>
+                    <div class="skill-bars">
+                        <div class="skill-row">
+                            <div class="skill-meta"><span class="skill-name">Frontend (HTML, CSS, JS)</span><span
+                                        class="skill-pct">92%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="92" style="--delay:0.1s;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-meta"><span class="skill-name">React / Node.js</span><span
+                                        class="skill-pct">85%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="85" style="--delay:0.2s;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-meta"><span class="skill-name">Databases (MySQL, MongoDB)</span><span
+                                        class="skill-pct">78%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="78" style="--delay:0.3s;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-meta"><span class="skill-name">PHP / REST APIs</span><span
+                                        class="skill-pct">80%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="80" style="--delay:0.4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-cta">
+                    <a href="#contact">
+                        <button class="btn-interface">
+                            <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                 aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0l-9.75 6.75L2.25 6.75"/>
+                            </svg>
+                            Contact Me
+                        </button>
+                    </a>
+                    <bunton class="btn-interface">
+                        <a href="#resume" class="">
+                            <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                 aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                            </svg>
+                            View Résumé
+                        </a>
+                    </bunton>
+                </div>
+
+            </div><!-- /.about-content -->
+        </div><!-- /.about-grid -->
+
+
+    </div><!-- /.container -->
+
+    <div class="scroll-indicator-container">
+
+        <a href="#contact" class="scroll-indicator" aria-label="Scroll to projects">
+            <span></span>
+            <small>Scroll</small>
+        </a>
+
+    </div>
+</section>
+
+
+<hr class="scroll-hr"/>
+<!-- =========================================================
+     CONTACT SECTION
+========================================================= -->
+<section id="contact" class="resume-section">
+    <div class="container">
+
+        <div class="section-heading-wrap">
+            <div class="section-eyebrow">Let's talk</div>
+            <h2 class="heading-primary section-title contact-title">Get <span>In Touch</span></h2>
+            <p class="section-sub">Have a project in mind or just want to chat? I'd love to hear from you.</p>
+        </div>
+
+        <div class="contact-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="contact-sidebar">
+
+                <div class="sidebar-intro">
+                    <p class="intro-headline">Let's build something great together.</p>
+                    <p class="intro-body">
+                        I'm currently open to freelance work and full-time opportunities.
+                        Whether it's a quick question or a long-term project, my inbox is always open.
+                    </p>
+                </div>
+
+                <div class="contact-details">
+                    <a href="mailto:jamshid@example.com" class="detail-card">
+                        <div class="detail-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0l-9.75 6.75L2.25 6.75"/>
+                            </svg>
+                        </div>
+                        <div class="detail-text">
+                            <span class="detail-label">Email</span>
+                            <span class="contact-value">jamshid@example.com</span>
+                        </div>
+                        <div class="detail-arrow">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="tel:+12090000000" class="detail-card">
+                        <div class="detail-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info-text">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">(209) 000-0000</span>
+                        </div>
+                        <div class="detail-arrow">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <div class="detail-card detail-card--static">
+                        <div class="detail-icon">
+                            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"
+                                 focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                            </svg>
+                        </div>
+                        <div class="detail-text">
+                            <span class="detail-label">Location</span>
+                            <span class="contact-value">Fremont, California</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-card">
+                    <div class="social-label">Find me online</div>
+                    <div class="social-row">
+                        <a href="#" class="social-btn" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true" focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true" focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true" focusable="false">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Website">
+                            <svg viewBox="0 0 24 24" stroke-width="1.75" aria-hidden="true" focusable="false">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- FORM -->
+            <div class="form-card">
+                <div class="form-card-header">
+                    <div class="form-card-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="form-card-title">Send a message</div>
+                        <div class="form-card-sub">I'll get back to you within 24 hours.</div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" novalidate>
+
+                    <!-- Name + Email share a row on wider screens -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name <span>*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="John Doe"
+                                   required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span>*</span></label>
+                            <input type="email" id="email" name="email" class="form-control"
+                                   placeholder="john@example.com" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject <span>*</span></label>
+                        <input type="text" id="subject" name="subject" class="form-control"
+                               placeholder="Project enquiry, collaboration…" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span>*</span></label>
+                        <textarea id="message" name="message" class="form-control" rows="5"
+                                  placeholder="Tell me about your project or just say hello…" required></textarea>
+                    </div>
+
+                    <div class="form-footer">
+            <span class="form-note">
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true" focusable="false">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/>
+              </svg>
+              Your info stays private.
+            </span>
+                        <button type="submit" class="submit-btn btn-interface">
+                            Send Message
+
+                        </button>
+                    </div>
+
+                    <div class="success-toast" id="successToast" role="status" aria-live="polite">
+                        <svg fill="none" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true"
+                             focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Message sent! I'll be in touch soon.
+                    </div>
+                </form>
+            </div><!-- /.form-card -->
+
+        </div><!-- /.contact-layout -->
+    </div><!-- /.container -->
+</section>
+
+</body>
+
+<%- include("../../partials/footer") %>

@@ -1,0 +1,1946 @@
+/* ═══════════════════════════════════════════════════════════════
+   book-lib.css — refactored
+   ---------------------------------------------------------------
+   Load AFTER styles.refactored.css and navigation.refactored.css.
+   Inherits all theme tokens from those files; adds library-specific
+   brand tokens below instead of repeating hex values 30+ times.
+
+     01. Library tokens
+     02. Utilities
+     03. Library navbar
+     04. Hero
+     05. Hero visual (device mockup)
+     06. Section chrome
+     07. Features
+     08. Screenshot marquee
+     09. Book sections
+     10. Pricing
+     11. Footer
+     12. Login panel
+     13. Scroll reveal
+     14. Keyframes
+     15. Responsive
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ═══ 01. LIBRARY TOKENS ═══════════════════════════════════════
+   No longer declared here. Every token this file needs — the
+   --lib-violet/purple/blue/cyan family, --lib-grad(-text), the
+   --lib-violet-aXX alpha stops, plus --size-header-lib, --font-brand,
+   --font-code, --z-sticky, --z-dropdown and --z-modal — comes straight
+   from tokens.css, which must be loaded before this file. Nothing in
+   this stylesheet defines a custom property anymore.
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ═══ 02. UTILITIES ═══════════════════════════════════════════ */
+
+.lib-container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.gradient-text {
+    background: var(--lib-grad-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lib-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border: 1px solid var(--lib-violet-a30);
+    border-radius: 25px;
+    background: var(--lib-violet-a10);
+    font-family: var(--font-code);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lib-violet);
+}
+
+.lib-tag::before {
+    content: "//";
+    opacity: 0.5;
+}
+
+
+/* ═══ 03. LIBRARY NAVBAR ══════════════════════════════════════
+   RESTORED: .lib-nav was entirely commented out, but .lib-nav.scrolled
+   and .nav-links.open (position: absolute; top: 100%) both depend on it.
+   With no positioned .lib-nav, the mobile menu anchored to whatever
+   positioned ancestor it could find — usually the page — instead of
+   dropping below the bar.
+
+   CHANGED: position: relative → sticky, so the bar actually sticks, and
+   z-index comes from the scale rather than a bare 200 that ties with
+   .lib-login-page.
+   ═══════════════════════════════════════════════════════════════ */
+
+/*.lib-nav {*/
+/*    position: sticky;*/
+/*    top: 0;*/
+/*    z-index: var(--z-sticky);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    height: var(--size-header-lib);*/
+/*    padding: 0 32px;*/
+/*    border-bottom: 1px solid var(--border-color);*/
+/*    background: red;*/
+/*    backdrop-filter: blur(18px) saturate(160%);*/
+/*    -webkit-backdrop-filter: blur(18px) saturate(160%);*/
+/*    overflow: visible;*/
+/*    transition: box-shadow var(--dur-base) ease;*/
+/*}*/
+
+.lib-nav.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+/* COLLISION: `.nav-logo` is also defined in navigation.css with different
+   values (0.9rem / weight 500 vs 17px / weight 700). Scoped to .lib-nav so
+   the two stop overwriting each other by load order. */
+/*.lib-nav .nav-logo {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    gap: 10px;*/
+/*    font-size: 17px;*/
+/*    font-weight: 700;*/
+/*    color: var(--header-color);*/
+/*}*/
+
+.nav-logo-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--lib-grad);
+    font-size: 16px;
+}
+
+/* ADDED: .nav-links had no base rule at all — only `display: none` inside
+   the 900px query and `.open` styling. On desktop it was unstyled. */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-cta {
+    padding: 9px 20px;
+    border: none;
+    border-radius: 8px;
+    background: var(--lib-grad);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+/* REMOVED the three `!important` flags — they were only needed to beat the
+   global `.navbar a` rules, which this scoped selector now outranks anyway. */
+.lib-nav .nav-cta {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.nav-cta:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.lib-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.lib-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--text-color);
+    transform-origin: center;
+    transition: transform var(--dur-base) ease, opacity var(--dur-base) ease;
+}
+
+.lib-hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.lib-hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.lib-hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.lib-plan-badge {
+    font-family: var(--font-code);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    cursor: default;
+}
+
+.lib-plan-badge:empty {
+    display: none;
+}
+
+
+/* ═══ 04. HERO ════════════════════════════════════════════════ */
+
+/* NOTE: `isolation: isolate` here creates a stacking context. Anything
+   sticky or fixed that lives INSIDE this section can never paint above
+   content outside it, no matter how large its z-index. Keep the nav a
+   sibling of this section, not a descendant. */
+.lib-hero-section {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100vh - var(--size-header-lib));
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.lib-hero-section > .lib-container {
+    display: flex;
+    align-items: center;
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+    width: 100%;
+    padding: clamp(60px, 8vh, 96px) 0 clamp(40px, 5vh, 60px);
+}
+
+.lib-hero-section .hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.hero-h1 {
+    margin-bottom: 1.25rem;
+    font-family: var(--font-brand);
+    font-size: clamp(1.8rem, 5.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: var(--header-color);
+}
+
+/* Ambient blobs */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+.blob-1 {
+    top: -120px;
+    left: -80px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgb(108 63 197 / 0.18) 0%, transparent 70%);
+    animation: drift1 14s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+    right: -60px;
+    bottom: 0;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgb(59 108 247 / 0.14) 0%, transparent 70%);
+    animation: drift2 16s ease-in-out infinite alternate;
+}
+
+/* FIXED: top/left 50% with no translate put the blob's top-left corner at
+   centre, not the blob itself. The drift animation then overwrote any
+   transform anyway — the offset is now baked into the keyframes. */
+.blob-3 {
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgb(68 212 255 / 0.1) 0%, transparent 70%);
+    animation: drift3 12s ease-in-out infinite alternate;
+}
+
+/* REMOVED: `.hero-grid { background-size: 60px 60px }` with no
+   background-image — sizing nothing. Re-add with an image if you want the
+   grid texture:
+     background-image:
+       linear-gradient(var(--border-color) 1px, transparent 1px),
+       linear-gradient(90deg, var(--border-color) 1px, transparent 1px); */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.lib-hero-section .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding: 6px 14px 6px 8px;
+    border: 1px solid var(--lib-violet-a30);
+    border-radius: 100px;
+    background: var(--lib-violet-a10);
+    animation: none; /* overrides the pulseRing badge in navigation.css */
+}
+
+.lib-hero-section .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lib-violet);
+    box-shadow: 0 0 8px var(--lib-violet);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+.lib-hero-section .hero-badge span {
+    font-family: var(--font-code);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--lib-violet);
+}
+
+.lib-hero-section .hero-sub {
+    max-width: 440px;
+    margin-bottom: 36px;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.lib-hero-section .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.lib-hero-section .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 44px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+.stat-num {
+    font-family: var(--font-brand);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--header-color);
+}
+
+/* COLLISION: `.stat-label` is also defined in navigation.css for the stats
+   section (0.92rem, bold, header colour). Scoped here. */
+.lib-hero-section .stat-label {
+    margin-top: 2px;
+    font-family: var(--font-code);
+    font-size: 12px;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 14px;
+    background: var(--lib-grad);
+    color: #fff;
+    font-family: var(--font-brand);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgb(108 63 197 / 0.4), 0 4px 20px rgb(0 0 0 / 0.3);
+    transition: transform var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgb(255 255 255 / 0.12), transparent);
+    pointer-events: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgb(108 63 197 / 0.6), 0 8px 30px rgb(0 0 0 / 0.4);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    font-family: var(--font-brand);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+
+.btn-ghost:hover {
+    transform: translateY(-2px);
+    border-color: var(--lib-violet-a40);
+    background: var(--bg-alt);
+}
+
+
+/* ═══ 05. HERO VISUAL — device mockup ═════════════════════════ */
+
+/* NOTE: the 900px query hides `.hero-visual`, which is not defined anywhere
+   in this file. If the markup wraps the mockup in `.shelf-wrap` instead,
+   the mockup never hides on mobile. Both are now targeted — delete
+   whichever one your HTML doesn't use. */
+.shelf-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 24px 12px 48px;
+}
+
+.device-frame {
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background-color: var(--surface-color);
+    box-shadow: 0 40px 80px rgb(0 0 0 / 0.35), 0 0 120px rgb(108 63 197 / 0.12);
+    transform: perspective(900px) rotateY(-8deg) rotateX(3deg);
+    transition: transform 0.4s ease;
+}
+
+.device-frame:hover {
+    transform: perspective(900px) rotateY(-3deg) rotateX(1deg) translateY(-6px);
+}
+
+.device-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-alt);
+}
+
+.dot-row {
+    display: flex;
+    gap: 6px;
+}
+
+/* NOTE: `.dot` is a very generic class name for a global stylesheet.
+   Consider `.device-dot`. */
+.dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.dot-red {
+    background: #ff5f57;
+}
+
+.dot-yellow {
+    background: #febc2e;
+}
+
+.dot-green {
+    background: #28c840;
+}
+
+.device-url {
+    flex: 1;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--surface-color);
+    font-family: var(--font-code);
+    font-size: 11px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.device-content {
+    padding: 16px;
+    background: var(--bg-alt);
+}
+
+.app-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.app-brand {
+    font-family: var(--font-brand);
+    font-size: 15px;
+    font-weight: 800;
+    background: var(--lib-grad-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-search {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--surface-color);
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: var(--text-light);
+}
+
+.app-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.cat-pill {
+    padding: 3px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    background: transparent;
+    font-family: var(--font-code);
+    font-size: 10px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.cat-pill.active {
+    border-color: var(--lib-violet);
+    background: var(--lib-violet-a15);
+    color: var(--lib-violet);
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.book-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform var(--dur-fast) ease;
+}
+
+.book-card:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.book-cover {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 8px 6px;
+}
+
+.book-cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgb(0 0 0 / 0.7) 100%);
+}
+
+.book-card .book-title {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-brand);
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.book-card .book-author {
+    position: relative;
+    z-index: 1;
+    margin-top: 2px;
+    font-size: 7px;
+    color: rgb(255 255 255 / 0.6);
+}
+
+.b1 {
+    background: linear-gradient(135deg, #1a0a3d 0%, #6c3fc5 50%, #9b59f0 100%);
+}
+
+.b2 {
+    background: linear-gradient(135deg, #0a1e3d 0%, #1a4fc5 50%, #4a7fff 100%);
+}
+
+.b3 {
+    background: linear-gradient(135deg, #1a2a0a 0%, #2d7a1f 50%, #5bc44a 100%);
+}
+
+.b4 {
+    background: linear-gradient(135deg, #3d0a1a 0%, #c52040 50%, #ff5b7a 100%);
+}
+
+.b5 {
+    background: linear-gradient(135deg, #1a1a0a 0%, #8a7a10 50%, #f0d030 100%);
+}
+
+.b6 {
+    background: linear-gradient(135deg, #0a2a3d 0%, #0f7a8a 50%, #30d4e0 100%);
+}
+
+.b7 {
+    background: linear-gradient(135deg, #2a0a3d 0%, #8f1fc5 50%, #c45ff0 100%);
+}
+
+.b8 {
+    background: linear-gradient(135deg, #1a1a2d 0%, #3a3a7a 50%, #6a6aff 100%);
+}
+
+/* Spine highlight */
+.b1::after,
+.b2::after,
+.b3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 2px;
+    height: 100%;
+    background: rgb(255 255 255 / 0.15);
+}
+
+.app-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--surface-color);
+}
+
+.progress-book {
+    flex-shrink: 0;
+    width: 30px;
+    height: 44px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, var(--lib-purple), var(--lib-blue));
+}
+
+.progress-info {
+    flex: 1;
+}
+
+.progress-title {
+    margin-bottom: 4px;
+    font-family: var(--font-brand);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.progress-bar-wrap {
+    overflow: hidden;
+    height: 4px;
+    border-radius: 100px;
+    background: var(--border-color);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 65%;
+    border-radius: 100px;
+    background: var(--lib-grad);
+    animation: progfill 2s ease-out 1s both;
+}
+
+.progress-pct {
+    margin-top: 3px;
+    font-family: var(--font-code);
+    font-size: 9px;
+    color: var(--lib-violet);
+}
+
+/* Floating badges */
+.float-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-card);
+    animation: floatY 4s ease-in-out infinite;
+}
+
+.float-badge-1 {
+    top: -20px;
+    right: -10px;
+    animation-delay: 0s;
+}
+
+.float-badge-2 {
+    bottom: 40px;
+    left: -20px;
+    animation-delay: 2s;
+}
+
+.float-icon {
+    font-size: 22px;
+}
+
+.float-text-top {
+    font-family: var(--font-brand);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.float-text-bot {
+    font-family: var(--font-code);
+    font-size: 10px;
+    color: var(--text-light);
+}
+
+
+/* ═══ 06. SECTION CHROME ══════════════════════════════════════ */
+
+/* NOTE: `position: relative; z-index: 1` here is the reason a sticky nav
+   in a lower stacking context gets painted over. Left as-is because the
+   nav now sits at z-index 300 in the same context — but don't raise this. */
+.lib-section {
+    position: relative;
+    z-index: 1;
+}
+
+.section-inner {
+    padding: 100px 0;
+}
+
+.section-tag {
+    margin-bottom: 16px;
+}
+
+.section-h2 {
+    margin-bottom: 16px;
+    font-family: var(--font-brand);
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: var(--header-color);
+}
+
+.section-sub {
+    max-width: 500px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-divider {
+    height: 1px;
+    margin: 0 24px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+
+/* ═══ 07. FEATURES ════════════════════════════════════════════ */
+
+#features {
+    background: var(--bg-alt);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    background: var(--border-color);
+}
+
+.feat-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 36px;
+    background: var(--surface-color);
+    transition: background var(--dur-base) ease;
+}
+
+.feat-card:hover {
+    background: var(--bg-alt);
+}
+
+.feat-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--lib-violet-a40), transparent);
+    opacity: 0;
+    transition: opacity var(--dur-base) ease;
+}
+
+.feat-card:hover::before {
+    opacity: 1;
+}
+
+.feat-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 24px;
+    border: 1px solid rgb(155 89 240 / 0.25);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgb(108 63 197 / 0.35) 0%, rgb(59 108 247 / 0.25) 100%);
+    font-size: 24px;
+}
+
+.feat-h3 {
+    margin-bottom: 12px;
+    font-family: var(--font-brand);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: var(--header-color);
+}
+
+.feat-p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.feat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    font-family: var(--font-code);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--lib-cyan);
+}
+
+.feat-chip::before {
+    content: "→";
+}
+
+
+/* ═══ 08. SCREENSHOT MARQUEE ══════════════════════════════════ */
+
+#screenshots {
+    overflow: hidden;
+    padding: 60px 0;
+    background: var(--bg-color);
+}
+
+.ss-label {
+    margin-bottom: 40px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.ss-track-wrap {
+    position: relative;
+}
+
+.ss-track-wrap::before,
+.ss-track-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 120px;
+    pointer-events: none;
+}
+
+.ss-track-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-color), transparent);
+}
+
+.ss-track-wrap::after {
+    right: 0;
+    background: linear-gradient(-90deg, var(--bg-color), transparent);
+}
+
+.ss-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: scrollLeft 30s linear infinite;
+}
+
+/* ADDED: the marquee had no pause affordance. */
+.ss-track:hover,
+.ss-track:focus-within {
+    animation-play-state: paused;
+}
+
+.ss-item {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    width: 200px;
+    height: 130px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--surface-color);
+}
+
+.ss-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-color);
+}
+
+.ss-bar.w80 {
+    width: 80%;
+}
+
+.ss-bar.w60 {
+    width: 60%;
+}
+
+.ss-bar.w45 {
+    width: 45%;
+}
+
+.ss-bar.accent {
+    background: linear-gradient(90deg, var(--lib-purple), var(--lib-blue));
+}
+
+.ss-mini-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.ss-mini-book {
+    height: 100%;
+    border-radius: 4px;
+}
+
+
+/* ═══ 09. BOOK SECTIONS ═══════════════════════════════════════ */
+
+.book-section {
+    padding: 80px 0;
+}
+
+.book-grid-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.book-card-main {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--surface-color);
+    transition: transform var(--dur-base) ease, box-shadow var(--dur-base) ease;
+}
+
+.book-card-main:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.book-card-main img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #1a0a3d 0%, var(--lib-purple) 50%, var(--lib-violet) 100%);
+}
+
+.book-card-main .book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+}
+
+.book-card-main .book-info h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    font-family: var(--font-brand);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: none;
+    color: var(--header-color);
+}
+
+.book-card-main .book-info p {
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--text-light);
+}
+
+.book-card-main .book-info span {
+    margin-top: 4px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.book-read-btn {
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--lib-grad);
+    color: #fff;
+    font-family: var(--font-brand);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: opacity var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+.book-read-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+
+/* ═══ 10. PRICING ═════════════════════════════════════════════ */
+
+#pricing {
+    background: var(--bg-alt);
+}
+
+.pricing-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 48px;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    background: var(--surface-color);
+}
+
+.toggle-btn {
+    padding: 7px 20px;
+    border: none;
+    border-radius: 100px;
+    background: transparent;
+    color: var(--text-light);
+    font-family: var(--font-code);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.toggle-btn.active {
+    background: var(--lib-grad);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgb(108 63 197 / 0.4);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.price-card {
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    background: var(--surface-color);
+    transition: transform var(--dur-base) ease, box-shadow var(--dur-base) ease;
+}
+
+.price-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.price-card.pro {
+    border-color: rgb(155 89 240 / 0.5);
+    background: linear-gradient(160deg, rgb(108 63 197 / 0.08) 0%, var(--surface-color) 60%);
+}
+
+.price-card.pro::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: var(--lib-grad);
+}
+
+.price-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--lib-grad);
+    color: #fff;
+    font-family: var(--font-code);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+.price-tier {
+    margin-bottom: 12px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+.price-amount {
+    margin-bottom: 4px;
+    font-family: var(--font-brand);
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--header-color);
+}
+
+.price-amount sup {
+    font-size: 22px;
+    vertical-align: super;
+}
+
+.price-amount .per {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.price-desc {
+    margin-bottom: 28px;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.price-divider {
+    height: 1px;
+    margin: 24px 0;
+    background: var(--border-color);
+}
+
+.price-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+
+.price-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.check,
+.cross {
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 16px;
+}
+
+.check {
+    color: var(--lib-cyan);
+}
+
+.cross {
+    color: var(--text-light);
+    opacity: 0.5;
+}
+
+.price-cta {
+    display: block;
+    margin-top: 32px;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    font-family: var(--font-brand);
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background var(--dur-base) ease, border-color var(--dur-base) ease,
+    transform var(--dur-base) ease, box-shadow var(--dur-base) ease;
+}
+
+.price-cta.free {
+    border: 1px solid var(--border-color);
+    background: var(--bg-alt);
+    color: var(--text-color);
+}
+
+.price-cta.free:hover {
+    border-color: var(--lib-violet-a30);
+    background: var(--surface-color);
+}
+
+.price-cta.pro-btn {
+    background: var(--lib-grad);
+    color: #fff;
+    box-shadow: 0 0 40px rgb(108 63 197 / 0.35);
+}
+
+.price-cta.pro-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 60px rgb(108 63 197 / 0.55);
+}
+
+/* NOTE: `:disabled` only matches <button>. If any .price-cta is an <a>,
+   add .is-disabled alongside it — the aria-disabled attribute selector
+   below covers that case. */
+.price-cta.is-current-plan,
+.price-cta.is-current-plan:hover,
+.price-cta[aria-disabled="true"] {
+    transform: none;
+    border: 1px solid rgb(68 212 255 / 0.4);
+    background: rgb(68 212 255 / 0.14);
+    color: var(--text-color);
+    box-shadow: none;
+    cursor: default;
+}
+
+.price-cta:disabled {
+    opacity: 0.9;
+    cursor: default;
+}
+
+
+/* ═══ 11. FOOTER ══════════════════════════════════════════════ */
+
+.lib-footer {
+    padding: 60px 0 32px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-color);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-brand p {
+    max-width: 240px;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: left;
+    color: var(--text-light);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-light);
+    font-size: 15px;
+    transition: background var(--dur-fast) ease, border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--lib-violet-a40);
+    background: var(--lib-violet-a15);
+    color: var(--lib-violet);
+}
+
+.footer-col h4 {
+    margin-bottom: 16px;
+    font-family: var(--font-brand);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--header-color);
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+.footer-col a {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-light);
+    transition: color var(--dur-fast) ease;
+}
+
+.footer-col a:hover {
+    color: var(--lib-violet);
+}
+
+.lib-footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.lib-footer-bottom p {
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-bottom-links a {
+    font-family: var(--font-code);
+    font-size: 12px;
+    color: var(--text-light);
+    transition: color var(--dur-fast) ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--text-color);
+}
+
+
+/* ═══ 12. LOGIN PANEL ═════════════════════════════════════════ */
+
+.lib-login-page {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal); /* was 200, tying with the old nav */
+    background: var(--bg-color);
+}
+
+.lib-login-page.open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.panel-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    background: linear-gradient(160deg, #1a0a3d 0%, var(--lib-purple) 60%, var(--lib-blue) 100%);
+    color: #fff;
+}
+
+.panel-left-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 3rem;
+}
+
+.panel-left-logo svg {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+}
+
+.logo-name {
+    font-family: var(--font-brand);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #fff;
+}
+
+.logo-name span {
+    display: block;
+    font-family: var(--font-code);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+}
+
+.panel-left-copy blockquote {
+    margin-bottom: 1rem;
+    font-family: Georgia, serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-style: italic;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.panel-left-copy cite {
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    opacity: 0.65;
+}
+
+.panel-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 3rem 2rem;
+    background: var(--light-bg);
+}
+
+.lib-panel-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.lib-panel-close:hover {
+    background: var(--bg-alt);
+    color: var(--text-color);
+}
+
+.form-card {
+    width: 100%;
+    max-width: 400px;
+
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.form-header h1 {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-brand);
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: left;
+    color: var(--header-color);
+}
+
+.form-header p {
+    font-size: 0.9rem;
+    text-align: left;
+    color: var(--text-light);
+}
+
+/* RENAMED from `.alert` — navigation.css also defines `.alert`, and it sets
+   `display: flex`. Loading order alone decided whether this panel's alerts
+   were hidden by default or permanently visible. Update the markup to
+   `class="lib-alert"` / `class="lib-alert error"`. */
+.lib-alert {
+    display: none;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+
+.lib-alert.error {
+    display: block;
+    border: 1px solid rgb(239 68 68 / 0.3);
+    background: rgb(239 68 68 / 0.1);
+    color: var(--danger, #ef4444);
+}
+
+.field-group {
+    margin-bottom: 1.25rem;
+}
+
+.field-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrap svg {
+    position: absolute;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    stroke: var(--text-light);
+    pointer-events: none;
+}
+
+/* FIXED, two bugs in one rule:
+     background: var(--auth-bg)  → --auth-bg is defined nowhere, so the
+       declaration was invalid and the input fell back to transparent.
+     color: red                  → leftover debug value; every login field
+       rendered its text in pure red. */
+.input-wrap input {
+    width: 100%;
+    padding: 0.7rem 1rem 0.7rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-alt);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.input-wrap input:focus {
+    border-color: var(--lib-violet);
+    box-shadow: 0 0 0 3px var(--lib-violet-a15);
+}
+
+.btn-toggle-pw {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.btn-toggle-pw svg {
+    position: static;
+    width: 18px;
+    height: 18px;
+}
+
+.field-error {
+    display: none;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
+    text-align: left;
+    color: var(--danger, #ef4444);
+}
+
+.field-error.visible {
+    display: block;
+}
+
+.form-extras {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    font-size: 0.875rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.link-forgot,
+.form-footer a {
+    color: var(--lib-violet);
+    font-weight: 500;
+    transition: opacity var(--dur-fast) ease;
+}
+
+.link-forgot:hover {
+    opacity: 0.75;
+}
+
+.form-footer {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1.25rem 0;
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(255 255 255 / 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+
+/* ═══ 13. SCROLL REVEAL ═══════════════════════════════════════
+   WARNING: .reveal starts at opacity 0 and only becomes visible when JS
+   adds .visible. If the observer script fails to load, that content is
+   permanently invisible. The `no-js` guard below makes the failure safe —
+   add `class="no-js"` to <html> and have your script remove it.
+   ═══════════════════════════════════════════════════════════════ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.no-js .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+
+/* ═══ 14. KEYFRAMES ═══════════════════════════════════════════ */
+
+@keyframes drift1 {
+    to {
+        transform: translate(40px, 60px) scale(1.1);
+    }
+}
+
+@keyframes drift2 {
+    to {
+        transform: translate(-40px, -40px) scale(1.08);
+    }
+}
+
+/* Centring offset folded into the keyframes so it isn't overwritten */
+@keyframes drift3 {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        transform: translate(calc(-50% + 60px), calc(-50% + 40px)) scale(0.9);
+    }
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(0.85);
+    }
+}
+
+@keyframes floatY {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes progfill {
+    from {
+        width: 0;
+    }
+    to {
+        width: 65%;
+    }
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ═══ 15. RESPONSIVE ══════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+    }
+
+    .lib-hero-section .hero-content,
+    .lib-hero-section .hero-sub {
+        max-width: 100%;
+    }
+
+    .hero-h1,
+    .lib-hero-section .hero-sub {
+        text-align: center;
+    }
+
+    .lib-hero-section .hero-actions,
+    .lib-hero-section .hero-stats {
+        justify-content: center;
+    }
+
+    /* See the note in section 05 — targets both possible wrappers. */
+    .hero-visual,
+    .shelf-wrap {
+        display: none;
+    }
+
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .book-grid-main {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .lib-hamburger {
+        display: flex;
+    }
+
+    .nav-links.open {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: var(--z-dropdown);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 32px;
+        border-bottom: 1px solid var(--border-color);
+        background: var(--nav-bg-color);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+    }
+
+    .lib-login-page.open {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-left {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .footer-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lib-hero-section .hero-stats {
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 24px;
+    }
+
+    .book-grid-main {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+    }
+
+    .book-card-main img {
+        height: 220px;
+    }
+
+    .book-section {
+        padding: 48px 0;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Z-INDEX SCALE — migrated. This file used to keep its own
+   --z-lib-nav/--z-lib-dropdown/--z-lib-panel aliases pointing at
+   tokens.css's shared scale. It now references --z-sticky,
+   --z-dropdown and --z-modal directly, so there's nothing left to
+   alias. See tokens.css §"Depth" for the full scale.
+   ═══════════════════════════════════════════════════════════════ */

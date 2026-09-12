@@ -1,0 +1,313 @@
+<%- include("../../partials/header") %>
+<%- include("../../partials/head") %>
+
+<body>
+<!-- Header / Navbar -->
+<header class="header " id="movie-header">
+    <!-- <nav class=" navbar" id="navbar movie-nav "> -->
+    <nav class=" navbar sticky-nav">
+        <ul class="nav-links">
+
+            <li class="home-li"><a href="#movie_home" class="active">
+                    <span class="btn-home"> Home</span>
+                </a></li>
+            <li><a href="#tvshow" class="nav-link">TV Shows</a></li>
+            <li><a href="#movies" class="nav-link">Movies</a></li>
+            <li><a href="#new" class="nav-link">New & Popular</a></li>
+            <li><a href="#kid" class="nav-link">Kids</a></li>
+            <li><a href="#mylist" class="nav-link">My List</a></li>
+
+
+            <li>
+                <!-- Genre Dropdown -->
+                <a class="nav-link  ">
+                    <button id="genreDropdownBtn" class=" btn genre-menu ">
+
+                      <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="50 -900 900 900" width="30px"
+                                 fill="var(--color-nav-text)">
+                            <path d="M218.57-421.33q-24.24 0-41.4-17.26Q160-455.86 160-480.09q0-24.24 17.26-41.41 17.26-17.17 41.5-17.17t41.41 17.26q17.16 17.27 17.16 41.5 0 24.24-17.26 41.41-17.26 17.17-41.5 17.17Zm261.34 0q-24.24 0-41.41-17.26-17.17-17.27-17.17-41.5 0-24.24 17.26-41.41 17.27-17.17 41.5-17.17 24.24 0 41.41 17.26 17.17 17.27 17.17 41.5 0 24.24-17.26 41.41-17.27 17.17-41.5 17.17Zm261.33 0q-24.24 0-41.41-17.26-17.16-17.27-17.16-41.5 0-24.24 17.26-41.41 17.26-17.17 41.5-17.17t41.4 17.26Q800-504.14 800-479.91q0 24.24-17.26 41.41-17.26 17.17-41.5 17.17Z"/>
+                        </svg>
+                      </span>
+
+
+                    </button>
+                </a>
+
+                <div class=" dropdown-content">
+                    <div class="dropdown-section">
+                        <h4 class="section-title">Genres</h4>
+                        <div class="genre-grid">
+                            <div class="genre-item" data-genre="28" data-target="action">Action</div>
+                            <div class="genre-item" data-genre="35" data-target="comedy">Comedy</div>
+                            <div class="genre-item" data-genre="18" data-target="drama">Drama</div>
+                            <div class="genre-item" data-genre="878" data-target="sci-fi">Sci-Fi</div>
+                            <div class="genre-item" data-genre="53" data-target="thriller">Thriller</div>
+                            <div class="genre-item" data-genre="10749" data-target="romance">Romance</div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Collections Section -->
+                    <div class="dropdown-section">
+                        <h4 class="section-title">Featured collections</h4>
+                        <div class="featured-grid">
+                            <a href="#" class="featured-item">Made for you ✨</a>
+                            <a href="#" class="featured-item">New &amp; Upcoming</a>
+                            <a href="#" class="featured-item">Deals</a>
+                            <a href="#" class="featured-item">Obsession is in Session</a>
+                            <a href="#" class="featured-item">Culture rated</a>
+                            <a href="#" class="featured-item">Critically acclaimed</a>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="search-li">
+
+
+                <a>
+                    <div class="search-box">
+                        <label class="visually-hidden" for="searchInput">
+                            <button class="search-btn" type="button" aria-label="Search">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960"
+                                     width="40px" fill="var(--text-color)">
+                                    <path d="M318.67-516v-135.33q0-10 8.5-14.84 8.5-4.83 17.16.5l108 67.34q8 5.33 8 14.33t-8 14.33l-108 68q-8.66 5.34-17.16.5-8.5-4.83-8.5-14.83Zm60 190q-108.34 0-183.5-75.17Q120-476.33 120-583.33t75.17-182.17q75.16-75.17 182.83-75.17 107 0 181.83 75.17 74.84 75.17 74.84 182.17 0 43.33-14 83-14 39.66-40.67 73l236 234.66q9.67 9.67 9.67 24 0 14.34-9.67 24-9.67 9.67-24 9.67t-24-9.67L532.67-380q-30 25.33-69.67 39.67Q423.33-326 378.67-326Zm-.67-66.67q79 0 134.5-55.83T568-583.33q0-79-55.5-134.84Q457-774 378-774q-79.67 0-135.5 55.83-55.83 55.84-55.83 134.84T242.5-448.5q55.83 55.83 135.5 55.83Z"/>
+                                </svg>
+                            </button>
+                        </label>
+                        <input type="text" id="searchInput" placeholder="Titles, people, genres"/>
+                    </div>
+
+
+                </a>
+
+
+            </li>
+        </ul>
+    </nav>
+    <!-- Search Results View (Hidden by default) -->
+    <div id="searchResults" class="search-results-container">
+        <h2 class="row-header-title">Search Results</h2>
+        <div class="grid-layout" id="searchGrid"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-banner hero" id="movie_home">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-actions">
+            <button class="btn btn-play" id="heroPlayBtn">
+                <svg viewBox="0 0 24 24" fill="black" width="24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                Play
+            </button>
+            <button class="btn btn-info" id="heroInfoBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="24">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="16" x2="12" y2="12"/>
+                    <line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                More Info
+            </button>
+        </div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" id="heroTitle">Loading...</h1>
+            <div class="hero-meta">
+                <span class="match-score" id="heroMatch">98% Match</span>
+                <span id="heroYear">2025</span>
+                <span class="rating-badge" id="heroBadge">TOP 10</span>
+            </div>
+            <p class="hero-desc" id="heroDesc">Loading amazing content for you...</p>
+
+        </div>
+    </section>
+</header>
+<hr class="scroll-hr">
+
+<!-- Main Content -->
+<main id="mainContent">
+    <!--Having the my-list here is to hide the title when favourite is not selected-->
+    <section class="row-section" id="mylist">
+        <h2 class="row-header-title">My List</h2>
+        <div class="row-slider-wrapper">
+            <button class="handle left-handle">&#8249;</button>
+            <div class="row-slider" id="myListGrid"></div>
+            <button class="handle right-handle">&#8250;</button>
+        </div>
+    </section>
+    <!-- Content Rows -->
+    <div class="rows-container">
+
+
+        <section class="row-section" id="trending">
+            <h2 class="row-header-title">Trending Now</h2>
+            <div class="row-slider-wrapper">
+                <button class="handle left-handle">&#8249;</button>
+                <div class="row-slider" id="trendingGrid"></div>
+                <button class="handle right-handle">&#8250;</button>
+            </div>
+        </section>
+        <hr class="scroll-hr">
+        <section class="row-section" id="movies">
+            <h2 class="row-header-title">Popular Movies</h2>
+            <div class="row-slider-wrapper">
+                <button class="handle left-handle">&#8249;</button>
+                <div class="row-slider" id="popularGrid"></div>
+                <button class="handle right-handle">&#8250;</button>
+            </div>
+        </section>
+        <hr class="scroll-hr">
+        <section class="row-section" id="new">
+            <h2 class="row-header-title">New Releases</h2>
+            <div class="row-slider-wrapper">
+                <button class="handle left-handle">&#8249;</button>
+                <div class="row-slider" id="newGrid"></div>
+                <button class="handle right-handle">&#8250;</button>
+            </div>
+        </section>
+        <hr class="scroll-hr">
+        <section class="row-section" id="tvshow">
+            <h2 class="row-header-title">TV Shows</h2>
+            <div class="row-slider-wrapper">
+                <button class="handle left-handle">&#8249;</button>
+                <div class="row-slider" id="tvGrid"></div>
+                <button class="handle right-handle">&#8250;</button>
+            </div>
+        </section>
+        <hr class="scroll-hr">
+        <section class="row-section" id="kid">
+            <h2 class="row-header-title">Kids & Family</h2>
+            <div class="row-slider-wrapper">
+                <button class="handle left-handle">&#8249;</button>
+                <div class="row-slider" id="kidGrid"></div>
+                <button class="handle right-handle">&#8250;</button>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="movieModal">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="closeModal">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
+                     fill="#FFFFFF">
+                    <path
+                            d="M480-433.33 335.33-288.67Q325.67-279 312-279q-13.67 0-23.33-9.67Q279-298.33 279-312q0-13.67 9.67-23.33L433.33-480 288.67-623.67Q279-633.33 279-647q0-13.67 9.67-23.33Q298.33-680 312-680q13.67 0 23.33 9.67L480-525.67l143.67-144.66q9-9.67 23-9.67t23.66 9.67q10 10 10 23.5t-10 23.16L525.67-480l144.66 144.67Q680-325.67 680-312q0 13.67-9.67 23.33-10 10-23.5 10t-23.16-10L480-433.33Z"/>
+                </svg>
+            </button>
+            <div class="modal-video-wrapper" id="modalVideoWrapper">
+                <img id="modalImg" src="" alt="Cover">
+                <div class="modal-shade"></div>
+                <div class="modal-hero-text">
+                    <h2 id="modalTitle">Title</h2>
+                    <div class="modal-actions">
+                        <button class="btn btn-play" id="modalPlayBtn">Play</button>
+                        <button class="btn" id="modalListBtn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-details">
+                <div class="modal-left">
+                    <div class="modal-metadata">
+                        <span class="match-score">98% Match</span>
+                        <span id="modalYear">2023</span>
+                        <span class="hd-badge">HD</span>
+                        <span class="rating-badge">TOP 10</span>
+                    </div>
+                    <p class="movieDesc" id="modalDesc">Description</p>
+                </div>
+
+                <div class="modal-right">
+                    <div class="meta-row"><span class="label">Cast:</span> <span class="val">Generic Actor, Famous
+                                Star</span></div>
+                    <div class="meta-row"><span class="label">Genres:</span> <span class="val"
+                                                                                   id="modalGenres">Action, Excitement</span>
+                    </div>
+                    <div class="meta-row"><span class="label">Rating:</span> <span class="val"
+                                                                                   id="modalRating">8.0</span>
+                    </div>
+                    <div class="meta-row"><span class="label">Mature:</span> <span class="val"
+                                                                                   id="modalAdult">No</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player Overlay -->
+    <div id="videoPlayerOverlay" class="video-overlay"
+         style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 10000; align-items: center; justify-content: center;">
+        <button id="closeVideoBtn"
+                style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.5); color: white; border: none; font-size: 2rem; cursor: pointer; z-index: 10001; padding: 10px 20px; border-radius: 5px;">
+            &times;
+        </button>
+        <iframe id="videoIframe" width="100%" height="100%" src="" frameborder="0" allowfullscreen
+                style="border: none;"></iframe>
+    </div>
+
+    <!-- SECTION: Pricing -->
+    <section id="pricing subscription" class="section section-pricing">
+        <div class="container section-inner">
+            <div class="section-header">
+                <h2>Flexible memberships for every kind of story lover.</h2>
+                <p class="section-subtitle">
+                    Start with a 30‑day free trial. Change or cancel your plan anytime.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <article class="pricing-card shadow-soft" aria-label="Basic plan">
+                    <h3>Reader</h3>
+                    <p class="pricing-price"><span class="pricing-currency">$</span>7<span
+                                class="pricing-period">/mo</span>
+                    </p>
+                    <p class="muted">Perfect if you mostly borrow books.</p>
+                    <ul class="pricing-list">
+                        <li>Unlimited ebooks & audiobooks</li>
+                        <li>3 active physical book orders</li>
+                        <li>Standard support</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-full" type="button">Choose Reader</button>
+                </article>
+
+                <article class="pricing-card pricing-card--featured shadow-dramatic" aria-label="Most popular plan">
+                    <div class="badge">Most popular</div>
+                    <h3>CineLeaf Plus</h3>
+                    <p class="pricing-price"><span class="pricing-currency">$</span>14<span
+                                class="pricing-period">/mo</span></p>
+                    <p class="muted">For balanced readers and movie‑lovers.</p>
+                    <ul class="pricing-list">
+                        <li>All Reader features</li>
+                        <li>Unlimited movie & series streaming</li>
+                        <li>5 active physical book orders</li>
+                        <li>4K & offline viewing</li>
+                    </ul>
+                    <button class="btn btn-primary btn-full" type="button">Start free month</button>
+                </article>
+
+                <article class="pricing-card shadow-soft" aria-label="Family plan">
+                    <h3>Family</h3>
+                    <p class="pricing-price"><span class="pricing-currency">$</span>22<span
+                                class="pricing-period">/mo</span></p>
+                    <p class="muted">Share stories across your household.</p>
+                    <ul class="pricing-list">
+                        <li>Up to 5 profiles</li>
+                        <li>Kids mode & content filters</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-full" type="button">Choose Family</button>
+                </article>
+            </div>
+
+            <p class="pricing-note muted">Eligible students and library members receive 20% off any plan.</p>
+        </div>
+    </section>
+</main>
+
+
+</body>
+<%- include("../../partials/footer") %>

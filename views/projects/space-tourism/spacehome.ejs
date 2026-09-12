@@ -1,0 +1,29 @@
+<%- include("./../../partials/header.ejs") %>
+<%- include("./../../partials/head.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Tourism</title>
+    <!-- You would link your CSS file here -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script defer src="/js/spacehome.js"></script>
+</head>
+<body class="space-body">
+
+<nav class="space-navbar">
+    <img class="logo" src="/assets/shared/logo.svg" alt="Space-tourism-logo"/>
+    <div class="divider"></div>
+    <ul class="space-nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#destination">Destination</a></li>
+        <li><a href="#crew">Crew</a></li>
+        <li><a href="#technology">Technology</a></li>
+    </ul>
+</nav>
+
+<main id="app" class="space-main">
+    <!-- Content will load here based on the route -->
+</main>
+<%- include("./../../partials/footer.ejs") %>

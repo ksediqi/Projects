@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.8" pages="4">
+  <diagram name="Movie" id="T1Guw5md1dQnSIZlDIpL">
+    <mxGraphModel dx="2276" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wgZz-qFvJIJCysODJNxh-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-240" y="170" width="770" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-2" value="Movies" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-210" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-3" value="Login" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="390" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-4" value="Search input" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="115" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-5" value="Kids" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-80" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-6" value="Genres" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="wgZz-qFvJIJCysODJNxh-8" target="wgZz-qFvJIJCysODJNxh-12" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-8" value="My-list" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-9" value="TV Shows" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="-150" y="185" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-10" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Login&lt;/h1&gt;&lt;p&gt;Once user logged in, it should open a new window to login or register.&amp;nbsp;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="340" y="300" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.444;entryY=0.033;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="wgZz-qFvJIJCysODJNxh-3" target="wgZz-qFvJIJCysODJNxh-10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wgZz-qFvJIJCysODJNxh-12" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;My list&lt;/h1&gt;&lt;p&gt;User should be able to add movies that their play list.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="130" y="300" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="TwQGLDJ4mHa_54jNYvpI-1" value="Movie Design" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="110" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="5-QtSaGJOlKRMlCA5Dv_" name="Main-Project-Page">
+    <mxGraphModel dx="1426" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="NLTZIo3GCR2jdTo6OVQC-1" target="NLTZIo3GCR2jdTo6OVQC-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="50" width="460" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-2" value="Navbar" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-3" value="HOME" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="65" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-4" value="Theme Switcher" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="490" y="65" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-5" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="160" y="140" width="460" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="NLTZIo3GCR2jdTo6OVQC-7" value="Content" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="240" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="19YOxESdpLbQ8hQMZKCW" name="Book-library">
+    <mxGraphModel dx="1426" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="LAIt6nrlmDgnF-bnn-qV" name="Portfolio">
+    <mxGraphModel dx="1426" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
