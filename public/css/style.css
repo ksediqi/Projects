@@ -33,22 +33,16 @@
     --shadow-md: 0 8px 20px rgba(0, 0, 0, .12);
     --shadow-lg: 0 15px 40px rgba(0, 0, 0, .18);
 
-    /* Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
 
-    /* Spacing */
-    --space-xs: .25rem;
-    --space-sm: .5rem;
-    --space-md: 1rem;
-    --space-lg: 2rem;
-    --space-xl: 4rem;
+    /* Radius — REMOVED: overridden by portfolio.css (:root loads after).
+       Use --radius-sm (8px), --radius-md (14px), --radius-lg (22px) from portfolio.css
+       or the semantic scale below (--radius-sm: 0.25rem etc. in the second :root block). */
 
-    /* Fonts */
-    --font-heading: "Staatliches", sans-serif;
-    --font-body: "Segoe UI", sans-serif;
-    --font-code: "Fira Code", monospace;
+    /* --shadow-sm/md/lg kept above — used in .info-badge, .hero-title, .card-icon etc.
+       For new components prefer the numbered scale --shadow-1/2/3 from the second :root block. */
+
+    /* Fonts — REMOVED: overridden by portfolio.css and consolidated in the second :root block below.
+       Use --font-display, --font-body, --font-mono from the second :root block. */
 
     /* Layout */
     --header-height: 68px;
@@ -258,7 +252,6 @@ body {
     font-family: var(--font-body);
 
     line-height: 1.5;
-
 
 
 }
@@ -799,52 +792,9 @@ p {
     line-height: 1.5;
 }
 
-/* ── Responsive Behavior ─────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-    .main-hero-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-        text-align: center;
-    }
+/* Hero responsive rules consolidated into section 08 RESPONSIVE at bottom of file.
+   See the ≤1024px block (.main-hero-content, .stats-grid) and ≤640px block (.hero-title). */
 
-    .hero-eyebrow, .info-badge {
-        margin: 0 auto;
-    }
-
-    .hero-meta-grid {
-        justify-content: center;
-        text-align: left;
-    }
-
-    .feature-card {
-        transform: none;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .main-hero-content {
-        padding: var(--space-lg) var(--space-md);
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .hero-meta-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/*Ends here*/
 
 /* =============================================================================
    04. LAYOUT PRIMITIVES
@@ -1560,17 +1510,17 @@ p {
     background: currentColor;
 }
 
-.pc-status.is-live {
-    color: var(--color-success);
-}
+/*.pc-status.is-live {*/
+/*    color: var(--color-success);*/
+/*}*/
 
 .pc-status.is-live::before {
     box-shadow: 0 0 0 2px rgb(34 197 94 / 0.2);
 }
 
-.pc-status.is-wip {
-    color: var(--color-warning);
-}
+/*.pc-status.is-wip {*/
+/*    color: var(--color-warning);*/
+/*}*/
 
 .pc-status.is-done {
     color: var(--color-text-muted);
@@ -1772,12 +1722,9 @@ p {
     gap: 10px;
 }
 
-.status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--color-success);
-}
+/* .status-dot bare skeleton removed — the full definitions are:
+   style.css L506-513 (hero section pulse dot) and
+   portfolio.css ~L2761-2768 (portfolio page status badge). */
 
 .icon {
     width: 18px;
@@ -2216,7 +2163,7 @@ p {
    each other; only the drawer survives.
    ============================================================================= */
 
-/* ── ≥ 1280px ── */
+/* ── ≥ 1280px — Main navbar: wider padding, larger font ——————————— */
 @media (min-width: 1280px) {
     .main-header.navbar {
         padding: 0 2.5rem;
@@ -2372,7 +2319,34 @@ p {
     }
 }
 
-/* ── ≤ 768px ── */
+/* ── ≤ 1024px — Hero section: single-column stack, stats 2-col ——————— */
+@media (max-width: 1024px) {
+    /* Hero layout */
+    .main-hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+        text-align: center;
+    }
+
+    .hero-eyebrow, .info-badge {
+        margin: 0 auto;
+    }
+
+    .hero-meta-grid {
+        justify-content: center;
+        text-align: left;
+    }
+
+    .feature-card {
+        transform: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── ≤ 768px — Subtitle, general layout —————————————————————— */
 @media (max-width: 768px) {
     .main-subtitle {
         max-width: 90%;
@@ -2381,7 +2355,28 @@ p {
     }
 }
 
-/* ── ≤ 600px ── */
+/* ── ≤ 640px — Hero section: padding, title size, stat/meta single col — */
+@media (max-width: 640px) {
+    /* Hero text */
+    .main-hero-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-meta-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── ≤ 600px — Section padding, AI chat, slider height ——————————— */
 @media (max-width: 600px) {
     .section {
         padding: 1.5rem;
@@ -2442,8 +2437,15 @@ p {
         max-height: 85vh;
     }
 
+    .faq-title {
+        font-size: 1rem;
+        color: var(--color-text);
+
+    }
+
     .faq-header {
         padding: 1rem;
+
     }
 
     .faq-body {

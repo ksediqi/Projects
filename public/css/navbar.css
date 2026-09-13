@@ -274,10 +274,16 @@ body.sticky-nav {
 
 #faq-title {
     margin: 0;
-    color: var(--color-on-accent);
-    font-size: 18px;
+    color: var(--color-text);
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+
+
 }
 
 .faq-close {
@@ -462,6 +468,11 @@ body.sticky-nav {
     }
 }
 
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+/* ── ≤700px — Library sidebar, porto-navbar: drawer open/close, full-width links */
 @media (max-width: 700px) {
     .navbar.sticky {
         position: fixed;
@@ -539,6 +550,7 @@ body.sticky-nav {
     }
 }
 
+/* ── ≤600px — Login/sign-up forms: stack, full-width buttons; FAQ: width/font */
 @media (max-width: 600px) {
     .form-signin,
     .sign-up-section {

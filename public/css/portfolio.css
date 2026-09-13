@@ -29,8 +29,7 @@
     --radius-sm: 8px;
     --radius-md: 14px;
     --radius-lg: 22px;
-    --nav-h: 68px;
-    --container-w: 1180px;
+    /* --nav-h and --container-w removed: use --size-header and --size-content-max from style.css */
 
     --ease: cubic-bezier(.22, .61, .36, 1);
 }
@@ -159,9 +158,7 @@
 }
 
 
-.hidden {
-    display: none;
-}
+/* .hidden removed: already defined in style.css — no duplicate needed */
 
 
 /* --- Header & Profile --- */
@@ -599,7 +596,7 @@ ul.languages li {
 }
 
 .section-heading {
-    mmargin-bottom: 48px;
+    margin-bottom: 48px; /* was: mmargin-bottom (typo fixed) */
     max-width: 640px;
     font-size: clamp(1.4rem, 5vw, 4rem);
     font-weight: 900;
@@ -823,13 +820,7 @@ ul.languages li {
     gap: 0.4rem;
 }
 
-.code-window {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgb(255 255 255 / 0.08);
-    border-radius: var(--radius-md);
-    color: var(--color-text);
-}
+/* .code-window first definition removed — merged into the authoritative definition below (glassmorphism style) */
 
 
 .portfolio-header .code-window {
@@ -839,13 +830,7 @@ ul.languages li {
     text-align: left;
 }
 
-.code-titlebar {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.2rem;
-    border-bottom: 1px solid rgb(255 255 255 / 0.06);
-}
+/* .code-titlebar first definition removed — merged into the authoritative definition below */
 
 .portfolio-header .code-titlebar {
     border-bottom: 1px solid rgb(255 255 255 / 0.07);
@@ -2566,12 +2551,315 @@ ul.languages li {
     animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* =========================================================
+   PORTFOLIO EXTRA COMPONENTS
+   Hero section: status badge, code window, project filters,
+   project modal, back-to-top, skill bars, toast notification.
+   ========================================================= */
+
+/* 1. Status Badge — Hero section availability indicator */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem;
+    margin-bottom: 1.5rem;
+    background: rgba(44, 155, 42, 0.1);
+    border: 1px solid rgba(44, 155, 42, 0.3);
+    border-radius: var(--radius-pill, 9999px);
+    color: #4ade80;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(44, 155, 42, 0.15);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* 2. Interactive Code Window — Hero section terminal widget */
+.code-window {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.code-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: rgba(30, 41, 59, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.code-titlebar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.code-copy-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94a3b8;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.code-copy-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
+
+/* 3. Project Filter Tabs — Projects section category filter */
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0 3rem 0;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.35rem;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill, 9999px);
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--color-accent, #2c9b2a);
+    color: #ffffff;
+    border-color: var(--color-accent, #2c9b2a);
+    box-shadow: 0 4px 20px rgba(44, 155, 42, 0.35);
+    transform: translateY(-2px);
+}
+
+/* 4. Project Card Actions — Projects section card link buttons */
+.project-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-project-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-project-action.btn-demo {
+    background: var(--color-accent, #2c9b2a);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(44, 155, 42, 0.3);
+}
+
+.btn-project-action.btn-demo:hover {
+    background: #238022;
+    transform: translateY(-1px);
+}
+
+.btn-project-action.btn-details {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-project-action.btn-details:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+}
+
+/* 5. Project Detail Modal — Projects section detail overlay */
+.project-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.project-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.project-modal-card {
+    position: relative;
+    max-width: 720px;
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 2.25rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-modal-overlay.active .project-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #94a3b8;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* 6. Back-to-Top Button — Global floating utility */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--color-accent, #2c9b2a);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#back-to-top:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent, #2c9b2a);
+    box-shadow: 0 12px 35px rgba(44, 155, 42, 0.3);
+}
+
+/* 7. Skill Proficiency Bars — Skills section */
+.skill-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-accent, #2c9b2a), #57c785);
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s ease-out;
+}
+
+/* 8. Toast Notification — Global feedback utility */
+.toast-notification {
+    position: fixed;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(44, 155, 42, 0.4);
+    color: #ffffff;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-pill, 9999px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(16px);
+    z-index: 10001;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+
+/* =============================================================================
+   RESPONSIVE — ordered: min-width (mobile-first) then max-width (overrides)
+   Each block is labeled with the section(s) it targets.
+   ============================================================================= */
+
+/* ── ≥560px — Contact form: 2-col row layout */
 @media (min-width: 560px) {
     .form-row {
         grid-template-columns: 1fr 1fr;
     }
 }
 
+/* ── ≥768px — Projects grid: 1→2 columns */
 @media (min-width: 768px) {
     .grid-container,
     .projects-grid {
@@ -2579,6 +2867,7 @@ ul.languages li {
     }
 }
 
+/* ── ≥900px — Resume, About, Contact: sidebar + main two-column layout */
 @media (min-width: 900px) {
     .about-grid {
         grid-template-columns: 1fr 1fr;
@@ -2596,6 +2885,7 @@ ul.languages li {
     }
 }
 
+/* ── ≥1024px — Projects grid: 2→3 columns */
 @media (min-width: 1024px) {
     .grid-container,
     .projects-grid {
@@ -2603,6 +2893,7 @@ ul.languages li {
     }
 }
 
+/* ── ≥1100px — Hero: stacked → two-column layout */
 @media (min-width: 1100px) {
     .portfolio-header .porto-hero-content {
         grid-template-columns: 1fr 0.95fr;
@@ -2611,6 +2902,7 @@ ul.languages li {
     }
 }
 
+/* ── ≤820px — Skills section: category card layout reflow */
 @media (max-width: 820px) {
     .skill-category {
         grid-template-columns: 1fr;
@@ -2624,6 +2916,7 @@ ul.languages li {
     }
 }
 
+/* ── ≤768px — Hero section: blobs reposition, buttons stack vertically */
 @media (max-width: 768px) {
     .portfolio-header .porto-hero {
         min-height: auto;
@@ -2655,6 +2948,7 @@ ul.languages li {
     }
 }
 
+/* ── ≤640px — Project cards, contact/mini-stats: single column, tighter images */
 @media (max-width: 640px) {
     .projects-section {
         padding-inline: 0.75rem;
@@ -2690,6 +2984,7 @@ ul.languages li {
     }
 }
 
+/* ── ≤520px — Skills section: tighter spacing and font scaling */
 @media (max-width: 520px) {
     .skills-section {
         padding-inline: 0.75rem;
@@ -2717,6 +3012,7 @@ ul.languages li {
     }
 }
 
+/* ── ≤480px — Hero: smallest viewport text and padding adjustments */
 @media (max-width: 480px) {
     .portfolio-header .porto-hero {
         padding: 3rem 1rem;
