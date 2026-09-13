@@ -1,4 +1,18 @@
-/* Scroll Progress Bar */
+/* =============================================================================
+   ANIMATION.CSS — Scroll-Driven & 3D Reveal Animations
+   =============================================================================
+   Provides scroll-driven and viewport-triggered animations for interactive
+   portfolio elements, cards, section headings, and scroll progress tracking.
+
+   SECTIONS:
+   01. Scroll Progress Bar        — Window scroll progress indicator (#progress-bar)
+   02. Base Headings Reveal       — Smooth scroll entry mask for main headings (.heading-primary)
+   03. Grid & Section 3D Reveal   — Perspective 3D entrance for cards, skills, and layout blocks
+   04. Scroll Fallback Trigger    — Class-based fallback triggers (.is-visible)
+   05. Accessibility              — Prefers-reduced-motion safety overrides
+   ============================================================================= */
+
+/* ── 01. SCROLL PROGRESS BAR ─────────────────────────────────────────────── */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -26,7 +40,7 @@
     }
 }
 
-/* Base Headings & Elements Reveal */
+/* ── 02. BASE HEADINGS REVEAL ────────────────────────────────────────────── */
 .heading-primary {
     opacity: 1;
 }
@@ -58,7 +72,7 @@
     }
 }
 
-/* Grid & Section Items 3D Scroll Animation */
+/* ── 03. GRID & SECTION 3D REVEAL ────────────────────────────────────────── */
 .grid-item, .skill-category, .sidebar-card, .resume-block, .image-frame, .resume-card, .about-content, .contact-layout {
     --cover: 40%;
     will-change: transform, opacity, filter;
@@ -79,7 +93,7 @@
     }
 }
 
-/* Fallback animation when scrolled into view */
+/* ── 04. SCROLL FALLBACK TRIGGER (JS .is-visible) ─────────────────────────── */
 .grid-item.is-visible,
 .skill-category.is-visible,
 .sidebar-card.is-visible,
@@ -109,6 +123,7 @@
     }
 }
 
+/* ── 05. ACCESSIBILITY / REDUCED MOTION ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
     .heading-primary,
     .grid-item,

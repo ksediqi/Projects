@@ -1,3 +1,21 @@
+/* =============================================================================
+   NAVBAR.CSS — Navigation, Sticky Header, FAQ Popover & Auth Form Styles
+   =============================================================================
+   Provides styling for desktop and mobile navigation bars, floating sticky
+   header variations, FAQ interactive popover modal, and auth form containers.
+
+   SECTIONS:
+   01. Header Container           — Sticky wrapper & top utility bar
+   02. Main Navigation Bar        — Desktop navigation bar, logo, links & action buttons
+   03. General Navbar Links       — Sub-page navbars, active indicator links & dropdowns
+   04. Floating Sticky Navigation — Centered pill sticky nav header
+   05. Mobile Sidebar Drawer      — Off-canvas navigation sidebar & toggles
+   06. FAQ Popover Modal          — Accessible floating FAQ dialog, accordion items & animation
+   07. Authentication Forms       — Sign-in, sign-up forms and unified form controls
+   08. Responsive Media Queries   — Mobile drawer and stacked form layouts (≤700px, ≤600px)
+   ============================================================================= */
+
+/* ── 01. HEADER CONTAINER ────────────────────────────────────────────────── */
 .free {
     display: block;
     padding: 1rem;
@@ -13,6 +31,7 @@
     width: 100%;
 }
 
+/* ── 02. MAIN NAVIGATION BAR ─────────────────────────────────────────────── */
 .main-nav {
     position: relative;
     display: flex;
@@ -125,6 +144,7 @@
     justify-content: center;
 }
 
+/* ── 03. GENERAL NAVBAR LINKS & DROPDOWNS ────────────────────────────────── */
 .navbar li {
     display: flex;
     padding: 0.5rem;
@@ -178,6 +198,7 @@
     justify-content: center;
 }
 
+/* ── 04. FLOATING STICKY NAVIGATION ──────────────────────────────────────── */
 .sticky-nav.sticky {
     background-color: var(--color-sticky-nav-bg);
     height: var(--size-header-sticky);
@@ -202,6 +223,7 @@ body.sticky-nav {
     padding-top: var(--size-header-sticky);
 }
 
+/* ── 05. MOBILE SIDEBAR DRAWER ───────────────────────────────────────────── */
 #open-sidebar,
 #close-sidebar {
     display: none;
@@ -242,6 +264,7 @@ body.sticky-nav {
     background: var(--color-cat-1);
 }
 
+/* ── 06. FAQ POPOVER MODAL ───────────────────────────────────────────────── */
 .faq-popover {
     position: fixed;
     top: 50%;
@@ -307,31 +330,6 @@ body.sticky-nav {
     transform: rotate(90deg);
 }
 
-.faq-body {
-    max-height: 60vh;
-    padding: 20px;
-    overflow-y: auto;
-    background: var(--color-nav-bg);
-}
-
-.faq-item {
-    overflow: hidden;
-    margin-bottom: 12px;
-    border: 1px solid var(--color-border); /* was #e5e7eb */
-    border-radius: 12px;
-    background: var(--color-surface);
-    transition: border-color var(--dur-base) ease, box-shadow var(--dur-base) ease;
-}
-
-.faq-item:hover {
-    border-color: var(--color-text-muted);
-}
-
-.faq-item[open] {
-    border-color: var(--color-accent);
-    box-shadow: 0 4px 12px rgb(59 130 246 / 0.15);
-}
-
 .faq-item summary {
     display: flex;
     align-items: center;
@@ -371,6 +369,18 @@ body.sticky-nav {
     color: var(--color-text-muted);
 }
 
+@keyframes faqSlideIn {
+    from {
+        opacity: 0;
+        transform: translate(calc(-50% + 60px), -50%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ── 07. AUTHENTICATION & FORM CONTROLS ────────────────────────────────── */
 .form-control {
     width: 100%;
     padding: 0.75rem 0.9rem;
@@ -457,21 +467,7 @@ body.sticky-nav {
     min-width: 120px;
 }
 
-@keyframes faqSlideIn {
-    from {
-        opacity: 0;
-        transform: translate(calc(-50% + 60px), -50%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-}
-
-/* =============================================================================
-   RESPONSIVE
-   ============================================================================= */
-
+/* ── 08. RESPONSIVE MEDIA QUERIES ────────────────────────────────────────── */
 /* ── ≤700px — Library sidebar, porto-navbar: drawer open/close, full-width links */
 @media (max-width: 700px) {
     .navbar.sticky {
