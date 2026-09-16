@@ -154,7 +154,8 @@
     box-shadow: var(--auth-shadow);
 }
 
-#loginTitle {
+#loginTitle,
+#signupTitle {
     margin: 0 0 1.4rem;
     color: var(--auth-text);
     font-size: clamp(1.75rem, 5vw, 2.35rem);

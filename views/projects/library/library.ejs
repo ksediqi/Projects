@@ -125,7 +125,7 @@
                                             <div class="book-card"
                                                  title="<%= book.title %> by <%= book.authors ? book.authors.join(', ') : 'Unknown' %>">
                                                 <div class="book-cover b<%= (i % 8) + 1 %>"
-                                                     style="background-image: url('<%= book.thumbnail || "/img/placeholder-book.svg" %>'); background-size: cover; background-position: center;">
+                                                     style="background-image: url('<%= book.thumbnail || '/img/placeholder-book.svg' %>'); background-size: cover; background-position: center;">
                                                     <div class="book-title-wrap">
                                                         <div class="book-title"><%= book.title.substring(0, 20) %><%= book.title.length > 20 ? '...' : '' %></div>
                                                         <div class="book-author"><%= (book.authors && book.authors[0]) ? book.authors[0] : 'Unknown' %></div>
@@ -139,10 +139,10 @@
                                 </div>
                                 <div class="app-progress">
                                     <div class="progress-book"
-                                         style="background-image: url('<%= trendingBooks && trendingBooks[0] ? trendingBooks[0].thumbnail : '' %>'); background-size: cover; background-position: center;"></div>
+                                         style="background-image: url('<%= (trendingBooks && trendingBooks[0]) ? trendingBooks[0].thumbnail : '' %>'); background-size: cover; background-position: center;"></div>
                                     <div class="progress-info">
                                         <div class="progress-title">Currently
-                                            Reading: <%= trendingBooks && trendingBooks[0] ? trendingBooks[0].title : 'Loading...' %></div>
+                                            Reading: <%= (trendingBooks && trendingBooks[0]) ? trendingBooks[0].title : 'Loading...' %></div>
                                         <div class="progress-bar-wrap">
                                             <div class="progress-bar-fill"></div>
                                         </div>
@@ -180,7 +180,7 @@
                             <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
                             <div class="book-info">
                                 <h3><%= book.title %></h3>
-                                <p><%= book.authors.join(', ') %></p>
+                                <p><%= (book.authors && Array.isArray(book.authors)) ? book.authors.join(', ') : (book.authors || 'Unknown') %></p>
                                 <span>Published: <%= book.published %></span>
                                 <button type="button" class="book-read-btn" data-action="read-book">Read</button>
                             </div>
@@ -214,7 +214,7 @@
                             <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
                             <div class="book-info">
                                 <h3><%= book.title %></h3>
-                                <p><%= book.authors.join(', ') %></p>
+                                <p><%= (book.authors && Array.isArray(book.authors)) ? book.authors.join(', ') : (book.authors || 'Unknown') %></p>
                                 <span>Published: <%= book.published %></span>
                                 <button type="button" class="book-read-btn" data-action="read-book">Read</button>
                             </div>
@@ -248,7 +248,7 @@
                             <img src="<%= book.thumbnail || '/img/placeholder-book.svg' %>" alt="<%= book.title %>">
                             <div class="book-info">
                                 <h3><%= book.title %></h3>
-                                <p><%= book.authors.join(', ') %></p>
+                                <p><%= (book.authors && Array.isArray(book.authors)) ? book.authors.join(', ') : (book.authors || 'Unknown') %></p>
                                 <span>Published: <%= book.published %></span>
                                 <button type="button" class="book-read-btn" data-action="read-book">Read</button>
                             </div>

@@ -297,92 +297,94 @@
     </form>
 </section>
 
-<!--Sign-up section-->
-<!--Sign-up section-->
+<!-- Sign-up section -->
 <section>
     <!-- Sign Up Popover -->
-    <div id="signUpPopover" class="auth-panel sign-up-section form-popover" popover="auto"
-         aria-labelledby="signupTitle">
+    <form id="signUpPopover" class="form-signin form-popover sign-up-section" popover="auto"
+         aria-labelledby="signupTitle" novalidate>
 
-        <form class="needs-validation" novalidate>
+        <div id="signupError" class="hidden alert alert-error" role="alert" aria-live="assertive">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-text">
+                Please fill in all required fields.
+            </span>
+        </div>
 
-            <div class="auth-heading">
-                <h2 id="signupTitle">Create Account</h2>
-            </div>
+        <h1 id="signupTitle" class="h3 mb-3 font-weight-normal">
+            Create Account
+        </h1>
 
-            <div class="auth-field">
+        <div class="form-row">
+            <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text" id="firstName" class="form-control" placeholder="John" autocomplete="given-name"
-                       required/>
+                <input type="text" id="firstName" class="form-control" placeholder="John" autocomplete="given-name" required/>
             </div>
 
-            <div class="auth-field">
+            <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" class="form-control" placeholder="Doe" autocomplete="family-name"
-                       required/>
+                <input type="text" id="lastName" class="form-control" placeholder="Doe" autocomplete="family-name" required/>
             </div>
+        </div>
 
-            <div class="auth-field">
-                <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" placeholder="john_doe" autocomplete="username"
-                       required/>
-            </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="john_doe" autocomplete="username" required/>
+        </div>
 
-            <div class="auth-field">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="form-control" placeholder="john@email.com"
-                       autocomplete="email"
-                       required/>
-            </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="john@email.com" autocomplete="email" required/>
+        </div>
 
-            <div class="auth-field">
+        <div class="form-row">
+            <div class="form-group">
                 <label for="signupPassword">Password</label>
-                <input type="password" id="signupPassword" class="form-control" placeholder="8+ characters"
-                       autocomplete="new-password" required/>
+                <input type="password" id="signupPassword" class="form-control" placeholder="8+ characters" autocomplete="new-password" required/>
             </div>
 
-            <div class="auth-field">
+            <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password"
-                       autocomplete="new-password" required/>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" autocomplete="new-password" required/>
             </div>
+        </div>
 
-            <div class="form-actions auth-actions">
-                <button class="auth-primary-btn btn" type="submit">Sign Up</button>
-            </div>
+        <div class="form-actions">
+            <button class="btn" type="submit">Sign Up</button>
+            <button class="btn" type="button" popovertarget="signUpPopover" popovertargetaction="hide">
+                Cancel
+            </button>
+        </div>
 
-            <div class="auth-divider">
-                <span></span>
-                <p>Or Sign Up With</p>
-                <span></span>
-            </div>
+        <div class="auth-divider">
+            <span></span>
+            <p>Or Sign Up With</p>
+            <span></span>
+        </div>
 
-            <div class="auth-social-grid">
-                <button class="auth-social-btn btn" type="button">
-                    <span class="auth-social-icon">
-                        <i class="fa-brands fa-google"></i>
-                    </span>
-                    Google
-                </button>
+        <div class="auth-social-grid">
+            <button class="auth-social-btn btn" type="button">
+                <span class="auth-social-icon">
+                    <i class="fa-brands fa-google"></i>
+                </span>
+                Google
+            </button>
 
-                <button class="auth-social-btn btn" type="button">
-                    <span class="auth-social-icon">
-                        <i class="fa-brands fa-github"></i>
-                    </span>
-                    Github
-                </button>
-            </div>
+            <button class="auth-social-btn btn" type="button">
+                <span class="auth-social-icon">
+                    <i class="fa-brands fa-github"></i>
+                </span>
+                GitHub
+            </button>
+        </div>
 
-            <div class="login-redirect auth-switch">
-                <p>Already have an account?</p>
-                <button type="button" class="backToLoginBtn auth-link-btn btn" id="backToLoginBtn">
-                    Sign In
-                </button>
-            </div>
+        <div class="signup-redirect">
+            <p>Already have an account?</p>
+            <button type="button" class="btn" id="backToLoginBtn">
+                Sign In
+            </button>
+        </div>
 
-        </form>
-
-    </div>
+    </form>
 </section>
 
 <!--log-out section -->
