@@ -243,6 +243,62 @@
     --z-modal: 500; /* dialogs, the library login panel       */
     --z-popover: 600; /* floating chat widget, tooltips         */
     --z-toast: 700; /* transient notices, cookie banner       */
+
+    /* ── Tier 3 Surface Palettes & Brand Tokens ──────────────────────────── */
+    --lib-violet: #9b59f0;
+    --lib-purple: #6c3fc5;
+    --lib-blue: #3b6cf7;
+    --lib-cyan: #44d4ff;
+
+    --lib-grad: linear-gradient(135deg, var(--lib-purple) 0%, var(--lib-blue) 60%, var(--lib-cyan) 100%);
+    --lib-grad-text: linear-gradient(90deg, var(--lib-violet), #5b8aff, var(--lib-cyan));
+
+    --lib-violet-a10: rgb(155 89 240 / 0.10);
+    --lib-violet-a15: rgb(155 89 240 / 0.15);
+    --lib-violet-a30: rgb(155 89 240 / 0.30);
+    --lib-violet-a40: rgb(155 89 240 / 0.40);
+
+    --porto-green: #37e557;
+    --porto-green-light: #b8ff8b;
+    --porto-teal: #20c997;
+    --porto-ink: #07100a;
+
+    --porto-grad: linear-gradient(135deg, var(--porto-green-light), var(--porto-green));
+    --porto-grad-brand: linear-gradient(135deg, #0f172a 0%, var(--porto-green) 25%, var(--porto-teal) 50%);
+
+    --porto-green-a08: rgb(55 229 87 / 0.08);
+    --porto-green-a13: rgb(55 229 87 / 0.13);
+    --porto-green-a22: rgb(55 229 87 / 0.22);
+    --porto-green-a32: rgb(55 229 87 / 0.32);
+    --porto-green-a45: rgb(55 229 87 / 0.45);
+
+    --porto-glow-sm: 0 10px 28px rgb(55 229 87 / 0.25);
+    --porto-glow-lg: 0 16px 38px rgb(55 229 87 / 0.36);
+
+    --netflix-red: #e50914;
+    --match-green: #6bcf7f;
+    --kids-amber: #ffaa00;
+
+    --cinema-bg: #0a0a0f;
+    --cinema-surface: #181818;
+    --cinema-text: #ffffff;
+    --cinema-text-dim: rgb(255 255 255 / 0.7);
+    --cinema-text-faint: rgb(255 255 255 / 0.55);
+    --cinema-line: rgb(255 255 255 / 0.2);
+
+    --movie-desc-color: rgb(20 20 20 / 0.9);
+    --img-filter: grayscale(100%) brightness(90%);
+
+    --brand-green: #00e5a0;
+    --teal-nav: rgb(59 193 168 / 0.73);
+
+    /* ── book-lib.css Compatibility Tokens ───────────────────────────────── */
+    --lib-nav-height: var(--size-header-lib);
+    --font-lib-display: var(--font-brand);
+    --font-lib-mono: var(--font-code);
+    --z-lib-nav: var(--z-sticky);
+    --z-lib-dropdown: var(--z-dropdown);
+    --z-lib-panel: var(--z-modal);
 }
 
 

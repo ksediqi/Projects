@@ -344,82 +344,82 @@
 /*   noted — these are brand colours, not roles.*/
 /*   ═════════════════════════════════════════════════════════════════════════════ *!*/
 
-/*:root {*/
+:root {
 
-/*    !* ── LIBRARY ──────────────────────────────────────────────────────────── *!*/
-/*    --lib-violet: #9b59f0;*/
-/*    --lib-purple: #6c3fc5;*/
-/*    --lib-blue: #3b6cf7;*/
-/*    --lib-cyan: #44d4ff;*/
+    /* ── LIBRARY ──────────────────────────────────────────────────────────── */
+    --lib-violet: #9b59f0;
+    --lib-purple: #6c3fc5;
+    --lib-blue: #3b6cf7;
+    --lib-cyan: #44d4ff;
 
-/*    --lib-grad: linear-gradient(135deg, var(--lib-purple) 0%, var(--lib-blue) 60%, var(--lib-cyan) 100%);*/
-/*    --lib-grad-text: linear-gradient(90deg, var(--lib-violet), #5b8aff, var(--lib-cyan));*/
+    --lib-grad: linear-gradient(135deg, var(--lib-purple) 0%, var(--lib-blue) 60%, var(--lib-cyan) 100%);
+    --lib-grad-text: linear-gradient(90deg, var(--lib-violet), #5b8aff, var(--lib-cyan));
 
-/*    --lib-violet-a10: rgb(155 89 240 / 0.10);*/
-/*    --lib-violet-a15: rgb(155 89 240 / 0.15);*/
-/*    --lib-violet-a30: rgb(155 89 240 / 0.30);*/
-/*    --lib-violet-a40: rgb(155 89 240 / 0.40);*/
+    --lib-violet-a10: rgb(155 89 240 / 0.10);
+    --lib-violet-a15: rgb(155 89 240 / 0.15);
+    --lib-violet-a30: rgb(155 89 240 / 0.30);
+    --lib-violet-a40: rgb(155 89 240 / 0.40);
 
-/*    !* ── PORTFOLIO ────────────────────────────────────────────────────────── *!*/
-/*    --porto-green: #37e557;*/
-/*    --porto-green-light: #b8ff8b;*/
-/*    --porto-teal: #20c997;*/
-/*    --porto-ink: #07100a;*/
+    /* ── PORTFOLIO ────────────────────────────────────────────────────────── */
+    --porto-green: #37e557;
+    --porto-green-light: #b8ff8b;
+    --porto-teal: #20c997;
+    --porto-ink: #07100a;
 
-/*    --porto-grad: linear-gradient(135deg, var(--porto-green-light), var(--porto-green));*/
-/*    --porto-grad-brand: linear-gradient(135deg, #0f172a 0%, var(--porto-green) 25%, var(--porto-teal) 50%);*/
+    --porto-grad: linear-gradient(135deg, var(--porto-green-light), var(--porto-green));
+    --porto-grad-brand: linear-gradient(135deg, #0f172a 0%, var(--porto-green) 25%, var(--porto-teal) 50%);
 
-/*    --porto-green-a08: rgb(55 229 87 / 0.08);*/
-/*    --porto-green-a13: rgb(55 229 87 / 0.13);*/
-/*    --porto-green-a22: rgb(55 229 87 / 0.22);*/
-/*    --porto-green-a32: rgb(55 229 87 / 0.32);*/
-/*    --porto-green-a45: rgb(55 229 87 / 0.45);*/
+    --porto-green-a08: rgb(55 229 87 / 0.08);
+    --porto-green-a13: rgb(55 229 87 / 0.13);
+    --porto-green-a22: rgb(55 229 87 / 0.22);
+    --porto-green-a32: rgb(55 229 87 / 0.32);
+    --porto-green-a45: rgb(55 229 87 / 0.45);
 
-/*    --porto-glow-sm: 0 10px 28px rgb(55 229 87 / 0.25);*/
-/*    --porto-glow-lg: 0 16px 38px rgb(55 229 87 / 0.36);*/
+    --porto-glow-sm: 0 10px 28px rgb(55 229 87 / 0.25);
+    --porto-glow-lg: 0 16px 38px rgb(55 229 87 / 0.36);
 
-/*    !* ── STREAMING ────────────────────────────────────────────────────────────*/
-/*       These are intentionally fixed across both themes: the hero vignette,*/
-/*       the gradient overlays and the text shadows only work on a dark plate.*/
-/*       ------------------------------------------------------------------------ *!*/
-/*    --netflix-red: #e50914;*/
-/*    --match-green: #6bcf7f;*/
-/*    --kids-amber: #ffaa00;*/
+    /* ── STREAMING ────────────────────────────────────────────────────────────
+       These are intentionally fixed across both themes: the hero vignette,
+       the gradient overlays and the text shadows only work on a dark plate.
+       ------------------------------------------------------------------------ */
+    --netflix-red: #e50914;
+    --match-green: #6bcf7f;
+    --kids-amber: #ffaa00;
 
-/*    --cinema-bg: #0a0a0f;*/
-/*    --cinema-surface: #181818;*/
-/*    --cinema-text: #ffffff;*/
-/*    --cinema-text-dim: rgb(255 255 255 / 0.7);*/
-/*    --cinema-text-faint: rgb(255 255 255 / 0.55);*/
-/*    --cinema-line: rgb(255 255 255 / 0.2);*/
+    --cinema-bg: #0a0a0f;
+    --cinema-surface: #181818;
+    --cinema-text: #ffffff;
+    --cinema-text-dim: rgb(255 255 255 / 0.7);
+    --cinema-text-faint: rgb(255 255 255 / 0.55);
+    --cinema-line: rgb(255 255 255 / 0.2);
 
-/*    --movie-desc-color: rgb(20 20 20 / 0.9);*/
-/*    --img-filter: grayscale(100%) brightness(90%);*/
+    --movie-desc-color: rgb(20 20 20 / 0.9);
+    --img-filter: grayscale(100%) brightness(90%);
 
-/*    !* ── SHARED BRAND ─────────────────────────────────────────────────────── *!*/
-/*    --brand-green: #00e5a0; !* the { dev.portfolio } wordmark *!*/
-/*}*/
+    /* ── SHARED BRAND ─────────────────────────────────────────────────────── */
+    --brand-green: #00e5a0; /* the { dev.portfolio } wordmark */
+}
 
 
-/*!* ═════════════════════════════════════════════════════════════════════════════*/
-/*   book-lib.css COMPATIBILITY — TEMPORARY*/
-/*   -----------------------------------------------------------------------------*/
-/*   movie.css, navigation.css and portfolio.css have all been migrated to the*/
-/*   semantic tokens above and need nothing from this block. book-lib.css was*/
-/*   out of scope for this cleanup and is the only remaining consumer of these*/
-/*   six names. Once it's migrated to --size-header(-lib), --font-brand,*/
-/*   --font-code and --z-sticky/--z-dropdown/--z-modal directly, delete this*/
-/*   block — there will be nothing left aliasing to anything.*/
-/*   ═════════════════════════════════════════════════════════════════════════════ *!*/
+/* ═════════════════════════════════════════════════════════════════════════════
+   book-lib.css COMPATIBILITY — TEMPORARY
+   -----------------------------------------------------------------------------
+   movie.css, navigation.css and portfolio.css have all been migrated to the
+   semantic tokens above and need nothing from this block. book-lib.css was
+   out of scope for this cleanup and is the only remaining consumer of these
+   six names. Once it's migrated to --size-header(-lib), --font-brand,
+   --font-code and --z-sticky/--z-dropdown/--z-modal directly, delete this
+   block — there will be nothing left aliasing to anything.
+   ═════════════════════════════════════════════════════════════════════════════ */
 
-/*:root {*/
-/*    --lib-nav-height: var(--size-header-lib);*/
-/*    --font-lib-display: var(--font-brand);*/
-/*    --font-lib-mono: var(--font-code);*/
-/*    --z-lib-nav: var(--z-sticky);*/
-/*    --z-lib-dropdown: var(--z-dropdown);*/
-/*    --z-lib-panel: var(--z-modal);*/
-/*}*/
+:root {
+    --lib-nav-height: var(--size-header-lib);
+    --font-lib-display: var(--font-brand);
+    --font-lib-mono: var(--font-code);
+    --z-lib-nav: var(--z-sticky);
+    --z-lib-dropdown: var(--z-dropdown);
+    --z-lib-panel: var(--z-modal);
+}
 
 
 /*!* ═════════════════════════════════════════════════════════════════════════════*/
