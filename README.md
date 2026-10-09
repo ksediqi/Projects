@@ -6,7 +6,7 @@
 This portfolio showcases my journey as a Full-Stack Developer and reflects my commitment to continuous learning and improvement. The primary purpose of this implementation and its associated projects is to demonstrate my coding abilities, problem-solving skills, and technical growth.
 
 Please note that these works are intended solely to showcase my skills and are not guaranteed to be free from bugs, errors, or other issues. As I continue to refine my craft, I welcome feedback and see every challenge as an opportunity to grow.
-
+Note: Some Projects are not complete yet! Thank you! 
 
 
 <p align="center">
